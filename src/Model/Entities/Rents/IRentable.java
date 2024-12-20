@@ -1,8 +1,6 @@
-package Model.Entities;
+package Model.Entities.Rents;
 
-import java.time.LocalDate;
-
-public interface IRentable <E extends Object>{
+public interface IRentable<E extends Object>{
     double getPricePerDay();
     String getDescription();
     double getEarning();

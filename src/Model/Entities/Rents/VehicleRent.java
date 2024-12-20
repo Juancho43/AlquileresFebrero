@@ -1,23 +1,24 @@
-package Model.Entities;
+package Model.Entities.Rents;
 
-public class VehicleRent implements IRentable<Vehicle>{
+import Model.Entities.RentableObjects.Vehicle;
+
+public class VehicleRent extends ObjectRent implements IRentable<Vehicle>{
 
     Vehicle vehicle;
-    Rent rent;
 
     @Override
     public double getPricePerDay() {
-        return this.vehicle.pricePerDay;
+        return this.vehicle.getPricePerDay();
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return vehicle.toString() + " " + rent;
     }
 
     @Override
     public double getEarning() {
-        return this.vehicle.priceMethod.calculate();
+        return this.priceMethod.calculate(this.client.getType(),this.rent,this.vehicle);
     }
 
     @Override

@@ -1,19 +1,19 @@
-package Model.Entities;
-import Model.Strategy.IPriceMethod;
+package Model.Entities.RentableObjects;
 
-public class RentableObject{
+import Model.Factory.IdFactory;
 
+public abstract class RentableObject {
     protected long id;
     protected String name;
     protected String description;
     protected double pricePerDay;
-    protected IPriceMethod priceMethod;
+
 
     public RentableObject(String name, String description, double pricePerDay) {
+        this.id = IdFactory.generateUniqueId();
         this.name = name;
         this.description = description;
         this.pricePerDay = pricePerDay;
-//        this.priceMethod = priceMethod;
     }
 
     public long getId() {
@@ -47,12 +47,5 @@ public class RentableObject{
     public void setPricePerDay(double pricePerDay) {
         this.pricePerDay = pricePerDay;
     }
-
-    public IPriceMethod getPriceMethod() {
-        return priceMethod;
-    }
-
-    public void setPriceMethod(IPriceMethod priceMethod) {
-        this.priceMethod = priceMethod;
-    }
+    
 }

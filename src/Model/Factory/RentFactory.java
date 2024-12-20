@@ -1,13 +1,11 @@
 package Model.Factory;
 
-import Model.Entities.IRentable;
-import Model.Entities.Rent;
+import Model.Entities.RentableObjects.RentableObject;
+import Model.Entities.Rents.IRentable;
 
-import java.time.LocalDate;
+public abstract class RentFactory {
 
-public abstract class RentFactory <E extends Object>{
-
-    public IRentable rentObject(int days,E object){
+    public IRentable rentObject(int days, RentableObject object){
         IRentable rentable = createRent();
         rentable.setRentableObject(object);
         rentable.generateRent(days);
@@ -15,4 +13,5 @@ public abstract class RentFactory <E extends Object>{
     };
 
     public abstract IRentable createRent();
+
 }
