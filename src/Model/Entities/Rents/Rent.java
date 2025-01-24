@@ -1,6 +1,6 @@
 package Model.Entities.Rents;
 
-import Model.Enums.State;
+import Model.Enums.RentState;
 import Model.Factory.IdFactory;
 
 import java.time.LocalDate;
@@ -11,12 +11,14 @@ public class Rent {
     private long id;
     private LocalDate date;
     private LocalDate giveBackDate;
-    private State state;
+
+    private LocalDate closeDate;
+    private RentState rentState;
     public Rent(int days){
         this.id = IdFactory.generateUniqueId();
         this.date = LocalDate.now();
         this.giveBackDate = date.plusDays(days);
-        this.state = State.STARTED;
+        this.rentState = RentState.STARTED;
     }
 
     public long getId() {
@@ -43,36 +45,40 @@ public class Rent {
         this.giveBackDate = giveBackDate;
     }
 
-    public State getState() {
-        return state;
+    public RentState getState() {
+        return rentState;
     }
 
-    public void setState(State state) {
-        this.state = state;
+    public void setState(RentState rentState) {
+        this.rentState = rentState;
     }
 
-    public long calculateDuration(){
+    public long calculateFirstDuration(){
         return ChronoUnit.DAYS.between(this.date,this.giveBackDate);
     }
 
-    public State checkStatus(){
+    public long calculateDuration(){
+        return ChronoUnit.DAYS.between(this.date,this.closeDate);
+    }
+    public RentState checkStatus(){
         if(giveBackDate.isBefore(LocalDate.now())){
-            this.setState(State.OUTOFDATE);
+            this.setState(RentState.OUTOFDATE);
         }
-        return this.state;
+        return this.rentState;
     }
 
     public long calculateDelayDays(){
         return ChronoUnit.DAYS.between(this.giveBackDate,LocalDate.now());
     }
 
-    public State closeRent(){
-        this.state = State.CANCELED;
-        return this.state;
+    public RentState closeRent(LocalDate date){
+        this.closeDate = date;
+        this.rentState = RentState.CANCELED;
+        return this.rentState;
     }
 
     @Override
     public String toString() {
-        return date + " " + state + " " + giveBackDate;
+        return date + " " + rentState + " " + giveBackDate;
     }
 }

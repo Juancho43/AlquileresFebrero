@@ -7,13 +7,14 @@ public abstract class RentableObject {
     protected String name;
     protected String description;
     protected double pricePerDay;
-
+    protected boolean avalible;
 
     public RentableObject(String name, String description, double pricePerDay) {
         this.id = IdFactory.generateUniqueId();
         this.name = name;
         this.description = description;
         this.pricePerDay = pricePerDay;
+        this.avalible = true;
     }
 
     public long getId() {
@@ -47,5 +48,12 @@ public abstract class RentableObject {
     public void setPricePerDay(double pricePerDay) {
         this.pricePerDay = pricePerDay;
     }
-    
+
+    public boolean isAvalible() {
+        return avalible;
+    }
+
+    public void setAvalible(boolean avalible) {
+        this.avalible = avalible;
+    }
 }

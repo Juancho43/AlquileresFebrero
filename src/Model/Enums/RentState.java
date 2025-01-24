@@ -1,5 +1,5 @@
 package Model.Enums;
 
-public enum State {
+public enum RentState {
     CANCELED, STARTED, OUTOFDATE
 }

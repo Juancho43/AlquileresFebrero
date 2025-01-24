@@ -2,20 +2,20 @@ package Model.Strategy;
 
 import Model.Entities.RentableObjects.RentableObject;
 import Model.Entities.Rents.Rent;
-import Model.Enums.Client;
-import Model.Enums.State;
+import Model.Enums.ClientTypes;
+import Model.Enums.RentState;
 
-public class CreditCard implements IPriceMethod{
+public class CreditCard implements IPayment {
 
     @Override
-    public double calculate(Client client, Rent rent, RentableObject object) {
+    public double calculate(ClientTypes clientTypes, Rent rent, RentableObject object) {
         double finalPrice = object.getPricePerDay() * rent.calculateDuration() * ((double) 10 /100);
 
-        if(rent.getState() == State.OUTOFDATE){
+        if(rent.getState() == RentState.OUTOFDATE){
             finalPrice *= rent.calculateDelayDays();
         }
 
-        switch(client){
+        switch(clientTypes){
             case COMMON -> {
                 finalPrice -= calculateDiscount(finalPrice,3);
             }
@@ -29,5 +29,10 @@ public class CreditCard implements IPriceMethod{
 
     private double calculateDiscount(double price, double discount){
         return price*(discount/100);
+    }
+
+    @Override
+    public String toString() {
+        return "CreditCard";
     }
 }

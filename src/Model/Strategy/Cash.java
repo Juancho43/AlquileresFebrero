@@ -2,18 +2,18 @@ package Model.Strategy;
 
 import Model.Entities.RentableObjects.RentableObject;
 import Model.Entities.Rents.Rent;
-import Model.Enums.Client;
-import Model.Enums.State;
+import Model.Enums.ClientTypes;
+import Model.Enums.RentState;
 
-public class Cash implements IPriceMethod{
+public class Cash implements IPayment {
     @Override
-    public double calculate(Client client, Rent rent, RentableObject object) {
+    public double calculate(ClientTypes clientTypes, Rent rent, RentableObject object) {
         double finalPrice = object.getPricePerDay() * rent.calculateDuration() ;
-        finalPrice *= calculateDiscount(finalPrice,10);
-        if(rent.getState() == State.OUTOFDATE){
+        if(rent.getState() == RentState.OUTOFDATE){
             finalPrice *= rent.calculateDelayDays();
         }
-        switch(client){
+        finalPrice -= calculateDiscount(finalPrice,10);
+        switch(clientTypes){
             case COMMON -> {
                 finalPrice -= calculateDiscount(finalPrice,5);
             }
@@ -27,5 +27,9 @@ public class Cash implements IPriceMethod{
 
     private double calculateDiscount(double price, double discount){
         return price*(discount/100);
+    }
+    @Override
+    public String toString() {
+        return "Cash";
     }
 }

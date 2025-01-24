@@ -1,6 +1,7 @@
 package Model.Entities.Rents;
 
 import Model.Entities.RentableObjects.Clothing;
+import Model.Strategy.IPayment;
 
 public class ClothingRent extends ObjectRent implements IRentable<Clothing>{
     private Clothing object;
@@ -12,7 +13,7 @@ public class ClothingRent extends ObjectRent implements IRentable<Clothing>{
 
     @Override
     public String getDescription() {
-        return object.toString() + " " + rent;
+        return object + " " + rent + " " + client + " " + priceMethod;
     }
 
     @Override
@@ -21,13 +22,22 @@ public class ClothingRent extends ObjectRent implements IRentable<Clothing>{
     }
 
     @Override
-    public Rent generateRent(int days) {
-        this.rent = new Rent(days);
-        return rent;
+    public void generateRent(int days) {
+        openRent(days);
     }
     @Override
     public void setRentableObject(Clothing object) {
         this.object = object;
+    }
+
+    @Override
+    public IPayment getMethod() {
+        return this.priceMethod;
+    }
+
+    @Override
+    public Clothing getRentableObject() {
+        return this.object;
     }
 
 }

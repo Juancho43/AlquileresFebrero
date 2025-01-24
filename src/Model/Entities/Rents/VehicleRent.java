@@ -1,6 +1,7 @@
 package Model.Entities.Rents;
 
 import Model.Entities.RentableObjects.Vehicle;
+import Model.Strategy.IPayment;
 
 public class VehicleRent extends ObjectRent implements IRentable<Vehicle>{
 
@@ -13,7 +14,7 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle>{
 
     @Override
     public String getDescription() {
-        return vehicle.toString() + " " + rent;
+        return vehicle + " " + rent + " " + client + " " + priceMethod;
     }
 
     @Override
@@ -22,12 +23,22 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle>{
     }
 
     @Override
-    public Rent generateRent(int days) {
-        this.rent = new Rent(days);
-        return rent;
+    public void generateRent(int days) {
+        openRent(days);
     }
     @Override
     public void setRentableObject(Vehicle object) {
         this.vehicle = object;
     }
+
+    @Override
+    public IPayment getMethod() {
+        return this.priceMethod;
+    }
+
+    @Override
+    public Vehicle getRentableObject() {
+        return this.vehicle;
+    }
+
 }
