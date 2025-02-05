@@ -5,30 +5,31 @@ import Model.Entities.Rents.Rent;
 import Model.Enums.ClientTypes;
 import Model.Enums.RentState;
 
+import java.util.Map;
+
 public class CreditCard implements IPayment {
+
+    //Map que contiene los tipos de clientes y sus strategy de descuentos, que se usan en CreditCard
+    private final Map<ClientTypes, IDiscount> discountStrategies = Map.of(
+            ClientTypes.COMMON, new CommonClientDiscount(),
+            ClientTypes.VIP, new VipClientDiscount()
+    );
 
     @Override
     public double calculate(ClientTypes clientTypes, Rent rent, RentableObject object) {
         double finalPrice = object.getPricePerDay() * rent.calculateDuration() * ((double) 10 /100);
 
         if(rent.getState() == RentState.OUTOFDATE){
-            finalPrice *= rent.calculateDelayDays();
+            //En el caso de que haya un retraso en el alquiler, se le asigna una penalizacion de 15% por dia
+            finalPrice += rent.calculateDelayDays() * object.getPricePerDay() * 0.15;
         }
 
-        switch(clientTypes){
-            case COMMON -> {
-                finalPrice -= calculateDiscount(finalPrice,3);
-            }
-            case VIP -> {
-                finalPrice -= calculateDiscount(finalPrice,25.0);
-            }
-        }
-
-            return finalPrice;
-    }
-
-    private double calculateDiscount(double price, double discount){
-        return price*(discount/100);
+        //Busca la estrategia de descuento correspondiente en el Map
+        //si el tipo de cliente tiene una estrategia de descuento, la aplica
+        //si el tipo de cliente no esta en el Map, el descuento es 0
+        IDiscount discountStrategy = discountStrategies.getOrDefault(clientTypes, price -> 0);
+        finalPrice -= discountStrategy.applyDiscount(finalPrice);
+        return finalPrice;
     }
 
     @Override

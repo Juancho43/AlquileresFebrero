@@ -5,37 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Primera implementacion del strategy">
-      <change afterPath="$PROJECT_DIR$/src/Controller/ClientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/IBaseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/RentableObjectController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAO/DAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAO/MemoryClientDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAO/MemoryRentDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAO/MemoryRentableObjectDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/AppMocks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClientMocks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClothingMocks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/VehicleMocks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/PriceParameters.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/RentableObjects/RentableObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/RentableObjects/RentableObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Rents/ClothingRent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Rents/ClothingRent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Rents/IRentable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Rents/IRentable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Rents/ObjectRent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Rents/ObjectRent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Rents/Rent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Rents/Rent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Rents/VehicleRent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Rents/VehicleRent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Enums/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Enums/ClientTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Enums/ClothingStrategies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Enums/VehicleStrategies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Factory/RentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Factory/RentFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Strategy/Cash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Strategy/Cash.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Strategy/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Strategy/CreditCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/IPriceMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Strategy/IPriceMethod.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +26,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2qN5Etzwp3XSkx1dlLnv6YRw65d" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -66,7 +41,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Usuario/Desktop/AlquileresFebrero/src/Controller&quot;
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/nicolaslazaro/Documents/Analista Sistemas 3er año/EDI3/AlquileresFeb25/AlquileresFebrero&quot;
   }
 }</component>
   <component name="RecentsManager">
