@@ -4,32 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Beta 1">
-      <change afterPath="$PROJECT_DIR$/src/Controller/ClientTypeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAO/MemoryClientTypeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Entities/ClientType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClientTypeMocks.java" afterDir="false" />
+    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Added clientType crud">
+      <change afterPath="$PROJECT_DIR$/src/DAO/MemoryClothingDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DAO/MemoryVehicleDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Entities/RentableObjects/IRentableObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/IBaseController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/RentableObjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/RentableObjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAO/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAO/MemoryClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/MemoryClientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAO/MemoryRentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/MemoryRentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAO/MemoryRentableObjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/MemoryRentableObjectDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/RentableObjectController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/MemoryRentableObjectDAO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Entities/Mocks/AppMocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/AppMocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClientMocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClientMocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClothingMocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClothingMocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Enums/ClientTypes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/Cash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Strategy/Cash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/CommonClientDiscount.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Strategy/CreditCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/IDiscount.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/IPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Strategy/IPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/VipClientDiscount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/RentableObjects/Clothing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/RentableObjects/Clothing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/RentableObjects/RentableObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/RentableObjects/RentableObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/RentableObjects/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/RentableObjects/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Rents/VehicleRent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Rents/VehicleRent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -123,13 +112,33 @@
       <option name="project" value="LOCAL" />
       <updated>1734678246610</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added clientType crud">
+      <option name="closed" value="true" />
+      <created>1738948232523</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738948232523</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Primera implementacion del factory" />
     <MESSAGE value="Primera implementacion del strategy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Primera implementacion del strategy" />
+    <MESSAGE value="Added clientType crud" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added clientType crud" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

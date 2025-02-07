@@ -1,11 +1,16 @@
 package Model.Entities.RentableObjects;
 
-public class Clothing extends RentableObject{
+import Model.Factory.IdFactory;
 
+public class Clothing implements IRentableObject {
+
+    private long id;
+    private RentableObject object;
     private String size;
     private String color;
     public Clothing(String name, String description, double pricePerDay, String size, String color) {
-        super(name, description, pricePerDay);
+        this.id = IdFactory.generateUniqueId();
+        this.object = new RentableObject(name,description,pricePerDay);
         this.size = size;
         this.color = color;
     }
@@ -26,10 +31,28 @@ public class Clothing extends RentableObject{
         this.color = color;
     }
 
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     @Override
     public String toString() {
         return "Ropa: " +
-                name + " (" + size +") $" + pricePerDay +"/day";
+                object.getName() + " (" + size +") $" + object.getPricePerDay() +"/day";
+    }
+
+    @Override
+    public RentableObject getObject() {
+        return object;
+    }
+
+    @Override
+    public void setObject(RentableObject object) {
+        this.object = object;
     }
 }
 

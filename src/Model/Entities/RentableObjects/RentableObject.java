@@ -2,28 +2,20 @@ package Model.Entities.RentableObjects;
 
 import Model.Factory.IdFactory;
 
-public abstract class RentableObject {
-    protected long id;
-    protected String name;
-    protected String description;
-    protected double pricePerDay;
-    protected boolean avalible;
+public class RentableObject {
+
+    private String name;
+    private String description;
+    private double pricePerDay;
+    private boolean available;
 
     public RentableObject(String name, String description, double pricePerDay) {
-        this.id = IdFactory.generateUniqueId();
         this.name = name;
         this.description = description;
         this.pricePerDay = pricePerDay;
-        this.avalible = true;
+        this.available = true;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -49,11 +41,11 @@ public abstract class RentableObject {
         this.pricePerDay = pricePerDay;
     }
 
-    public boolean isAvalible() {
-        return avalible;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setAvalible(boolean avalible) {
-        this.avalible = avalible;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }

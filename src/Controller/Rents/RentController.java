@@ -3,6 +3,7 @@ package Controller.Rents;
 import DAO.MemoryRentDAO;
 import DAO.DAO;
 import Model.Entities.Client;
+import Model.Entities.RentableObjects.IRentableObject;
 import Model.Entities.RentableObjects.RentableObject;
 import Model.Entities.Rents.Rent;
 import Model.Factory.RentFactory;
@@ -17,7 +18,7 @@ public class RentController{
     private double totalEarnings;
     private RentFactory rentFactory;
 
-    public void newRent(int days, RentableObject object, Client client) {
+    public void newRent(int days, IRentableObject object, Client client) {
         this.dao.save(rentFactory.rentObject(days, object, client));
     }
 

@@ -46,7 +46,10 @@ public class MemoryRentDAO implements DAO<IRentable>{
 
     @Override
     public IRentable updateById(long id, IRentable object) {
-        return null;
+        getById(id).setRentableObject(object.getRentableObject());
+        getById(id).setClient(object.getClient());
+        getById(id).setPriceMethod(object.getMethod());
+        return getById(id);
     }
 
     @Override

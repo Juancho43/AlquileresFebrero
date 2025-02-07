@@ -1,12 +1,16 @@
 package Model.Entities.RentableObjects;
 
-public class Vehicle extends RentableObject{
+import Model.Factory.IdFactory;
 
+public class Vehicle implements IRentableObject {
+    private long id;
+    private RentableObject object;
     private String brand;
     private String model;
     private int year;
     public Vehicle(String name, String description, double pricePerDay, String brand, String model, int year) {
-        super(name, description, pricePerDay);
+        this.id = IdFactory.generateUniqueId();
+        this.object = new RentableObject(name,description,pricePerDay);
         this.brand = brand;
         this.model = model;
         this.year = year;
@@ -36,10 +40,30 @@ public class Vehicle extends RentableObject{
         this.year = year;
     }
 
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Override
+    public RentableObject getObject() {
+        return this.object;
+    }
+
+    @Override
+    public void setObject(RentableObject object) {
+        this.object = object;
+    }
+
     @Override
     public String toString() {
         return "Vehiculo: " +
-                name + " $" + pricePerDay + "/day";
+                object.getName() + " $" + object.getPricePerDay() + "/day";
 
     }
+
 }

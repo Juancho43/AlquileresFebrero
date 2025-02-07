@@ -9,7 +9,7 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle>{
 
     @Override
     public double getPricePerDay() {
-        return this.vehicle.getPricePerDay();
+        return this.vehicle.getObject().getPricePerDay();
     }
 
     @Override
