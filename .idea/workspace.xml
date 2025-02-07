@@ -4,10 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Primera implementacion del strategy">
+    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Beta 1">
+      <change afterPath="$PROJECT_DIR$/src/Controller/ClientTypeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DAO/MemoryClientTypeDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Entities/ClientType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClientTypeMocks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/IBaseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/RentableObjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/RentableObjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/MemoryClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/MemoryClientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/MemoryRentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/MemoryRentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/MemoryRentableObjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/MemoryRentableObjectDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Mocks/AppMocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/AppMocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClientMocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClientMocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClothingMocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/ClothingMocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Enums/ClientTypes.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Strategy/Cash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Strategy/Cash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/CommonClientDiscount.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Strategy/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Strategy/CreditCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/IDiscount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/IPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Strategy/IPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/VipClientDiscount.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +47,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -54,6 +79,7 @@
       <recent name="Controller.RentableObjects" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="DAO" />
       <recent name="Controller" />
       <recent name="Model.Factory" />
     </key>
@@ -104,5 +130,21 @@
     <MESSAGE value="Primera implementacion del factory" />
     <MESSAGE value="Primera implementacion del strategy" />
     <option name="LAST_COMMIT_MESSAGE" value="Primera implementacion del strategy" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="DAO.MemoryClientTypeDAO" memberName="typeList" />
+        <PinnedItemInfo parentTag="Controller.ClientTypeController" memberName="dao" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

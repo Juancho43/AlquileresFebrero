@@ -1,7 +1,5 @@
 package Controller.Rents;
 
-import Controller.IBaseController;
-
 import DAO.MemoryRentDAO;
 import DAO.DAO;
 import Model.Entities.Client;

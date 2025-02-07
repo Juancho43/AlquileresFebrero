@@ -1,16 +1,19 @@
 package Model.Entities.Mocks;
 
 import Controller.ClientController;
+import Controller.ClientTypeController;
 import Controller.RentableObjects.ClothingController;
 import Controller.RentableObjects.VehicleController;
 import Model.Entities.Client;
+import Model.Entities.ClientType;
 import Model.Entities.RentableObjects.RentableObject;
 import Model.Entities.Rents.IRentable;
 import Model.Factory.RentClothingFactory;
 import Model.Factory.RentFactory;
 import Model.Factory.RentVehicleFactory;
+import Model.Strategy.Cash;
+import Model.Strategy.CreditCard;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +22,7 @@ public class AppMocks {
     public static void add(){
         VehicleMocks.add();
         ClothingMocks.add();
+        ClientTypeMocks.add();
         ClientMocks.add();
     }
 
@@ -28,10 +32,15 @@ public class AppMocks {
         ClothingController c = new ClothingController();
         ClientController clientController = new ClientController();
 
+
         //Obtengo los objetos.
         List<Client> clients = clientController.getDao().getAll();
+
+
         List<RentableObject> objectList = v.getDao().getAll();
         objectList.addAll(c.getDao().getAll());
+
+
 
         //Factories
         List<RentFactory> factories = new ArrayList<>();

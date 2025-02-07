@@ -2,28 +2,28 @@ package Model.Entities;
 
 import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
-import Model.Enums.ClientTypes;
+
 public class Client {
 
     private long id;
     private String name;
     private String email;
     private String dni;
-    private ClientTypes type;
-    private IPayment favoritedMethod;
+    private ClientType type;
+    private IPayment favoriteMethod;
 
 
     public Client(){
 
     }
 
-    public Client(String name, String email, String dni, ClientTypes type, IPayment paymentMethod) {
+    public Client(String name, String email, String dni, ClientType type, IPayment paymentMethod) {
         this.id = IdFactory.generateUniqueId();
         this.name = name;
         this.email = email;
         this.dni = dni;
         this.type = type;
-        this.favoritedMethod = paymentMethod;
+        this.favoriteMethod = paymentMethod;
     }
 
     public long getId() {
@@ -58,25 +58,25 @@ public class Client {
         this.dni = dni;
     }
 
-    public ClientTypes getType() {
-        return type.getType();
+    public ClientType getType() {
+        return type;
     }
 
-    public void setType(ClientTypes type) {
-        this.type = type;
+    public void setClientTypeId(ClientType clientTypeId) {
+        this.type =clientTypeId ;
     }
 
     public IPayment getPaymentMethod() {
-        return favoritedMethod;
+        return favoriteMethod;
     }
 
     public void setPaymentMethod(IPayment paymentMethod) {
-        this.favoritedMethod = paymentMethod;
+        this.favoriteMethod = paymentMethod;
     }
 
     @Override
     public String toString() {
         return "Cliente: " +
-                name + ' ' + type + " " + favoritedMethod ;
+                name + ' ' + type + " " + favoriteMethod;
     }
 }

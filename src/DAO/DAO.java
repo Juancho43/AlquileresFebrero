@@ -11,7 +11,6 @@ public interface DAO <E extends Object>{
     E updateById(long id, E object);
     boolean deleteById(long id);
 
-    boolean exportData();
-    boolean importData();
+
 
 }

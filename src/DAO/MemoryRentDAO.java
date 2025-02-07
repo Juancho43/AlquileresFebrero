@@ -54,13 +54,4 @@ public class MemoryRentDAO implements DAO<IRentable>{
         return objectRents.removeIf(obj -> obj.getId() == id);
     }
 
-    @Override
-    public boolean exportData() {
-        return false;
-    }
-
-    @Override
-    public boolean importData() {
-        return false;
-    }
 }

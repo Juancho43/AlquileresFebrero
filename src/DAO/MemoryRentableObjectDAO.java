@@ -66,13 +66,4 @@ public class MemoryRentableObjectDAO implements DAO<RentableObject> {
         return rentableObjectList.removeIf(obj -> obj.getId() == id);
     }
 
-    @Override
-    public boolean exportData() {
-        return false;
-    }
-
-    @Override
-    public boolean importData() {
-        return false;
-    }
 }

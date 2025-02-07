@@ -2,16 +2,23 @@ package Model.Entities.Mocks;
 
 
 import Controller.ClientController;
-import Model.Enums.ClientTypes;
+import Controller.ClientTypeController;
+import Model.Entities.ClientType;
 import Model.Strategy.Cash;
 import Model.Strategy.CreditCard;
 
+import java.util.List;
+
 public class ClientMocks {
-    private static ClientController c = new ClientController();
+    private static final ClientController clientController = new ClientController();
+    private static final ClientTypeController clientTypeController = new ClientTypeController();
+
+
     public static void add(){
-        c.newClient("Juan","juan@juan.com","43592888", ClientTypes.COMMON,new Cash());
-        c.newClient("Nico","nico@juan.com","22233111", ClientTypes.VIP,new CreditCard());
-        c.newClient("Andres","andres@juan.com","22333111", ClientTypes.COMMON,new CreditCard());
-        c.newClient("Mauro","mauro@juan.com","66333222", ClientTypes.VIP,new Cash());
+        clientController.newClient("Juan","juan@juan.com","43592888", clientTypeController.getDao().getAll().get(0),new Cash());
+        clientController.newClient("Nico","nico@juan.com","22233111",   clientTypeController.getDao().getAll().get(1),new CreditCard());
+        clientController.newClient("Andres","andres@juan.com","22333111",   clientTypeController.getDao().getAll().get(0),new CreditCard());
+        clientController.newClient("Mauro","mauro@juan.com","66333222",   clientTypeController.getDao().getAll().get(1),new Cash());
+
     }
 }

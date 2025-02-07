@@ -4,7 +4,7 @@ import DAO.MemoryRentableObjectDAO;
 
 public abstract class RentableObjectController{
 
-    private final MemoryRentableObjectDAO dao = MemoryRentableObjectDAO.getInstance();
+    private  MemoryRentableObjectDAO dao = MemoryRentableObjectDAO.getInstance();
 
 
     public RentableObjectController() {

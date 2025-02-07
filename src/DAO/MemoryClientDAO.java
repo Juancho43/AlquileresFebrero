@@ -5,9 +5,11 @@ import Model.Entities.Client;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class MemoryClientDAO implements DAO<Client>{
 
-    private List<Client> clientList = new ArrayList<>();
+    private final List<Client> clientList = new ArrayList<>();
 
     private static MemoryClientDAO ClientMemoryDao;
     public static MemoryClientDAO getInstance(){
@@ -16,7 +18,6 @@ public class MemoryClientDAO implements DAO<Client>{
         }
         return ClientMemoryDao;
     }
-
 
     @Override
     public List<Client> getAll() {
@@ -49,7 +50,7 @@ public class MemoryClientDAO implements DAO<Client>{
         getById(id).setName(client.getName());
         getById(id).setEmail(client.getEmail());
         getById(id).setDni(client.getDni());
-        getById(id).setType(client.getType());
+        getById(id).setClientTypeId(client.getType());
         getById(id).setPaymentMethod(client.getPaymentMethod());
         return getById(id);
     }
@@ -59,13 +60,4 @@ public class MemoryClientDAO implements DAO<Client>{
         return clientList.removeIf(obj -> obj.getId() == id);
     }
 
-    @Override
-    public boolean exportData() {
-        return false;
-    }
-
-    @Override
-    public boolean importData() {
-        return false;
-    }
 }
