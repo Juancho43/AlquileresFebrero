@@ -9,6 +9,8 @@ import View.Utils.NavigationView;
 import View.Utils.Notifications;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -47,7 +49,7 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cleanFields();
-                lblVehicle.setText("Formulario de vehiculos");
+
             }
         });
         btnGuardar.addActionListener(new ActionListener() {
@@ -67,12 +69,29 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
         btnEditar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                lblVehicle.setText("Editar vehiculo");
+                edit = true;
             }
         });
         btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                deleteItem(selectItem().getId());
+                updateList();
+
+            }
+        });
+        vehicleList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                setCurrentData();
+            }
+        });
+        btnRentas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                NavigationView.openAboutView();
             }
         });
     }
@@ -89,16 +108,31 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
 
     @Override
     public void setCurrentData() {
+        if (selectItem().getObject() != null){
 
+            txtName.setText(selectItem().getObject().getName());
+            txtDescripcion.setText(selectItem().getObject().getDescription());
+            txtMarca.setText(selectItem().getBrand());
+            txtAnio.setText(String.valueOf(selectItem().getYear()));
+            txtPrecio.setText(String.valueOf(selectItem().getObject().getPricePerDay()));
+            txtModelo.setText(selectItem().getModel());
+        }
     }
 
     @Override
     public Vehicle selectItem() {
-        return (Vehicle) vehicleList.getSelectedValue();
+        Vehicle vehicle = (Vehicle) vehicleList.getSelectedValue();
+        if (vehicle == null) {
+            vehicle = new Vehicle();
+        }
+        return vehicle;
+
     }
 
     @Override
     public void cleanFields() {
+        lblVehicle.setText("Formulario de vehiculos");
+        edit = false;
         txtName.setText("");
         txtDescripcion.setText("");
         txtMarca.setText("");
@@ -109,7 +143,8 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
 
     @Override
     public void updateList() {
-        Vehicle[] arreglo = vehicleController.getAllVehicles().toArray(new Vehicle[0]);
+        cleanFields();
+        Vehicle[] arreglo = vehicleController.getDao().getAll().toArray(new Vehicle[0]); // Now this should work correctly
         vehicleList.setListData(arreglo);
     }
 
@@ -121,19 +156,28 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
         String band = txtMarca.getText();
         String model = txtModelo.getText();
         int year = Integer.parseInt(txtAnio.getText());
-
         vehicleController.addVehicle(name, description, price, band, model, year);
         cleanFields();
+        Notifications.showSuccess("Vehicle created");
     }
 
     @Override
     public void editItem() {
 
+        selectItem().getObject().setPricePerDay(Double.parseDouble(txtPrecio.getText()));
+        selectItem().getObject().setName(txtName.getText());
+        selectItem().getObject().setDescription(txtDescripcion.getText());
+        selectItem().setYear(Integer.parseInt(txtAnio.getText()));
+        selectItem().setBrand(txtMarca.getText());
+        selectItem().setModel(txtModelo.getText());
+        vehicleController.getDao().updateById(selectItem().getId(),selectItem());
+        Notifications.showSuccess("Vehicle edited");
     }
 
     @Override
     public void deleteItem(long id) {
         vehicleController.getDao().deleteById(id);
+        Notifications.showSuccess("Vehicle deleted");
     }
 
     public boolean validateFields() {

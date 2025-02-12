@@ -8,6 +8,9 @@ public class Vehicle implements IRentableObject {
     private String brand;
     private String model;
     private int year;
+    public Vehicle(){
+
+    }
     public Vehicle(String name, String description, double pricePerDay, String brand, String model, int year) {
         this.id = IdFactory.generateUniqueId();
         this.object = new RentableObject(name,description,pricePerDay);
@@ -61,8 +64,8 @@ public class Vehicle implements IRentableObject {
 
     @Override
     public String toString() {
-        return "Vehiculo: " +
-                object.getName() + " $" + object.getPricePerDay() + "/day";
+        return
+                object.getName()+ " "+ object.getDescription() + " " + brand + " "+ model + " " + year + " $" + object.getPricePerDay() + "/day";
 
     }
 

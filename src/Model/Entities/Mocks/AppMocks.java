@@ -4,8 +4,10 @@ import Controller.ClientController;
 import Controller.RentableObjects.ClothingController;
 import Controller.RentableObjects.VehicleController;
 import Model.Entities.Client;
+import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.IRentableObject;
 import Model.Entities.RentableObjects.RentableObject;
+import Model.Entities.RentableObjects.Vehicle;
 import Model.Entities.Rents.IRentable;
 import Model.Factory.RentClothingFactory;
 import Model.Factory.RentFactory;
@@ -35,9 +37,8 @@ public class AppMocks {
         List<Client> clients = clientController.getDao().getAll();
 
 
-        List<IRentableObject> objectList = v.getDao().getAll();
-        objectList.addAll(c.getDao().getAll());
-
+        List<Vehicle> vehicleList = v.getDao().getAll();
+        List<Clothing> clothingList = c.getDao().getAll();
 
 
         //Factories
@@ -46,10 +47,10 @@ public class AppMocks {
         factories.add(new RentClothingFactory());
         //Make rent mocks
         List<IRentable> rentas = new ArrayList<>();
-        rentas.add(factories.get(0).rentObject(2,objectList.get(1),clients.get(0)));
-        rentas.add(factories.get(0).rentObject(3,objectList.get(2),clients.get(1)));
-        rentas.add(factories.get(1).rentObject(3, objectList.get(5),clients.get(3)));
-        rentas.add(factories.get(1).rentObject(3, objectList.get(6),clients.get(2)));
+        rentas.add(factories.get(0).rentObject(2,vehicleList.get(1),clients.get(0)));
+        rentas.add(factories.get(0).rentObject(3,vehicleList.get(2),clients.get(1)));
+        rentas.add(factories.get(1).rentObject(3, clothingList.get(0),clients.get(3)));
+        rentas.add(factories.get(1).rentObject(3, clothingList.get(1),clients.get(2)));
 
 
 //        rentas.get(0).getRent().closeRent(LocalDate.now().plusDays(2));

@@ -41,6 +41,7 @@ public class MenuView extends JFrame implements IBasicView {
                 NavigationView.openRentableObjectView();
             }
         });
+
         btnAcercade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

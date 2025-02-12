@@ -10,11 +10,11 @@ public class VehicleController {
     private final DAO<Vehicle> dao = MemoryVehicleDAO.getInstance();
 
     public void addVehicle(String name, String description, Double price, String brand, String model, int year){
-        getDao().save(new Vehicle(name,description,price, brand, model, year));
+        this.dao.save(new Vehicle(name,description,price, brand, model, year));
     }
 
     public List<Vehicle> getAllVehicles() {
-        return dao.getAll();
+        return this.dao.getAll();
     }
 
     public Vehicle getVehicleById(long id) {
@@ -29,7 +29,7 @@ public class VehicleController {
         return dao.deleteById(id);
     }
 
-    public DAO getDao() {
+    public DAO<Vehicle> getDao() {
         return dao;
     }
 }

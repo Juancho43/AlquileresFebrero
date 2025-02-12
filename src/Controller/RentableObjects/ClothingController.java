@@ -29,7 +29,7 @@ public class ClothingController {
         return dao.deleteById(id);
     }
 
-    public DAO getDao() {
+    public DAO<Clothing> getDao() {
         return dao;
     }
 
