@@ -46,7 +46,7 @@ public class RentableObjectView extends JFrame implements IBasicView{
         this.setTitle("Ver inventario");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
-        this.setSize(800, 600);
+        this.setSize(400, 300);
         this.setResizable(false);
     }
 }

@@ -29,6 +29,6 @@ public class AboutView extends JFrame implements IBasicView {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);
-        this.setSize(500, 400);
+        this.setSize(400, 300);
     }
 }

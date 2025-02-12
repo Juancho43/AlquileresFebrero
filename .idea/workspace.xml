@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Vista de ropa con funcionalidad completa.">
+    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Avances en la vista de clientes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/ClientType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/ClientType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ClientView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ClientView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ClientView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/RentableObject/VehicleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentableObject/VehicleView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/AboutView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/AboutView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MenuView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MenuView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/RentableObject/ClothingView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentableObject/ClothingView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/RentableObject/VehicleView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentableObject/VehicleView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/RentableObjectView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentableObjectView.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/RentableObjectView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentableObjectView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +50,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "false",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "246",
     "git-widget-placeholder": "main",
@@ -138,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739332700421</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Avances en la vista de clientes.">
+      <option name="closed" value="true" />
+      <created>1739336933552</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1739336933552</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,7 +165,8 @@
     <MESSAGE value="Added clientType crud" />
     <MESSAGE value="Vista de vehiculos con funcionalidad completa." />
     <MESSAGE value="Vista de ropa con funcionalidad completa." />
-    <option name="LAST_COMMIT_MESSAGE" value="Vista de ropa con funcionalidad completa." />
+    <MESSAGE value="Avances en la vista de clientes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Avances en la vista de clientes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
