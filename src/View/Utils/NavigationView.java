@@ -1,7 +1,7 @@
 package View.Utils;
 
 import View.AboutView;
-import View.ClientView;
+import View.Clients.ClientView;
 import View.MenuView;
 import View.RentableObject.ClothingView;
 import View.RentableObject.VehicleView;
