@@ -4,7 +4,6 @@ import Controller.ClientController;
 import Controller.ClientTypeController;
 import Model.Entities.Client;
 import Model.Entities.ClientType;
-import Model.Entities.RentableObjects.Vehicle;
 import Model.Strategy.Cash;
 import Model.Strategy.CreditCard;
 import Model.Strategy.IPayment;
@@ -21,7 +20,6 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ClientView extends JFrame implements IBasicView, IManageView<Client> {
@@ -75,20 +73,7 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
                 edit = true;
             }
         });
-        btnSave.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(validateFields()){
-                    if(edit){
-                        editItem();
-                    }else{
-                        createItem();
-                    }
-                    cleanFields();
-                    updateList();
-                }
-            }
-        });
+
         btnClean.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -113,20 +98,30 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
 
             }
         });
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(validateFields()){
+                    if(edit){
+                        editItem();
+                    }else{
+                        createItem();
+                    }
+                    cleanFields();
+                    updateList();
+                }
+            }
+        });
     }
 
     @Override
     public void setCurrentData() {
         if (selectItem() != null){
-
             txtName.setText(selectItem().getName());
             txtEmail.setText(selectItem().getEmail());
             txtDNI.setText(selectItem().getDni());
             cmClientType.setSelectedItem(selectItem().getType());
-            System.out.println(selectItem().getType());
-            System.out.println(selectItem().getPaymentMethod());
             cmPayment.setSelectedItem(selectItem().getPaymentMethod());
-
         }
     }
 
@@ -167,17 +162,24 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
         Client[] arreglo = clientController.getDao().getAll().toArray(new Client[0]);
         clientList.setListData(arreglo);
 
-
     }
 
     @Override
     public void createItem() {
 
+        clientController.newClient(txtName.getText(),txtEmail.getText(),txtDNI.getText(),(ClientType) cmClientType.getSelectedItem(), (IPayment) cmPayment.getSelectedItem());
+        Notifications.showSuccess("Client created");
     }
 
     @Override
     public void editItem() {
-
+        selectItem().setClientTypeId((ClientType) cmClientType.getSelectedItem());
+        selectItem().setPaymentMethod((IPayment) cmPayment.getSelectedItem());
+        selectItem().setName(txtName.getText());
+        selectItem().setEmail(txtEmail.getText());
+        selectItem().setDni(txtDNI.getText());
+        clientController.getDao().updateById(selectItem().getId(),selectItem());
+        Notifications.showSuccess("Client updated");
     }
 
     @Override
@@ -208,7 +210,7 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
             Notifications.showWarning("Debe ingresar un email");
             return false;
         }
-        return false;
+        return true;
     }
 
 }

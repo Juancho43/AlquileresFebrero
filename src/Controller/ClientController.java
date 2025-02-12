@@ -7,14 +7,13 @@ import Model.Entities.ClientType;
 import Model.Strategy.IPayment;
 
 import java.util.List;
-import java.util.Optional;
 
 public class ClientController{
 
     private final DAO<Client> dao = MemoryClientDAO.getInstance();
 
     public void newClient(String name, String email, String dni, ClientType type, IPayment method){
-        this.dao.save(new Client(name, email, dni,type,method));
+        this.dao.save(new Client(name, email, dni,type,method, null));
     }
 
     public List<Client> getAllClients() {

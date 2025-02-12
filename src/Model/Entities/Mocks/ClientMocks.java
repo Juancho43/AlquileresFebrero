@@ -3,11 +3,8 @@ package Model.Entities.Mocks;
 
 import Controller.ClientController;
 import Controller.ClientTypeController;
-import Model.Entities.ClientType;
 import Model.Strategy.Cash;
 import Model.Strategy.CreditCard;
-
-import java.util.List;
 
 public class ClientMocks {
     private static final ClientController clientController = new ClientController();

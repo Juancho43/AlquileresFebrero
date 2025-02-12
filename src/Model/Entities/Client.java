@@ -1,7 +1,11 @@
 package Model.Entities;
 
 import Model.Factory.IdFactory;
+import Model.Strategy.Cash;
+import Model.Strategy.CreditCard;
 import Model.Strategy.IPayment;
+
+import java.util.Optional;
 
 public class Client {
 
@@ -17,7 +21,7 @@ public class Client {
 
     }
 
-    public Client(String name, String email, String dni, ClientType type, IPayment paymentMethod) {
+    public Client(String name, String email, String dni, ClientType type, IPayment paymentMethod, Optional<String> Company ) {
         this.id = IdFactory.generateUniqueId();
         this.name = name;
         this.email = email;
