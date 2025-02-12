@@ -123,6 +123,8 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
             txtEmail.setText(selectItem().getEmail());
             txtDNI.setText(selectItem().getDni());
             cmClientType.setSelectedItem(selectItem().getType());
+            System.out.println(selectItem().getType());
+            System.out.println(selectItem().getPaymentMethod());
             cmPayment.setSelectedItem(selectItem().getPaymentMethod());
 
         }

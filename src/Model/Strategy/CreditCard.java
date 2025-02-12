@@ -6,9 +6,25 @@ import Model.Entities.RentableObjects.RentableObject;
 import Model.Entities.Rents.Rent;
 import Model.Enums.RentState;
 
+import java.util.Objects;
+
 public class CreditCard implements IPayment {
+    private String company;
 
+    public CreditCard() {
+    }
 
+    public CreditCard(String company) {
+        this.company = company;
+    }
+
+    public String getCardNumber() {
+        return company;
+    }
+
+    public void setCardNumber(String company) {
+        this.company = company;
+    }
 
     @Override
     public double calculate(ClientType type, Rent rent, IRentableObject object) {
@@ -26,6 +42,20 @@ public class CreditCard implements IPayment {
 
     @Override
     public String toString() {
-        return "CreditCard";
+        return "CreditCard: " + company;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CreditCard that = (CreditCard) obj;
+        return Objects.equals(this.company, that.company);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(company);
     }
 }
