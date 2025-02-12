@@ -40,6 +40,6 @@ public class ClientType {
 
     @Override
     public String toString() {
-        return "Tipo de cliente: " + type + ", descuento: " + discount ;
+        return  type + ", descuento: " + discount ;
     }
 }

@@ -144,7 +144,7 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
     @Override
     public void updateList() {
         cleanFields();
-        Vehicle[] arreglo = vehicleController.getDao().getAll().toArray(new Vehicle[0]); // Now this should work correctly
+        Vehicle[] arreglo = vehicleController.getDao().getAll().toArray(new Vehicle[0]);
         vehicleList.setListData(arreglo);
     }
 

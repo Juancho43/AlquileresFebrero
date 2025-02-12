@@ -33,7 +33,7 @@ public class ClientController{
         return dao.deleteById(id);
     }
 
-    public DAO getDao() {
+    public DAO<Client> getDao() {
         return dao;
     }
 }

@@ -15,6 +15,7 @@ public class RentableObjectView extends JFrame implements IBasicView{
 
     public RentableObjectView(){
         this.configView();
+
         btnCloth.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,7 +35,7 @@ public class RentableObjectView extends JFrame implements IBasicView{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                NavigationView.openRentableObjectView();
+                NavigationView.openMenuView();
             }
         });
     }
@@ -42,7 +43,7 @@ public class RentableObjectView extends JFrame implements IBasicView{
     @Override
     public void configView() {
         this.setContentPane(this.panel);
-        this.setTitle("Configurar clientes");
+        this.setTitle("Ver inventario");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
         this.setSize(800, 600);

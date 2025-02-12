@@ -76,7 +76,6 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Cliente: " +
-                name + ' ' + type + " " + favoriteMethod;
+        return name + ' ' + type + " " + favoriteMethod;
     }
 }
