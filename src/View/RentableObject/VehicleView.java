@@ -42,7 +42,7 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                NavigationView.openMenuView();
+                NavigationView.openRentableObjectView();
             }
         });
         btnLimpiar.addActionListener(new ActionListener() {

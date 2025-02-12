@@ -8,6 +8,9 @@ public class Clothing implements IRentableObject {
     private RentableObject object;
     private String size;
     private String color;
+    public Clothing(){
+
+    }
     public Clothing(String name, String description, double pricePerDay, String size, String color) {
         this.id = IdFactory.generateUniqueId();
         this.object = new RentableObject(name,description,pricePerDay);
@@ -39,11 +42,6 @@ public class Clothing implements IRentableObject {
     public void setId(long id) {
         this.id = id;
     }
-    @Override
-    public String toString() {
-        return "Ropa: " +
-                object.getName() + " (" + size +") $" + object.getPricePerDay() +"/day";
-    }
 
     @Override
     public RentableObject getObject() {
@@ -53,6 +51,10 @@ public class Clothing implements IRentableObject {
     @Override
     public void setObject(RentableObject object) {
         this.object = object;
+    }
+    @Override
+    public String toString() {
+        return object.getName() +" "+object.getDescription() +" "+ color + " (" + size +") $" + object.getPricePerDay() +"/day";
     }
 }
 

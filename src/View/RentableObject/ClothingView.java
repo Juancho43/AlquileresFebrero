@@ -2,12 +2,15 @@ package View.RentableObject;
 
 import Controller.RentableObjects.ClothingController;
 import Model.Entities.RentableObjects.Clothing;
+import Model.Entities.RentableObjects.Vehicle;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
 import View.Utils.NavigationView;
 import View.Utils.Notifications;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -43,7 +46,7 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cleanFields();
-                lblRopa.setText("Formulario de indumentaria");
+
             }
         });
         btnGuardar.addActionListener(new ActionListener() {
@@ -63,19 +66,34 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
         btnEditar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                lblRopa.setText("Editar Ropa");
+                edit = true;
             }
         });
         btnEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                deleteItem(selectItem().getId());
+                updateList();
+            }
+        });
+        btnRentas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        clothingList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                setCurrentData();
             }
         });
     }
     @Override
     public void configView() {
         this.setContentPane(this.Panel);
-        this.setTitle("Configurar clientes");
+        this.setTitle("Configurar indumentaria");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
         this.setSize(800, 600);
@@ -84,15 +102,28 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
 
     @Override
     public void setCurrentData() {
+        if (selectItem().getObject() != null){
+
+            txtName.setText(selectItem().getObject().getName());
+            txtDescripcion.setText(selectItem().getObject().getDescription());
+            txtColor.setText(selectItem().getColor());
+            txtTalle.setText(String.valueOf(selectItem().getSize()));
+            txtPrecio.setText(String.valueOf(selectItem().getObject().getPricePerDay()));
+        }
     }
 
     @Override
     public Clothing selectItem() {
-        return (Clothing) clothingList.getSelectedValue();
+        Clothing clothing = (Clothing) clothingList.getSelectedValue();
+        if (clothing == null) {
+            clothing = new Clothing();
+        }
+        return clothing;
     }
 
     @Override
     public void cleanFields() {
+        lblRopa.setText("Formulario de indumentaria");
         edit = false;
         txtName.setText("");
         txtDescripcion.setText("");
@@ -103,25 +134,33 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
 
     @Override
     public void updateList() {
-        Clothing[] arreglo = clothingController.getAllClothies().toArray(new Clothing[0]);
+        cleanFields();
+        Clothing[] arreglo = clothingController.getDao().getAll().toArray(new Clothing[0]);
         clothingList.setListData(arreglo);
     }
 
     @Override
     public void createItem() {
-            String name = txtName.getText();
-            String description = txtDescripcion.getText();
-            double price = Double.parseDouble(txtPrecio.getText());
-            String size = txtTalle.getText();
-            String color = txtColor.getText();
+        String name = txtName.getText();
+        String description = txtDescripcion.getText();
+        double price = Double.parseDouble(txtPrecio.getText());
+        String size = txtTalle.getText();
+        String color = txtColor.getText();
 
-            clothingController.newCloth(name, description, price, size, color);
-            cleanFields();
+        clothingController.newCloth(name, description, price, size, color);
+        cleanFields();
+        Notifications.showSuccess("Clothing created");
     }
 
     @Override
     public void editItem() {
-
+        selectItem().getObject().setPricePerDay(Double.parseDouble(txtPrecio.getText()));
+        selectItem().getObject().setName(txtName.getText());
+        selectItem().getObject().setDescription(txtDescripcion.getText());
+        selectItem().setColor(txtColor.getText());
+        selectItem().setSize(txtTalle.getText());
+        clothingController.getDao().updateById(selectItem().getId(),selectItem());
+        Notifications.showSuccess("Clothing edited");
     }
 
     @Override

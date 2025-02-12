@@ -3,6 +3,7 @@ package View.Utils;
 import View.AboutView;
 import View.ClientView;
 import View.MenuView;
+import View.RentableObject.ClothingView;
 import View.RentableObject.VehicleView;
 import View.RentableObjectView;
 
@@ -11,7 +12,7 @@ public class NavigationView {
         MenuView menuView = new MenuView();
     }
     public static void openClothingView(){
-        ClientView clientView = new ClientView();
+        ClothingView clothingView = new ClothingView();
     }
     public static void openVehicleView(){
         VehicleView vehicleView = new VehicleView();

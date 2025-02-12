@@ -34,7 +34,7 @@ public class RentableObjectView extends JFrame implements IBasicView{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                NavigationView.openMenuView();
+                NavigationView.openRentableObjectView();
             }
         });
     }
