@@ -3,6 +3,7 @@ package Model.Entities.Mocks;
 import Controller.ClientController;
 import Controller.RentableObjects.ClothingController;
 import Controller.RentableObjects.VehicleController;
+import Controller.Rents.RentController;
 import Model.Entities.Client;
 import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.IRentableObject;
@@ -31,26 +32,23 @@ public class AppMocks {
         VehicleController v = new VehicleController();
         ClothingController c = new ClothingController();
         ClientController clientController = new ClientController();
+        RentController rentController = new RentController();
 
 
         //Obtengo los objetos.
         List<Client> clients = clientController.getDao().getAll();
-
-
         List<Vehicle> vehicleList = v.getDao().getAll();
         List<Clothing> clothingList = c.getDao().getAll();
 
-
-        //Factories
-        List<RentFactory> factories = new ArrayList<>();
-        factories.add(new RentVehicleFactory());
-        factories.add(new RentClothingFactory());
         //Make rent mocks
-        List<IRentable> rentas = new ArrayList<>();
-        rentas.add(factories.get(0).rentObject(2,vehicleList.get(1),clients.get(0)));
-        rentas.add(factories.get(0).rentObject(3,vehicleList.get(2),clients.get(1)));
-        rentas.add(factories.get(1).rentObject(3, clothingList.get(0),clients.get(3)));
-        rentas.add(factories.get(1).rentObject(3, clothingList.get(1),clients.get(2)));
+
+        rentController.setRentFactory(new RentVehicleFactory());
+        rentController.newRent(2,vehicleList.get(1),clients.get(0));
+        rentController.newRent(3,vehicleList.get(2),clients.get(1));
+        rentController.setRentFactory(new RentClothingFactory());
+        rentController.newRent(3, clothingList.get(0),clients.get(3));
+        rentController.newRent(3, clothingList.get(2),clients.get(2));
+
 
 
 //        rentas.get(0).getRent().closeRent(LocalDate.now().plusDays(2));
@@ -60,11 +58,9 @@ public class AppMocks {
 //        System.out.println(rentas.get(0).getRent().calculateDelayDays());
 //        System.out.println(rentas.get(0).getRent().checkStatus());
 //        System.out.println("Ganancia: " + rentas.get(0).getEarning());
-
-
-        for (IRentable renta: rentas) {
-            System.out.println(renta.getDescription());
-        }
+//        for (IRentable renta: rentController.getDao().getAll()) {
+//            System.out.println(renta.getDescription());
+//        }
 
     }
 

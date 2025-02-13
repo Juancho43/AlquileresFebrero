@@ -41,4 +41,8 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle>{
         return this.vehicle;
     }
 
+    @Override
+    public String toString() {
+        return rent + " " + client.getName();
+    }
 }

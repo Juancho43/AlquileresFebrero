@@ -1,6 +1,7 @@
 package View;
 
-import Model.Entities.Client;
+import Controller.Rents.RentController;
+import Model.Entities.RentableObjects.Vehicle;
 import Model.Entities.Rents.IRentable;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
@@ -22,17 +23,20 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     private JButton btnEdit;
     private JButton btnDelete;
     private JButton btnClean;
-    private JList clientList;
+    private JList rentList;
     private JComboBox cmObject;
     private JTextField txtDays;
     private JPanel Panel;
 
+    private final RentController controller = new RentController();
+    private boolean edit = false;
+
     public RentView() {
         this.configView();
         this.updateList();
-        this.cleanFields();
 
-    clientList.addListSelectionListener(new ListSelectionListener() {
+
+    rentList.addListSelectionListener(new ListSelectionListener() {
         @Override
         public void valueChanged(ListSelectionEvent e) {
 
@@ -105,7 +109,10 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
 
     @Override
     public void updateList() {
-
+        cleanFields();
+        IRentable[] arreglo = controller.getDao().getAll().toArray(new IRentable[0]);
+        System.out.println(controller.getDao().getAll());
+        rentList.setListData(arreglo);
     }
 
     @Override

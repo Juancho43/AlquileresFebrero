@@ -40,4 +40,9 @@ public class ClothingRent extends ObjectRent implements IRentable<Clothing>{
         return this.clothing;
     }
 
+    @Override
+    public String toString() {
+        return rent + " " + client.getName();
+    }
+
 }

@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Crud de clientes">
+    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Show active rents">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Clients/ClientTypeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Clients/ClientTypeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Clients/ClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Clients/ClientView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/RentableObject/ClothingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentableObject/ClothingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/RentableObject/VehicleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentableObject/VehicleView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Utils/NavigationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Utils/NavigationView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Mocks/AppMocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Mocks/AppMocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Rents/ClothingRent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Rents/ClothingRent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Entities/Rents/VehicleRent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Rents/VehicleRent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/RentView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/RentView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739367628217</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add Rents and Historical Rent view">
+      <option name="closed" value="true" />
+      <created>1739417534728</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1739417534728</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,7 +214,9 @@
     <MESSAGE value="Agregada estructura basica ClientTypeView" />
     <MESSAGE value="Agregado metodo to hasCode y equals" />
     <MESSAGE value="Crud de clientes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Crud de clientes" />
+    <MESSAGE value="Add Rents and Historical Rent view" />
+    <MESSAGE value="Show active rents" />
+    <option name="LAST_COMMIT_MESSAGE" value="Show active rents" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
