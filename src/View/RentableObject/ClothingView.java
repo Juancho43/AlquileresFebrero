@@ -80,7 +80,8 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
         btnRentas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                NavigationView.openRentView();
             }
         });
         clothingList.addListSelectionListener(new ListSelectionListener() {

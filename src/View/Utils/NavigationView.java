@@ -1,11 +1,9 @@
 package View.Utils;
 
-import View.AboutView;
+import View.*;
 import View.Clients.ClientView;
-import View.MenuView;
 import View.RentableObject.ClothingView;
 import View.RentableObject.VehicleView;
-import View.RentableObjectView;
 
 public class NavigationView {
     public static void openMenuView(){
@@ -25,6 +23,12 @@ public class NavigationView {
     }
     public static void openAboutView(){
         AboutView aboutView = new AboutView();
+    }
+    public static void openRentView(){
+        RentView rentView = new RentView();
+    }
+    public static void openHistoricalRentView(){
+        HistoricalRentView rentView = new HistoricalRentView();
     }
 
 }

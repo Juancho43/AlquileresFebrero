@@ -49,6 +49,20 @@ public class MenuView extends JFrame implements IBasicView {
                 NavigationView.openAboutView();
             }
         });
+        btnRentas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                NavigationView.openRentView();
+            }
+        });
+        btnHistorico.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                NavigationView.openHistoricalRentView();
+            }
+        });
     }
 
 

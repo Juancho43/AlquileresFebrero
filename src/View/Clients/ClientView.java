@@ -56,7 +56,8 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
         btnActiveRents.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                dispose();
+                NavigationView.openRentView();
             }
         });
         btnDelete.addActionListener(new ActionListener() {
