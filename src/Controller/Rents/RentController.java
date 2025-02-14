@@ -8,10 +8,12 @@ import Model.Entities.RentableObjects.IRentableObject;
 import Model.Entities.RentableObjects.RentableObject;
 import Model.Entities.Rents.IRentable;
 import Model.Entities.Rents.Rent;
+import Model.Enums.RentState;
 import Model.Factory.RentFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class RentController implements IControllable {
@@ -24,18 +26,16 @@ public class RentController implements IControllable {
         this.dao.save(rentFactory.rentObject(days, object, client));
     }
 
-
-    public void closeRent(long id){
-
+    public List<IRentable> getAllStartedRents(){
+        return  getDao().getAll().stream().filter(rent -> rent.getRent().getState() == RentState.STARTED).collect(Collectors.toList());
+    }
+    public List<IRentable> getAllCloseRents(){
+        return  getDao().getAll().stream().filter(rent -> rent.getRent().getState() == RentState.CANCELED).collect(Collectors.toList());
+    }
+    public List<IRentable> getAllOutOfDateRents(){
+        return  getDao().getAll().stream().filter(rent -> rent.getRent().getState() == RentState.OUTOFDATE).collect(Collectors.toList());
     }
 
-
-
-    public List<Rent> getAllCloseRents(){
-        List<Rent> closeRents = new ArrayList<>();
-
-        return closeRents;
-    }
 
     public double getTotalEarnings() {
         return totalEarnings;

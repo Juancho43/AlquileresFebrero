@@ -2,9 +2,11 @@ package DAO;
 
 import Model.Entities.RentableObjects.RentableObject;
 import Model.Entities.Rents.IRentable;
+import Model.Enums.RentState;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MemoryRentDAO implements DAO<IRentable>{
 
@@ -17,6 +19,10 @@ public class MemoryRentDAO implements DAO<IRentable>{
         }
         return RentDAO;
     }
+
+
+
+
 
     @Override
     public List<IRentable> getAll() {

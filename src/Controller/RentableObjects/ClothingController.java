@@ -1,13 +1,16 @@
 package Controller.RentableObjects;
 
 import Controller.IControllable;
+import Controller.IFactory;
 import DAO.DAO;
 import DAO.MemoryClothingDAO;
 import Model.Entities.RentableObjects.Clothing;
+import Model.Factory.RentClothingFactory;
+import Model.Factory.RentFactory;
 
 import java.util.List;
 
-public class ClothingController implements IControllable {
+public class ClothingController implements IControllable, IFactory {
     private final DAO<Clothing> dao = MemoryClothingDAO.getInstance();
 
     public void newCloth(String name, String description, Double price, String size, String color) {
@@ -32,6 +35,11 @@ public class ClothingController implements IControllable {
 
     public DAO<Clothing> getDao() {
         return dao;
+    }
+
+    @Override
+    public RentFactory getFactory() {
+        return new RentClothingFactory();
     }
 
     @Override

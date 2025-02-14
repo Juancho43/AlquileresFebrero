@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Vista de tipos de cliente">
+    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Agregada interfaz de interfaces">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/IControllable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/IControllable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/MemoryRentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/MemoryRentDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/RentView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentView.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/RentView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentView.java" afterDir="false" />
     </list>
@@ -206,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739491637601</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Agregada interfaz de interfaces">
+      <option name="closed" value="true" />
+      <created>1739500898540</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1739500898540</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -234,7 +243,8 @@
     <MESSAGE value="Add Rents and Historical Rent view" />
     <MESSAGE value="Show active rents" />
     <MESSAGE value="Vista de tipos de cliente" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vista de tipos de cliente" />
+    <MESSAGE value="Agregada interfaz de interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="Agregada interfaz de interfaces" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

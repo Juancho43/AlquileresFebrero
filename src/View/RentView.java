@@ -2,17 +2,15 @@ package View;
 
 import Controller.ClientController;
 import Controller.IControllable;
+import Controller.IFactory;
 import Controller.RentableObjects.ClothingController;
 import Controller.RentableObjects.VehicleController;
 import Controller.Rents.RentController;
 import Model.Entities.Client;
-import Model.Entities.ClientType;
 import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.IRentableObject;
+import Model.Entities.RentableObjects.Vehicle;
 import Model.Entities.Rents.IRentable;
-import Model.Strategy.Cash;
-import Model.Strategy.CreditCard;
-import Model.Strategy.IPayment;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
 import View.Utils.NavigationView;
@@ -23,6 +21,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,8 +42,6 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
 
     private final RentController controller = new RentController();
     private final ClientController clientController = new ClientController();
-    private final ClothingController clothingController = new ClothingController();
-    private final VehicleController vehicleController = new VehicleController();
     private boolean edit = false;
 
     public RentView() {
@@ -88,12 +85,15 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
         public void actionPerformed(ActionEvent e) {
             deleteItem(selectItem().getId());
             updateList();
+            cleanFields();
         }
     });
     btnCloseRents.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            selectItem().getRent().closeRent(LocalDate.now());
+            Notifications.showSuccess("Rent Closed");
+            updateList();
         }
     });
     btnMenu.addActionListener(new ActionListener() {
@@ -106,6 +106,8 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
         cmCategory.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                IFactory c = (IFactory) cmCategory.getSelectedItem();
+                controller.setRentFactory(c.getFactory());
                 setCmObject();
             }
         });
@@ -126,12 +128,13 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     public void setCurrentData() {
 
         if (selectItem() != null){
-
-            System.out.println(selectItem().toString());
-            System.out.println(selectItem().getClient());
-         cmClient.setSelectedItem((Client) selectItem().getClient());
-         cmObject.setSelectedItem((IRentableObject)selectItem().getRentableObject());
-         
+            cmClient.setSelectedItem(selectItem().getClient());
+            if(selectItem().getRentableObject() instanceof Clothing) cmCategory.setSelectedIndex(0);
+            if(selectItem().getRentableObject() instanceof Vehicle) cmCategory.setSelectedIndex(1);
+            IFactory c = (IFactory) cmCategory.getSelectedItem();
+            controller.setRentFactory(c.getFactory());
+            cmObject.setSelectedItem(selectItem().getRentableObject());
+            txtDays.setText(String.valueOf(selectItem().getRent().calculateFirstDuration()));
         }
     }
 
@@ -142,15 +145,22 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
         return value;
     }
 
+
     @Override
     public void cleanFields() {
-
+        edit = false;
+        lblRent.setText("Formulario rentas");
+        cmCategory.setSelectedIndex(0);
+        cmClient.setSelectedIndex(0);
+        cmObject.setSelectedIndex(0);
+        txtDays.setText("0");
     }
 
     @Override
     public void updateList() {
-        cleanFields();
-        IRentable[] arreglo = controller.getDao().getAll().toArray(new IRentable[0]);
+        List<IRentable> rentas = controller.getAllStartedRents();
+        rentas.addAll(controller.getAllOutOfDateRents());
+        IRentable[] arreglo = controller.getAllStartedRents().toArray(new IRentable[0]);
         rentList.setListData(arreglo);
     }
 
@@ -163,7 +173,7 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     @Override
     public void editItem() {
         selectItem().setClient((Client) cmClient.getSelectedItem());
-        selectItem().setRentableObject((IRentableObject) cmObject.getSelectedItem());
+        selectItem().setRentableObject(cmObject.getSelectedItem());
 
         controller.getDao().updateById(selectItem().getId(),selectItem());
         Notifications.showSuccess("Rent Edited");
@@ -171,7 +181,9 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
 
     @Override
     public void deleteItem(long id) {
-
+        controller.getDao().deleteById(id);
+        Notifications.showSuccess("Rent Deleted");
+        cleanFields();
     }
 
     private void setCmClient(){
@@ -179,10 +191,10 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
         cmClient.setModel(new DefaultComboBoxModel<>(clients));
     }
     private void setCmCategory(){
-        List<IControllable> controllers = new ArrayList<>();
+        List<IFactory> controllers = new ArrayList<>();
         controllers.add(new ClothingController());
         controllers.add(new VehicleController());
-        IControllable[] controllables = controllers.toArray(new IControllable[0]);
+        IFactory[] controllables = controllers.toArray(new IFactory[0]);
         cmCategory.setModel(new DefaultComboBoxModel<>(controllables));
     }
     private void setCmObject(){
