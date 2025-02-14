@@ -1,12 +1,13 @@
 package Controller.RentableObjects;
 
+import Controller.IControllable;
 import DAO.DAO;
 import DAO.MemoryVehicleDAO;
 import Model.Entities.RentableObjects.Vehicle;
 
 import java.util.List;
 
-public class VehicleController {
+public class VehicleController implements IControllable {
     private final DAO<Vehicle> dao = MemoryVehicleDAO.getInstance();
 
     public void addVehicle(String name, String description, Double price, String brand, String model, int year){
@@ -31,5 +32,10 @@ public class VehicleController {
 
     public DAO<Vehicle> getDao() {
         return dao;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehiculos";
     }
 }

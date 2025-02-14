@@ -1,5 +1,6 @@
 package Controller.Rents;
 
+import Controller.IControllable;
 import DAO.MemoryRentDAO;
 import DAO.DAO;
 import Model.Entities.Client;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class RentController{
+public class RentController implements IControllable {
 
     private DAO<IRentable> dao = MemoryRentDAO.getInstance();
     private double totalEarnings;

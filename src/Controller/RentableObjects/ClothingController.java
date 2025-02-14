@@ -1,12 +1,13 @@
 package Controller.RentableObjects;
 
+import Controller.IControllable;
 import DAO.DAO;
 import DAO.MemoryClothingDAO;
 import Model.Entities.RentableObjects.Clothing;
 
 import java.util.List;
 
-public class ClothingController {
+public class ClothingController implements IControllable {
     private final DAO<Clothing> dao = MemoryClothingDAO.getInstance();
 
     public void newCloth(String name, String description, Double price, String size, String color) {
@@ -33,4 +34,8 @@ public class ClothingController {
         return dao;
     }
 
+    @Override
+    public String toString() {
+        return "Ropa";
+    }
 }

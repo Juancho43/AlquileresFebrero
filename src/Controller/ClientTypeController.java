@@ -7,7 +7,7 @@ import Model.Entities.ClientType;
 
 import java.util.List;
 
-public class ClientTypeController {
+public class ClientTypeController implements IControllable{
     private final DAO<ClientType>dao = MemoryClientTypeDAO.getInstance();
 
     public void newType(String name, double discount){

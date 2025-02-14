@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Show active rents">
+    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Vista de tipos de cliente">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Entities/ClientType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/ClientType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Strategy/CreditCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Strategy/CreditCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Clients/ClientTypeView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Clients/ClientTypeView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Clients/ClientTypeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Clients/ClientTypeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Clients/ClientView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Clients/ClientView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Clients/ClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Clients/ClientView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Utils/NavigationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Utils/NavigationView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Rents/RentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/RentView.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/RentView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RentView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -198,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739418920380</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Vista de tipos de cliente">
+      <option name="closed" value="true" />
+      <created>1739491637601</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1739491637601</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -225,7 +233,8 @@
     <MESSAGE value="Crud de clientes" />
     <MESSAGE value="Add Rents and Historical Rent view" />
     <MESSAGE value="Show active rents" />
-    <option name="LAST_COMMIT_MESSAGE" value="Show active rents" />
+    <MESSAGE value="Vista de tipos de cliente" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vista de tipos de cliente" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

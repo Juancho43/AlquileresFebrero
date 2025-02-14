@@ -8,7 +8,7 @@ import Model.Strategy.IPayment;
 
 import java.util.List;
 
-public class ClientController{
+public class ClientController implements IControllable{
 
     private final DAO<Client> dao = MemoryClientDAO.getInstance();
 
