@@ -19,4 +19,6 @@ public interface IRentable<E extends Object>{
     E getRentableObject();
     Client getClient();
     long getId();
+
+    void generateId();
 }

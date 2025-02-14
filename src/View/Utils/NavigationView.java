@@ -4,7 +4,10 @@ import View.*;
 import View.Clients.ClientTypeView;
 import View.Clients.ClientView;
 import View.RentableObject.ClothingView;
+import View.RentableObject.RentableObjectView;
 import View.RentableObject.VehicleView;
+import View.Rents.HistoricalRentView;
+import View.Rents.RentView;
 
 public class NavigationView {
     public static void openMenuView(){

@@ -15,6 +15,7 @@ import Model.Factory.RentFactory;
 import Model.Factory.RentVehicleFactory;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,13 +52,15 @@ public class AppMocks {
 
 
 
-//        rentas.get(0).getRent().closeRent(LocalDate.now().plusDays(2));
-//        System.out.println(rentas.get(0).getDescription());
-//        System.out.println(rentas.get(0).getRent().calculateFirstDuration());
-//        System.out.println(rentas.get(0).getRent().calculateDuration());
-//        System.out.println(rentas.get(0).getRent().calculateDelayDays());
-//        System.out.println(rentas.get(0).getRent().checkStatus());
-//        System.out.println("Ganancia: " + rentas.get(0).getEarning());
+        rentController.getDao().getAll().get(0).getRent().closeRent(LocalDate.now().plusDays(2));
+        rentController.getDao().getAll().get(1).getRent().closeRent(LocalDate.now().plusDays(6));
+        rentController.getDao().getAll().get(2).getRent().closeRent(LocalDate.now().plusDays(10));
+//        System.out.println(rentController.getDao().getAll().get(0).getDescription());
+//        System.out.println(rentController.getDao().getAll().get(0).getRent().calculateFirstDuration());
+//        System.out.println(rentController.getDao().getAll().get(0).getRent().calculateDuration());
+//        System.out.println(rentController.getDao().getAll().get(0).getRent().calculateDelayDays());
+//        System.out.println(rentController.getDao().getAll().get(0).getRent().checkStatus());
+//        System.out.println("Ganancia: " + rentController.getDao().getAll().get(0).getEarning());
 //        for (IRentable renta: rentController.getDao().getAll()) {
 //            System.out.println(renta.getDescription());
 //        }

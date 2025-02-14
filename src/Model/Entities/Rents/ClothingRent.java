@@ -1,6 +1,7 @@
 package Model.Entities.Rents;
 
 import Model.Entities.RentableObjects.Clothing;
+import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
 
 public class ClothingRent extends ObjectRent implements IRentable<Clothing>{
@@ -38,6 +39,11 @@ public class ClothingRent extends ObjectRent implements IRentable<Clothing>{
     @Override
     public Clothing getRentableObject() {
         return this.clothing;
+    }
+
+    @Override
+    public void generateId() {
+        setId(IdFactory.generateUniqueId());
     }
 
     @Override

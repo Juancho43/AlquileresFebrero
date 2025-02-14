@@ -1,4 +1,4 @@
-package View;
+package View.Rents;
 
 import Controller.ClientController;
 import Controller.IControllable;
@@ -92,6 +92,7 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
         @Override
         public void actionPerformed(ActionEvent e) {
             selectItem().getRent().closeRent(LocalDate.now());
+            selectItem().getEarning();
             Notifications.showSuccess("Rent Closed");
             updateList();
         }

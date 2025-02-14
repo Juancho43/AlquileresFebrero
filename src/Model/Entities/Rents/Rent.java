@@ -29,6 +29,22 @@ public class Rent {
         this.id = id;
     }
 
+    public LocalDate getCloseDate() {
+        return closeDate;
+    }
+
+    public void setCloseDate(LocalDate closeDate) {
+        this.closeDate = closeDate;
+    }
+
+    public RentState getRentState() {
+        return rentState;
+    }
+
+    public void setRentState(RentState rentState) {
+        this.rentState = rentState;
+    }
+
     public LocalDate getDate() {
         return date;
     }
@@ -74,6 +90,7 @@ public class Rent {
     public RentState closeRent(LocalDate date){
         this.closeDate = date;
         this.rentState = RentState.CANCELED;
+        
         return this.rentState;
     }
 

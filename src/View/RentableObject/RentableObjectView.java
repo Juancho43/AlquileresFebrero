@@ -1,4 +1,4 @@
-package View;
+package View.RentableObject;
 
 import View.Interfaces.IBasicView;
 import View.Utils.NavigationView;

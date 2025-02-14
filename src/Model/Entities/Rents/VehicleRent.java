@@ -1,6 +1,7 @@
 package Model.Entities.Rents;
 
 import Model.Entities.RentableObjects.Vehicle;
+import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
 
 public class VehicleRent extends ObjectRent implements IRentable<Vehicle>{
@@ -39,6 +40,11 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle>{
     @Override
     public Vehicle getRentableObject() {
         return this.vehicle;
+    }
+
+    @Override
+    public void generateId() {
+        setId(IdFactory.generateUniqueId());
     }
 
     @Override

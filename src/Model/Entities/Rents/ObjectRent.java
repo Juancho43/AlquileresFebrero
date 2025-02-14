@@ -15,10 +15,6 @@ public class ObjectRent {
         rent = new Rent(days);
     }
 
-    public void closeRent(LocalDate date){
-        rent.closeRent(date);
-    }
-
     public long getId() {
         return id;
     }
