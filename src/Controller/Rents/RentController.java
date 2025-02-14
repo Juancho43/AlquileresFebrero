@@ -3,15 +3,12 @@ package Controller.Rents;
 import Controller.IControllable;
 import DAO.MemoryRentDAO;
 import DAO.DAO;
-import Model.Entities.Client;
+import Model.Entities.Clients.Client;
 import Model.Entities.RentableObjects.IRentableObject;
-import Model.Entities.RentableObjects.RentableObject;
 import Model.Entities.Rents.IRentable;
-import Model.Entities.Rents.Rent;
 import Model.Enums.RentState;
 import Model.Factory.RentFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

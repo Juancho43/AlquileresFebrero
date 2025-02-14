@@ -1,9 +1,7 @@
 package View.Clients;
 
 import Controller.ClientTypeController;
-import Model.Entities.Client;
-import Model.Entities.ClientType;
-import Model.Strategy.IPayment;
+import Model.Entities.Clients.ClientType;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
 import View.Utils.NavigationView;

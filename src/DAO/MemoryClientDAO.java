@@ -1,6 +1,6 @@
 package DAO;
 
-import Model.Entities.Client;
+import Model.Entities.Clients.Client;
 
 import java.util.ArrayList;
 import java.util.List;

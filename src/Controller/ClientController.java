@@ -2,8 +2,8 @@ package Controller;
 
 import DAO.DAO;
 import DAO.MemoryClientDAO;
-import Model.Entities.Client;
-import Model.Entities.ClientType;
+import Model.Entities.Clients.Client;
+import Model.Entities.Clients.ClientType;
 import Model.Strategy.IPayment;
 
 import java.util.List;

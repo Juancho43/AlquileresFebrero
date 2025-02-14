@@ -4,19 +4,14 @@ import Controller.ClientController;
 import Controller.RentableObjects.ClothingController;
 import Controller.RentableObjects.VehicleController;
 import Controller.Rents.RentController;
-import Model.Entities.Client;
+import Model.Entities.Clients.Client;
 import Model.Entities.RentableObjects.Clothing;
-import Model.Entities.RentableObjects.IRentableObject;
-import Model.Entities.RentableObjects.RentableObject;
 import Model.Entities.RentableObjects.Vehicle;
-import Model.Entities.Rents.IRentable;
 import Model.Factory.RentClothingFactory;
-import Model.Factory.RentFactory;
 import Model.Factory.RentVehicleFactory;
 
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AppMocks {

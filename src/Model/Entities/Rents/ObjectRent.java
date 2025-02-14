@@ -1,9 +1,7 @@
 package Model.Entities.Rents;
 
-import Model.Entities.Client;
+import Model.Entities.Clients.Client;
 import Model.Strategy.IPayment;
-
-import java.time.LocalDate;
 
 public class ObjectRent {
     protected long id;

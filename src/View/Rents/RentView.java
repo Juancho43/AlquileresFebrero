@@ -6,7 +6,7 @@ import Controller.IFactory;
 import Controller.RentableObjects.ClothingController;
 import Controller.RentableObjects.VehicleController;
 import Controller.Rents.RentController;
-import Model.Entities.Client;
+import Model.Entities.Clients.Client;
 import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.IRentableObject;
 import Model.Entities.RentableObjects.Vehicle;

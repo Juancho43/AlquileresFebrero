@@ -2,8 +2,8 @@ package View.Clients;
 
 import Controller.ClientController;
 import Controller.ClientTypeController;
-import Model.Entities.Client;
-import Model.Entities.ClientType;
+import Model.Entities.Clients.Client;
+import Model.Entities.Clients.ClientType;
 import Model.Strategy.Cash;
 import Model.Strategy.CreditCard;
 import Model.Strategy.IPayment;

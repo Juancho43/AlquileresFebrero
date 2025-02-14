@@ -1,8 +1,7 @@
 package Model.Factory;
 
-import Model.Entities.Client;
+import Model.Entities.Clients.Client;
 import Model.Entities.RentableObjects.IRentableObject;
-import Model.Entities.RentableObjects.RentableObject;
 import Model.Entities.Rents.IRentable;
 
 public abstract class RentFactory {

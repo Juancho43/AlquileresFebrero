@@ -1,8 +1,6 @@
-package Model.Entities;
+package Model.Entities.Clients;
 
 import Model.Factory.IdFactory;
-import Model.Strategy.Cash;
-import Model.Strategy.CreditCard;
 import Model.Strategy.IPayment;
 
 import java.util.Optional;

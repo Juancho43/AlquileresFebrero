@@ -1,6 +1,6 @@
 package Model.Entities.Rents;
 
-import Model.Entities.Client;
+import Model.Entities.Clients.Client;
 import Model.Strategy.IPayment;
 
 public interface IRentable<E extends Object>{

@@ -1,4 +1,4 @@
-package Model.Entities;
+package Model.Entities.Clients;
 
 import Model.Factory.IdFactory;
 
