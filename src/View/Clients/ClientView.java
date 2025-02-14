@@ -37,6 +37,7 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
     private JList clientList;
     private JButton btnDelete;
     private JLabel lblClient;
+    private JButton btnClientType;
     private final ClientController clientController = new ClientController();
     private final ClientTypeController clientTypeController = new ClientTypeController();
     private boolean edit = false;
@@ -113,6 +114,13 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
                 }
             }
         });
+        btnClientType.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                NavigationView.openClientTypeView();
+            }
+        });
     }
 
     @Override
@@ -177,10 +185,7 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
         selectItem().setClientTypeId((ClientType) cmClientType.getSelectedItem());
         selectItem().setPaymentMethod((IPayment) cmPayment.getSelectedItem());
         selectItem().setName(txtName.getText());
-        selectItem().setEmail(txtEmail.getText());
-        selectItem().setDni(txtDNI.getText());
-        clientController.getDao().updateById(selectItem().getId(),selectItem());
-        Notifications.showSuccess("Client updated");
+
     }
 
     @Override

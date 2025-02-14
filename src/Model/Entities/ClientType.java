@@ -16,6 +16,10 @@ public class ClientType {
         this.discount = discount;
     }
 
+    public ClientType() {
+
+    }
+
     public long getId() {
         return id;
     }

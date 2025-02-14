@@ -32,7 +32,7 @@ public class CreditCard implements IPayment {
 
     @Override
     public String toString() {
-        return "CreditCard: " ;
+        return "CreditCard" ;
     }
 
 
