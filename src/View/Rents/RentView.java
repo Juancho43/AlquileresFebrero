@@ -39,6 +39,8 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     private JComboBox cmObject;
     private JTextField txtDays;
     private JPanel Panel;
+    private JButton btnClosedRents;
+    private JButton btnClients;
 
     private final RentController controller = new RentController();
     private final ClientController clientController = new ClientController();
@@ -110,6 +112,20 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
                 IFactory c = (IFactory) cmCategory.getSelectedItem();
                 controller.setRentFactory(c.getFactory());
                 setCmObject();
+            }
+        });
+        btnClients.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                NavigationView.openClientView();
+            }
+        });
+        btnClosedRents.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                NavigationView.openHistoricalRentView();
             }
         });
     }
