@@ -4,6 +4,8 @@ import Model.Entities.RentableObjects.Clothing;
 import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
 
+import java.time.LocalDate;
+
 public class ClothingRent extends ObjectRent implements IRentable<Clothing>{
     private Clothing clothing;
  
@@ -24,8 +26,16 @@ public class ClothingRent extends ObjectRent implements IRentable<Clothing>{
 
     @Override
     public void generateRent(int days) {
+        this.getRentableObject().getObject().setAvailable(false);
         openRent(days);
     }
+
+    @Override
+    public void closeRent(LocalDate date) {
+        this.getRentableObject().getObject().setAvailable(true);
+        this.getRent().closeRent(date);
+    }
+
     @Override
     public void setRentableObject(Clothing object) {
         this.clothing = object;

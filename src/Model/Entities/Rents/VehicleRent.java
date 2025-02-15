@@ -4,6 +4,8 @@ import Model.Entities.RentableObjects.Vehicle;
 import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
 
+import java.time.LocalDate;
+
 public class VehicleRent extends ObjectRent implements IRentable<Vehicle>{
 
     Vehicle vehicle;
@@ -25,8 +27,17 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle>{
 
     @Override
     public void generateRent(int days) {
+        this.getRentableObject().getObject().setAvailable(false);
         openRent(days);
     }
+
+    @Override
+    public void closeRent(LocalDate date) {
+        this.getRentableObject().getObject().setAvailable(true);
+        this.getRent().closeRent(date);
+    }
+
+
     @Override
     public void setRentableObject(Vehicle object) {
         this.vehicle = object;

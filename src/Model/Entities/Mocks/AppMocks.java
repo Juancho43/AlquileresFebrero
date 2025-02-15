@@ -46,10 +46,12 @@ public class AppMocks {
         rentController.newRent(3, clothingList.get(2),clients.get(2));
 
 
-
-        rentController.getDao().getAll().get(0).getRent().closeRent(LocalDate.now().plusDays(2));
-        rentController.getDao().getAll().get(1).getRent().closeRent(LocalDate.now().plusDays(6));
-        rentController.getDao().getAll().get(2).getRent().closeRent(LocalDate.now().plusDays(10));
+        rentController.getDao().getAll().get(0).closeRent(LocalDate.now().plusDays(2));
+        rentController.getDao().getAll().get(1).closeRent(LocalDate.now().plusDays(6));
+        rentController.getDao().getAll().get(2).closeRent(LocalDate.now().plusDays(10));
+//        rentController.getDao().getAll().get(0).getRent().closeRent(LocalDate.now().plusDays(2));
+//        rentController.getDao().getAll().get(1).getRent().closeRent(LocalDate.now().plusDays(6));
+//        rentController.getDao().getAll().get(2).getRent().closeRent(LocalDate.now().plusDays(10));
 //        System.out.println(rentController.getDao().getAll().get(0).getDescription());
 //        System.out.println(rentController.getDao().getAll().get(0).getRent().calculateFirstDuration());
 //        System.out.println(rentController.getDao().getAll().get(0).getRent().calculateDuration());
