@@ -2,7 +2,7 @@ package View.Clients;
 
 import Controller.ClientController;
 import Controller.ClientTypeController;
-import Exceptions.Exceptions;
+import Model.Exceptions.Exceptions;
 import Model.Entities.Clients.Client;
 import Model.Entities.Clients.ClientType;
 import Model.Strategy.Cash;

@@ -1,13 +1,11 @@
 package Controller;
 
-import DAO.DAO;
-import DAO.MemoryClientDAO;
-import Exceptions.Exceptions;
+import Model.DAO.DAO;
+import Model.DAO.MemoryClientDAO;
+import Model.Exceptions.Exceptions;
 import Model.Entities.Clients.Client;
 import Model.Entities.Clients.ClientType;
 import Model.Strategy.IPayment;
-
-import java.util.List;
 
 public class ClientController implements IControllable{
 

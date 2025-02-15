@@ -1,6 +1,6 @@
-package DAO;
+package Model.DAO;
 
-import Exceptions.Exceptions;
+import Model.Exceptions.Exceptions;
 import Model.Entities.RentableObjects.Clothing;
 
 import java.util.ArrayList;

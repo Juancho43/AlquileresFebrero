@@ -1,10 +1,8 @@
 package Model.Entities.Clients;
 
-import Exceptions.Exceptions;
+import Model.Exceptions.Exceptions;
 import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
-
-import java.util.Optional;
 
 public class Client {
 

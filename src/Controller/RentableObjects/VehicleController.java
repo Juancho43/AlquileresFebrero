@@ -2,9 +2,8 @@ package Controller.RentableObjects;
 
 import Controller.IControllable;
 import Controller.IFactory;
-import DAO.DAO;
-import DAO.MemoryVehicleDAO;
-import Model.Entities.RentableObjects.Clothing;
+import Model.DAO.DAO;
+import Model.DAO.MemoryVehicleDAO;
 import Model.Entities.RentableObjects.Vehicle;
 import Model.Factory.RentFactory;
 import Model.Factory.RentVehicleFactory;

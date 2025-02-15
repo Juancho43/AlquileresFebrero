@@ -1,8 +1,8 @@
 package Controller.Rents;
 
 import Controller.IControllable;
-import DAO.MemoryRentDAO;
-import DAO.DAO;
+import Model.DAO.MemoryRentDAO;
+import Model.DAO.DAO;
 import Model.Entities.Clients.Client;
 import Model.Entities.RentableObjects.IRentableObject;
 import Model.Entities.Rents.IRentable;
