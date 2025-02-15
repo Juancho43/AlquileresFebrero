@@ -1,5 +1,6 @@
 package DAO;
 
+import Exceptions.Exceptions;
 import Model.Entities.Clients.Client;
 
 import java.util.ArrayList;
@@ -34,13 +35,18 @@ public class MemoryClientDAO implements DAO<Client>{
                 }
             }
         } catch (Exception e) {
-            System.out.println("Id no encontrado" + e);
+            new Exceptions.ObjectNotFoundException("ID de Cliente no encontrado " + id );
         }
         return client;
     }
 
     @Override
     public Client save(Client client) {
+        boolean exists = clientList.stream()
+                .anyMatch(existingClient -> existingClient.getDni().equals(client.getDni()));
+        if (exists) {
+            throw new Exceptions.DuplicateObjectException("DNI " + client.getDni() + " ya existe.");
+        }
         clientList.add(client);
         return client;
     }

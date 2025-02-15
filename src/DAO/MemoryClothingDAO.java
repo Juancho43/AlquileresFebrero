@@ -1,5 +1,6 @@
 package DAO;
 
+import Exceptions.Exceptions;
 import Model.Entities.RentableObjects.Clothing;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class MemoryClothingDAO implements DAO<Clothing>{
                 }
             }
         } catch (Exception e) {
-            System.out.println("Id no encontrado" + e);
+            new Exceptions.ObjectNotFoundException("ID de Ropa no encontrado " + id );
         }
         return clothing;
     }

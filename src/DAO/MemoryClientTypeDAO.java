@@ -1,5 +1,6 @@
 package DAO;
 
+import Exceptions.Exceptions;
 import Model.Entities.Clients.ClientType;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class MemoryClientTypeDAO implements DAO<ClientType>{
                 }
             }
         } catch (Exception e) {
-            System.out.println("Id no encontrado" + e);
+            new Exceptions.ObjectNotFoundException("ID de Cliente no encontrado " + id );
         }
         return type;
     }

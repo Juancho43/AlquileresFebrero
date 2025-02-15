@@ -1,5 +1,6 @@
 package DAO;
 
+import Exceptions.Exceptions;
 import Model.Entities.RentableObjects.Vehicle;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class MemoryVehicleDAO implements DAO<Vehicle>{
                 }
             }
         } catch (Exception e) {
-            System.out.println("Id no encontrado" + e);
+            new Exceptions.ObjectNotFoundException("ID de Vehiculo no encontrado " + id );
         }
         return vehicle;
     }

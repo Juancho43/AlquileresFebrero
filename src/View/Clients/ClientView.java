@@ -2,6 +2,7 @@ package View.Clients;
 
 import Controller.ClientController;
 import Controller.ClientTypeController;
+import Exceptions.Exceptions;
 import Model.Entities.Clients.Client;
 import Model.Entities.Clients.ClientType;
 import Model.Strategy.Cash;
@@ -175,9 +176,12 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
 
     @Override
     public void createItem() {
-
-        clientController.newClient(txtName.getText(),txtEmail.getText(),txtDNI.getText(),(ClientType) cmClientType.getSelectedItem(), (IPayment) cmPayment.getSelectedItem());
-        Notifications.showSuccess("Client created");
+        try{
+            clientController.newClient(txtName.getText(),txtEmail.getText(),txtDNI.getText(),(ClientType) cmClientType.getSelectedItem(), (IPayment) cmPayment.getSelectedItem());
+            Notifications.showSuccess("Cliente creado");
+        } catch (Exceptions.DuplicateObjectException e) {
+            Notifications.showError("Error " + e.getMessage());
+        }
     }
 
     @Override
@@ -191,7 +195,7 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
     @Override
     public void deleteItem(long id) {
         clientController.getDao().deleteById(id);
-        Notifications.showSuccess("Client deleted");
+        Notifications.showSuccess("Cliente eliminado");
     }
 
     @Override
