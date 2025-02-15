@@ -1,5 +1,6 @@
 package Model.Entities.Clients;
 
+import Exceptions.Exceptions;
 import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
 
@@ -49,6 +50,9 @@ public class Client {
     }
 
     public void setEmail(String email) {
+        if (isValidEmail(email)) {
+            throw new Exceptions.IllegalEmailException("El email no es válido.");
+        }
         this.email = email;
     }
 
@@ -57,6 +61,9 @@ public class Client {
     }
 
     public void setDni(String dni) {
+        if (isValidDNI(dni)) {
+            throw new Exceptions.IllegalDNIException("El DNI debe tener 8 dígitos numéricos");
+        }
         this.dni = dni;
     }
 
@@ -79,5 +86,18 @@ public class Client {
     @Override
     public String toString() {
         return name + ' ' + type + " " + favoriteMethod;
+    }
+
+    //Validaciones especificas
+
+    private boolean isValidDNI(String dni) {
+        // Expresión regular para validar el DNI
+        String dniRegex = "^[0-9]{7,10}$";
+        return dni != null && dni.matches(dniRegex);
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+        return email.matches(emailRegex);
     }
 }

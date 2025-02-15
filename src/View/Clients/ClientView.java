@@ -195,7 +195,7 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
     @Override
     public void deleteItem(long id) {
         clientController.getDao().deleteById(id);
-        Notifications.showSuccess("Cliente eliminado");
+        Notifications.showSuccess("Client deleted");
     }
 
     @Override

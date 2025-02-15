@@ -8,6 +8,19 @@ public class Exceptions {
         }
     }
 
+    public static class IllegalEmailException extends IllegalArgumentException {
+        public IllegalEmailException(String message){
+            super(message);
+        }
+    }
+
+
+    public static class IllegalDNIException extends IllegalArgumentException {
+        public IllegalDNIException(String message) {
+            super(message);
+        }
+    }
+
     public static class ObjectNotFoundException extends RuntimeException {
         public ObjectNotFoundException(String message) {
             super(message);
