@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Client package created" />
+    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Added closerent method">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Rents/RentView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Rents/RentView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -231,7 +236,23 @@
       <option name="project" value="LOCAL" />
       <updated>1739559845251</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="added buttons">
+      <option name="closed" value="true" />
+      <created>1739575064183</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1739575064183</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added closerent method">
+      <option name="closed" value="true" />
+      <created>1739585574288</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1739585574288</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,7 +284,9 @@
     <MESSAGE value="Rents crud" />
     <MESSAGE value="HistoricalRentView works" />
     <MESSAGE value="Client package created" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client package created" />
+    <MESSAGE value="added buttons" />
+    <MESSAGE value="Added closerent method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added closerent method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -216,7 +216,10 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     }
     private void setCmObject(){
          IControllable controllable = (IControllable) cmCategory.getSelectedItem();
-        IRentableObject[] objects = (IRentableObject[]) controllable.getDao().getAll().toArray(new IRentableObject[0]);
+        IRentableObject[] objects = new IRentableObject[0];
+        System.out.println(cmCategory.getSelectedItem());
+        if (controllable instanceof ClothingController) objects = ((ClothingController) controllable).getAllAvaliableCloth().toArray(new IRentableObject[0]);
+        if (controllable instanceof VehicleController) objects = ((VehicleController) controllable).getAllAvaliableVehicles().toArray(new IRentableObject[0]);
         cmObject.setModel(new DefaultComboBoxModel<>(objects));
     }
 }

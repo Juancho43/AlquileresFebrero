@@ -4,11 +4,13 @@ import Controller.IControllable;
 import Controller.IFactory;
 import DAO.DAO;
 import DAO.MemoryVehicleDAO;
+import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.Vehicle;
 import Model.Factory.RentFactory;
 import Model.Factory.RentVehicleFactory;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class VehicleController implements IControllable, IFactory {
     private final DAO<Vehicle> dao = MemoryVehicleDAO.getInstance();
@@ -16,7 +18,9 @@ public class VehicleController implements IControllable, IFactory {
     public void addVehicle(String name, String description, Double price, String brand, String model, int year){
         this.dao.save(new Vehicle(name,description,price, brand, model, year));
     }
-
+    public List<Vehicle> getAllAvaliableVehicles(){
+        return  getDao().getAll().stream().filter(cloth -> cloth.getObject().isAvailable()).collect(Collectors.toList());
+    }
     public List<Vehicle> getAllVehicles() {
         return this.dao.getAll();
     }

@@ -5,10 +5,12 @@ import Controller.IFactory;
 import DAO.DAO;
 import DAO.MemoryClothingDAO;
 import Model.Entities.RentableObjects.Clothing;
+import Model.Enums.RentState;
 import Model.Factory.RentClothingFactory;
 import Model.Factory.RentFactory;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ClothingController implements IControllable, IFactory {
     private final DAO<Clothing> dao = MemoryClothingDAO.getInstance();
@@ -16,6 +18,11 @@ public class ClothingController implements IControllable, IFactory {
     public void newCloth(String name, String description, Double price, String size, String color) {
         getDao().save(new Clothing(name,description,price,size,color));
     }
+    public List<Clothing> getAllAvaliableCloth(){
+        return  getDao().getAll().stream().filter(cloth -> cloth.getObject().isAvailable()).collect(Collectors.toList());
+    }
+
+
 
     public List<Clothing> getAllClothies() {
         return dao.getAll();
