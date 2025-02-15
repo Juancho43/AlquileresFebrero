@@ -20,7 +20,7 @@ public class Client {
 
     }
 
-    public Client(String name, String email, String dni, ClientType type, IPayment paymentMethod, Optional<String> Company ) {
+    public Client(String name, String email, String dni, ClientType type, IPayment paymentMethod) {
         this.id = IdFactory.generateUniqueId();
         this.name = name;
         this.setEmail(email);
