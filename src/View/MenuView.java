@@ -1,6 +1,7 @@
 package View;
 
 import View.Interfaces.IBasicView;
+import View.Utils.ConfirmationDialog;
 import View.Utils.NavigationView;
 
 import javax.swing.*;
@@ -22,7 +23,7 @@ public class MenuView extends JFrame implements IBasicView {
         btnExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(confirmExit()){
+                if(ConfirmationDialog.confirmYESNO("Estás seguro que deseas cerra la aplicación?")){
                     System.exit(0);
                 }
             }
@@ -63,16 +64,6 @@ public class MenuView extends JFrame implements IBasicView {
                 NavigationView.openHistoricalRentView();
             }
         });
-    }
-
-
-    private boolean confirmExit(){
-        int option = JOptionPane.showConfirmDialog(
-                this,
-                "¿Estás seguro que deseas cerrar la aplicación?",
-                "Confirmación de salida.",
-                JOptionPane.YES_NO_OPTION);
-        return option == JOptionPane.YES_NO_OPTION;
     }
 
     @Override

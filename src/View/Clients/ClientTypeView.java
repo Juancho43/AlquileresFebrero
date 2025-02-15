@@ -4,6 +4,7 @@ import Controller.ClientTypeController;
 import Model.Entities.Clients.ClientType;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
+import View.Utils.ConfirmationDialog;
 import View.Utils.NavigationView;
 import View.Utils.Notifications;
 
@@ -135,21 +136,25 @@ public class ClientTypeView extends JFrame implements IBasicView, IManageView<Cl
     @Override
     public void createItem() {
         clientTypeController.newType(txtName.getText(), Double.parseDouble(txtDiscount.getText()));
-        Notifications.showSuccess("Client type created");
+        Notifications.showSuccess("Tipo de cliente creado");
     }
 
     @Override
     public void editItem() {
-        selectItem().setType(txtName.getText());
-        selectItem().setDiscount(Double.parseDouble(txtDiscount.getText()));
-        clientTypeController.getDao().updateById(selectItem().getId(),selectItem());
-        Notifications.showSuccess("Client updated");
+        if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")){
+            selectItem().setType(txtName.getText());
+            selectItem().setDiscount(Double.parseDouble(txtDiscount.getText()));
+            clientTypeController.getDao().updateById(selectItem().getId(),selectItem());
+            Notifications.showSuccess("Tipo de cliente actualizado");
+        }
     }
 
     @Override
     public void deleteItem(long id) {
-        clientTypeController.getDao().deleteById(id);
-        Notifications.showSuccess("Client type deleted");
+        if(ConfirmationDialog.confirmYESNO("Estás seguro que deseas eliminar el registro?")){
+            clientTypeController.getDao().deleteById(id);
+            Notifications.showSuccess("Tipo de cliente eliminado");
+        }
     }
 
     public boolean validateFields() {

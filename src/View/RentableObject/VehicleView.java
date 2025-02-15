@@ -5,6 +5,7 @@ import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.Vehicle;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
+import View.Utils.ConfirmationDialog;
 import View.Utils.NavigationView;
 import View.Utils.Notifications;
 
@@ -14,6 +15,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class VehicleView extends JFrame implements IBasicView, IManageView {
@@ -158,26 +160,28 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
         int year = Integer.parseInt(txtAnio.getText());
         vehicleController.addVehicle(name, description, price, band, model, year);
         cleanFields();
-        Notifications.showSuccess("Vehicle created");
+        Notifications.showSuccess("Vehiculo creado");
     }
 
     @Override
     public void editItem() {
-
-        selectItem().getObject().setPricePerDay(Double.parseDouble(txtPrecio.getText()));
-        selectItem().getObject().setName(txtName.getText());
-        selectItem().getObject().setDescription(txtDescripcion.getText());
-        selectItem().setYear(Integer.parseInt(txtAnio.getText()));
-        selectItem().setBrand(txtMarca.getText());
-        selectItem().setModel(txtModelo.getText());
-        vehicleController.getDao().updateById(selectItem().getId(),selectItem());
-        Notifications.showSuccess("Vehicle edited");
+        if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")){
+            selectItem().getObject().setPricePerDay(Double.parseDouble(txtPrecio.getText()));
+            selectItem().getObject().setName(txtName.getText());
+            selectItem().getObject().setDescription(txtDescripcion.getText());
+            selectItem().setYear(Integer.parseInt(txtAnio.getText()));
+            selectItem().setBrand(txtMarca.getText());
+            selectItem().setModel(txtModelo.getText());
+            vehicleController.getDao().updateById(selectItem().getId(),selectItem());
+            Notifications.showSuccess("Vehiculo actualizado");
+        }
     }
 
     @Override
     public void deleteItem(long id) {
+        if(ConfirmationDialog.confirmYESNO("Estás seguro que deseas eliminar el registro?"))
         vehicleController.getDao().deleteById(id);
-        Notifications.showSuccess("Vehicle deleted");
+        Notifications.showSuccess("Vehiculo eliminado");
     }
 
     public boolean validateFields() {

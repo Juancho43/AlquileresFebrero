@@ -5,6 +5,7 @@ import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.Vehicle;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
+import View.Utils.ConfirmationDialog;
 import View.Utils.NavigationView;
 import View.Utils.Notifications;
 
@@ -150,24 +151,28 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
 
         clothingController.newCloth(name, description, price, size, color);
         cleanFields();
-        Notifications.showSuccess("Clothing created");
+        Notifications.showSuccess("Indumentaria creada");
     }
 
     @Override
     public void editItem() {
-        selectItem().getObject().setPricePerDay(Double.parseDouble(txtPrecio.getText()));
-        selectItem().getObject().setName(txtName.getText());
-        selectItem().getObject().setDescription(txtDescripcion.getText());
-        selectItem().setColor(txtColor.getText());
-        selectItem().setSize(txtTalle.getText());
-        clothingController.getDao().updateById(selectItem().getId(),selectItem());
-        Notifications.showSuccess("Clothing edited");
+        if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")){
+            selectItem().getObject().setPricePerDay(Double.parseDouble(txtPrecio.getText()));
+            selectItem().getObject().setName(txtName.getText());
+            selectItem().getObject().setDescription(txtDescripcion.getText());
+            selectItem().setColor(txtColor.getText());
+            selectItem().setSize(txtTalle.getText());
+            clothingController.getDao().updateById(selectItem().getId(),selectItem());
+            Notifications.showSuccess("Indumentaria actualizada");
+        }
     }
 
     @Override
     public void deleteItem(long id) {
-        clothingController.getDao().deleteById(id);
-        Notifications.showSuccess("Cloth Deleted");
+        if(ConfirmationDialog.confirmYESNO("Estás seguro que deseas eliminar el registro?")){
+            clothingController.getDao().deleteById(id);
+            Notifications.showSuccess("Indumentaria eliminada");
+        }
     }
 
     private boolean validateFields(){

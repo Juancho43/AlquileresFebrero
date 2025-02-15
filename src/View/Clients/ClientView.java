@@ -10,6 +10,7 @@ import Model.Strategy.CreditCard;
 import Model.Strategy.IPayment;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
+import View.Utils.ConfirmationDialog;
 import View.Utils.NavigationView;
 import View.Utils.Notifications;
 
@@ -186,16 +187,20 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
 
     @Override
     public void editItem() {
-        selectItem().setClientTypeId((ClientType) cmClientType.getSelectedItem());
-        selectItem().setPaymentMethod((IPayment) cmPayment.getSelectedItem());
-        selectItem().setName(txtName.getText());
-
+        if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")) {
+            selectItem().setClientTypeId((ClientType) cmClientType.getSelectedItem());
+            selectItem().setPaymentMethod((IPayment) cmPayment.getSelectedItem());
+            selectItem().setName(txtName.getText());
+            Notifications.showSuccess("Cliente actualizado");
+        }
     }
 
     @Override
     public void deleteItem(long id) {
-        clientController.getDao().deleteById(id);
-        Notifications.showSuccess("Client deleted");
+        if(ConfirmationDialog.confirmYESNO("Estás seguro que deseas eliminar el registro?")){
+            clientController.getDao().deleteById(id);
+            Notifications.showSuccess("Cliente eliminado");
+        }
     }
 
     @Override
