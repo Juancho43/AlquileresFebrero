@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Added closerent method">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exceptions/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/Exceptions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Entities/Clients/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Entities/Clients/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Clients/ClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Clients/ClientView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -49,6 +49,7 @@ public class Client {
         return email;
     }
 
+    //Hay que modificar el metodo .save que utiliza estos datos para que funcione
     public void setEmail(String email) {
         if (isValidEmail(email)) {
             throw new Exceptions.IllegalEmailException("El email no es válido.");
@@ -60,6 +61,7 @@ public class Client {
         return dni;
     }
 
+    //Hay que modificar el netodo .save que utiliza estos datos para que funcione
     public void setDni(String dni) {
         if (isValidDNI(dni)) {
             throw new Exceptions.IllegalDNIException("El DNI debe tener 8 dígitos numéricos");
