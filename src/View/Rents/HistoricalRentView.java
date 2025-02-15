@@ -25,10 +25,12 @@ public class HistoricalRentView extends JFrame implements IBasicView {
     private JLabel dataClient;
     private JLabel dataPayment;
     private JLabel dataEarning;
+    private JLabel dataTotal;
     private final RentController controller = new RentController();
     public HistoricalRentView() {
         configView();
         loadRents();
+        loadTotalEarnings();
         btnMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,6 +67,9 @@ public class HistoricalRentView extends JFrame implements IBasicView {
         IRentable value = (IRentable) closedRentsList.getSelectedValue();
 
         return value;
+    }
+    private void loadTotalEarnings(){
+        dataTotal.setText(String.format("%.2f",controller.getTotalEarnings()));
     }
     private void loadRents(){
         IRentable[] arreglo = controller.getAllCloseRents().toArray(new IRentable[0]);

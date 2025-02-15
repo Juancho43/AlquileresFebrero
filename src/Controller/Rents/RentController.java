@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class RentController implements IControllable {
 
     private DAO<IRentable> dao = MemoryRentDAO.getInstance();
-    private double totalEarnings;
+    private double totalEarnings = 0;
     private RentFactory rentFactory;
 
     public void newRent(int days, IRentableObject object, Client client) {
@@ -35,6 +35,9 @@ public class RentController implements IControllable {
 
 
     public double getTotalEarnings() {
+        for (IRentable rent:getAllCloseRents()) {
+            totalEarnings+= rent.getEarning();
+        }
         return totalEarnings;
     }
 
