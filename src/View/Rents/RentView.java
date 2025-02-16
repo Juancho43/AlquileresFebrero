@@ -97,7 +97,7 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectItem().closeRent(LocalDate.now());
-                Notifications.showSuccess("Rent Closed");
+                Notifications.showSuccess("Renta cerrada");
                 updateList();
             }
         });

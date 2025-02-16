@@ -1,5 +1,6 @@
 package Model.Entities.RentableObjects;
 
+import Model.Exceptions.Exceptions;
 import Model.Factory.IdFactory;
 
 /**
@@ -34,7 +35,7 @@ public class Clothing implements IRentableObject {
     public Clothing(String name, String description, double pricePerDay, String size, String color) {
         this.id = IdFactory.generateUniqueId(); // Generate a unique ID using a factory.
         this.object = new RentableObject(name, description, pricePerDay); // Create and associate a RentableObject.
-        this.size = size;
+        this.setSize(size);
         this.color = color;
     }
 
@@ -47,20 +48,12 @@ public class Clothing implements IRentableObject {
         return size;
     }
 
-    /**
-     * Sets the size of the garment if it's valid.
-     *
-     * @param size The size to set as a String.
-     * @return true if the size was set successfully, false if the size is invalid.
-     */
-    public boolean setSize(String size) {
-        // Checks if the size is valid
+
+    public void setSize(String size) {
         if(!isValidSize(size)){
-            return false; // Returns false if the size is not valid
+            throw new Exceptions.IllegalSizeException("Debe ingresar un talle (s, m, l, xl, xxl, xxxl") ; // Returns false if the size is not valid
         }
-        // If the size is valid, sets it and returns true
         this.size = size;
-        return true;
     }
 
     /**

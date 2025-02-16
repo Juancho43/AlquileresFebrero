@@ -3,6 +3,7 @@ package View.RentableObject;
 import Controller.RentableObjects.VehicleController;
 import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.Vehicle;
+import Model.Exceptions.Exceptions;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
 import View.Utils.ConfirmationDialog;
@@ -152,15 +153,22 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
 
     @Override
     public void createItem() {
-        String name = txtName.getText();
-        String description = txtDescripcion.getText();
-        double price = Double.parseDouble(txtPrecio.getText());
-        String band = txtMarca.getText();
-        String model = txtModelo.getText();
-        int year = Integer.parseInt(txtAnio.getText());
-        vehicleController.addVehicle(name, description, price, band, model, year);
-        cleanFields();
-        Notifications.showSuccess("Vehiculo creado");
+        try{
+            String name = txtName.getText();
+            String description = txtDescripcion.getText();
+            double price = Double.parseDouble(txtPrecio.getText());
+            String band = txtMarca.getText();
+            String model = txtModelo.getText();
+            int year = Integer.parseInt(txtAnio.getText());
+
+            vehicleController.addVehicle(name, description, price, band, model, year);
+            cleanFields();
+            Notifications.showSuccess("Vehiculo creado");
+        } catch (Exceptions.IllegalYearException e) {
+            Notifications.showError("Error" + e.getMessage());
+        } catch (Exceptions.OutOfRangeNumberException e){
+            Notifications.showError("Error" + e.getMessage());
+        }
     }
 
     @Override

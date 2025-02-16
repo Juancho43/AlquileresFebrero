@@ -5,6 +5,7 @@ import Controller.IFactory;
 import Model.DAO.DAO;
 import Model.DAO.MemoryClothingDAO;
 import Model.Entities.RentableObjects.Clothing;
+import Model.Exceptions.Exceptions;
 import Model.Factory.RentClothingFactory;
 import Model.Factory.RentFactory;
 
@@ -33,7 +34,9 @@ public class ClothingController implements IControllable, IFactory {
      * @param size        The size of the clothing item.
      * @param color       The color of the clothing item.
      */
-    public void newCloth(String name, String description, Double price, String size, String color) {
+    public void newCloth(String name, String description, Double price, String size, String color)
+        //throws Exceptions.IllegalSizeException, Exceptions.OutOfRangeNumberException
+        {
         getDao().save(new Clothing(name, description, price, size, color));
     }
 

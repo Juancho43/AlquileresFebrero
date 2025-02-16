@@ -3,6 +3,7 @@ package View.RentableObject;
 import Controller.RentableObjects.ClothingController;
 import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.Vehicle;
+import Model.Exceptions.Exceptions;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
 import View.Utils.ConfirmationDialog;
@@ -143,15 +144,23 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
 
     @Override
     public void createItem() {
-        String name = txtName.getText();
-        String description = txtDescripcion.getText();
-        double price = Double.parseDouble(txtPrecio.getText());
-        String size = txtTalle.getText();
-        String color = txtColor.getText();
+        try{
+            String name = txtName.getText();
+            String description = txtDescripcion.getText();
+            double price = Double.parseDouble(txtPrecio.getText());
+            String size = txtTalle.getText();
+            String color = txtColor.getText();
 
-        clothingController.newCloth(name, description, price, size, color);
-        cleanFields();
-        Notifications.showSuccess("Indumentaria creada");
+            clothingController.newCloth(name, description, price, size, color);
+            cleanFields();
+            Notifications.showSuccess("Indumentaria creada");
+        } catch (Exceptions.IllegalSizeException e) {
+            Notifications.showError("Error " + e.getMessage());
+        }
+        catch (Exceptions.OutOfRangeNumberException e) {
+            Notifications.showError("Error " + e.getMessage());
+        }
+
     }
 
     @Override

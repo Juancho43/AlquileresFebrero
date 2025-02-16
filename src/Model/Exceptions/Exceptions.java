@@ -58,6 +58,22 @@ public class Exceptions {
         }
     }
 
+    public static class IllegalSizeException extends IllegalArgumentException {
+        public IllegalSizeException(String message) {super(message);
+        }
+    }
+
+    public static class IllegalYearException extends IllegalArgumentException {
+        public IllegalYearException(String message) {super(message);
+        }
+    }
+
+    public static class OutOfRangeNumberException extends IllegalArgumentException {
+        public OutOfRangeNumberException(String message) {super(message);
+        }
+    }
+
+
     /**
      * Exception thrown when an object is not found.
      * This exception is an unchecked exception, extending `RuntimeException`.

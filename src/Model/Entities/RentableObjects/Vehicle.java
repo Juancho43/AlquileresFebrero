@@ -1,5 +1,6 @@
 package Model.Entities.RentableObjects;
 
+import Model.Exceptions.Exceptions;
 import Model.Factory.IdFactory;
 
 import java.time.Year;
@@ -40,7 +41,7 @@ public class Vehicle implements IRentableObject {
         this.object = new RentableObject(name, description, pricePerDay); // Create and associate a RentableObject.
         this.brand = brand;
         this.model = model;
-        this.year = year;
+        this.setYear(year);
     }
 
     /**
@@ -88,20 +89,12 @@ public class Vehicle implements IRentableObject {
         return year;
     }
 
-    /**
-     * Sets the year of the vehicle if it's valid.
-     *
-     * @param year The year to set.
-     * @return true if the year was set successfully, false if the year is invalid.
-     */
-    public boolean setYear(int year) {
-        // Check if the year is valid
+
+    public void setYear(int year) {
         if(!isValidYear(year)){
-            return false; // Return false if the year is not valid
+            throw new Exceptions.IllegalYearException("El valor debe estar en el rango de 2000 a 2025"); // Return false if the year is not valid
         }
-        // If the year is valid, set it and return true
         this.year = year;
-        return true;
     }
 
     /**

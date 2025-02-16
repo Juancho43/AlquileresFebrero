@@ -1,5 +1,7 @@
 package Model.Entities.RentableObjects;
 
+import Model.Exceptions.Exceptions;
+
 /**
  * Represents a generic rentable object.
  * This class stores information common to all rentable items, such as their name,
@@ -23,7 +25,7 @@ public class RentableObject {
     public RentableObject(String name, String description, double pricePerDay) {
         this.name = name;
         this.description = description;
-        this.pricePerDay = pricePerDay;
+        this.setPricePerDay(pricePerDay);
         this.available = true; // Initially, all objects are assumed to be available.
     }
 
@@ -77,13 +79,11 @@ public class RentableObject {
      *
      * @param pricePerDay The price per day.
      */
-    public boolean setPricePerDay(double pricePerDay) {
-
-        if(isValidPrice(pricePerDay)) {
-            this.pricePerDay = pricePerDay;
-            return true;
+    public void setPricePerDay(double pricePerDay) {
+        if(!isValidPrice(pricePerDay)) {
+            throw new Exceptions.OutOfRangeNumberException("El precio debe ser mayor a 0");
         }
-        return false;
+        this.pricePerDay = pricePerDay;
     }
 
     /**
