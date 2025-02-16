@@ -13,6 +13,7 @@ import Model.Entities.RentableObjects.Vehicle;
 import Model.Entities.Rents.IRentable;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
+import View.Utils.ConfirmationDialog;
 import View.Utils.NavigationView;
 import View.Utils.Notifications;
 
@@ -186,23 +187,27 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     @Override
     public void createItem() {
         controller.newRent(Integer.parseInt(txtDays.getText()), (IRentableObject) cmObject.getSelectedItem(), (Client) cmClient.getSelectedItem());
-        Notifications.showSuccess("Rent created");
+        Notifications.showSuccess("Renta creada");
     }
 
     @Override
     public void editItem() {
-        selectItem().setClient((Client) cmClient.getSelectedItem());
-        selectItem().setRentableObject(cmObject.getSelectedItem());
+        if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")){
+            selectItem().setClient((Client) cmClient.getSelectedItem());
+            selectItem().setRentableObject(cmObject.getSelectedItem());
 
-        controller.getDao().updateById(selectItem().getId(), selectItem());
-        Notifications.showSuccess("Rent Edited");
+            controller.getDao().updateById(selectItem().getId(), selectItem());
+            Notifications.showSuccess("Renta actualizada");
+        }
     }
 
     @Override
     public void deleteItem(long id) {
-        controller.getDao().deleteById(id);
-        Notifications.showSuccess("Rent Deleted");
-        cleanFields();
+        if(ConfirmationDialog.confirmYESNO("Estás seguro que deseas eliminar el registro?")){
+            controller.getDao().deleteById(id);
+            Notifications.showSuccess("Renta eliminada");
+            cleanFields();
+        }
     }
 
     private void setCmClient() {
