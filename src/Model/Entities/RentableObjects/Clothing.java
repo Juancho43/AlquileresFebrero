@@ -48,12 +48,19 @@ public class Clothing implements IRentableObject {
     }
 
     /**
-     * Sets the size of the clothing item.
+     * Sets the size of the garment if it's valid.
      *
-     * @param size The size of the clothing item.
+     * @param size The size to set as a String.
+     * @return true if the size was set successfully, false if the size is invalid.
      */
-    public void setSize(String size) {
+    public boolean setSize(String size) {
+        // Checks if the size is valid
+        if(!isValidSize(size)){
+            return false; // Returns false if the size is not valid
+        }
+        // If the size is valid, sets it and returns true
         this.size = size;
+        return true;
     }
 
     /**
@@ -121,4 +128,18 @@ public class Clothing implements IRentableObject {
     public String toString() {
         return object.getName() + " " + object.getDescription() + " " + color + " (" + size + ") $" + object.getPricePerDay() + "/day";
     }
+
+    /**
+     * Validates if the provided size is valid.
+     *
+     * @param size The size to validate as a String.
+     * @return true if the size is valid, false otherwise.
+     */
+    private boolean isValidSize(String size) {
+        // Regular expression to validate clothing sizes
+        String sizeRegex = "^(s|m|l|x{1,3}l)$"; // s, m, l, xl, xxl, xxxl
+        // Converts the size to lowercase and checks if it matches the regular expression
+        return size.toLowerCase().matches(sizeRegex);
+    }
+
 }

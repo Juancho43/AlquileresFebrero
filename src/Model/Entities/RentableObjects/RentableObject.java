@@ -77,8 +77,13 @@ public class RentableObject {
      *
      * @param pricePerDay The price per day.
      */
-    public void setPricePerDay(double pricePerDay) {
-        this.pricePerDay = pricePerDay;
+    public boolean setPricePerDay(double pricePerDay) {
+
+        if(isValidPrice(pricePerDay)) {
+            this.pricePerDay = pricePerDay;
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -98,4 +103,37 @@ public class RentableObject {
     public void setAvailable(boolean available) {
         this.available = available;
     }
+
+    /**
+     * Checks if the given price per day falls within the valid range.
+     *
+     * @param pricePerDay The price per day to validate.
+     * @return true if the price is within the allowed range, false otherwise.
+     */
+    private boolean isWithRange(double pricePerDay){
+        final double MIN_PRICE = 0.01;
+        final double MAX_PRICE = 1000000.00;
+        return pricePerDay >= MIN_PRICE && pricePerDay <= MAX_PRICE;
+    }
+
+    /**
+     * Checks if the given price per day is a positive value.
+     *
+     * @param pricePerDay The price per day to validate.
+     * @return true if the price is greater than zero, false otherwise.
+     */
+    private boolean isPositive(double pricePerDay){
+        return pricePerDay > 0;
+    }
+
+    /**
+     * Validates if the given price per day is both positive and within the allowed range.
+     *
+     * @param pricePerDay The price per day to validate.
+     * @return true if the price meets both conditions, false otherwise.
+     */
+    private boolean isValidPrice(double pricePerDay){
+        return isWithRange(pricePerDay) && isPositive(pricePerDay);
+    }
+
 }

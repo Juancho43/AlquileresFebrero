@@ -184,12 +184,12 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
             Notifications.showWarning("Debe ingresar una descripcion");
             return false;
         }
-        if(txtPrecio.getText().isEmpty() || !isDouble(txtPrecio.getText()) || !isPositive(txtPrecio.getText())){
-            Notifications.showWarning("Debe ingresar un precio, valor decimal positivo");
+        if(txtPrecio.getText().isEmpty()){
+            Notifications.showWarning("Debe ingresar un precio");
             return false;
         }
-        if(txtTalle.getText().isEmpty() || !isValidSize(txtTalle.getText())){
-            Notifications.showWarning("Debe ingresar un talle valido (s, m, l, xl, xxl, xxxl");
+        if(txtTalle.getText().isEmpty()){
+            Notifications.showWarning("Debe ingresar un talle (s, m, l, xl, xxl, xxxl");
             return false;
         }
         if(txtColor.getText().isEmpty()){
@@ -199,24 +199,5 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
         return true;
     }
 
-    private boolean isValidSize(String size) {
-        String sizeRegex = "^(s|m|l|x{1,3}l)$"; // s, m, l, xl, xxl, xxxl
-        return size.toLowerCase().matches(sizeRegex);
-    }
 
-    private boolean isDouble(String price){
-        String doubleRegex = "\\d+(\\.\\d+)?";
-        return price.matches(doubleRegex);
-    }
-
-    private boolean isPositive(String price){
-        if (isDouble(price)){
-            try{
-                return Double.parseDouble(price) > 0;
-            } catch (NumberFormatException e){
-                return false;
-            }
-        }
-        return false;
-    }
 }

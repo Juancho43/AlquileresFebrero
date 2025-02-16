@@ -2,6 +2,8 @@ package Model.Entities.RentableObjects;
 
 import Model.Factory.IdFactory;
 
+import java.time.Year;
+
 /**
  * Represents a rentable vehicle.
  * This class stores information about a specific vehicle, including its ID,
@@ -87,12 +89,19 @@ public class Vehicle implements IRentableObject {
     }
 
     /**
-     * Sets the year the vehicle was manufactured.
+     * Sets the year of the vehicle if it's valid.
      *
-     * @param year The year the vehicle was manufactured.
+     * @param year The year to set.
+     * @return true if the year was set successfully, false if the year is invalid.
      */
-    public void setYear(int year) {
+    public boolean setYear(int year) {
+        // Check if the year is valid
+        if(!isValidYear(year)){
+            return false; // Return false if the year is not valid
+        }
+        // If the year is valid, set it and return true
         this.year = year;
+        return true;
     }
 
     /**
@@ -142,4 +151,20 @@ public class Vehicle implements IRentableObject {
     public String toString() {
         return object.getName() + " " + object.getDescription() + " " + brand + " " + model + " " + year + " $" + object.getPricePerDay() + "/day";
     }
+
+    /**
+     * Validates if the provided year is within an acceptable range.
+     *
+     * @param year The year to validate.
+     * @return true if the year is valid (between 2000 and the current year), false otherwise.
+     */
+    public boolean isValidYear(int year){
+        // Get the current year
+        int currentYear = Year.now().getValue();
+        // Define the oldest acceptable year
+        int oldestAcceptableYear = 2000;
+        // Check if the year is within the valid range
+        return year >= oldestAcceptableYear && year <= currentYear;
+    }
+
 }

@@ -205,7 +205,7 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
             Notifications.showWarning("Debe ingresar un año, valor entero");
             return false;
         }
-        if(txtPrecio.getText().isEmpty() || !isDouble(txtPrecio.getText()) || !isPositive(txtPrecio.getText())){
+        if(txtPrecio.getText().isEmpty() || !isDouble(txtPrecio.getText())){
             Notifications.showWarning("Debe ingresar un precio, valor decimal positivo");
             return false;
         }
@@ -220,16 +220,5 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
     private boolean isDouble(String price){
         String doubleRegex = "\\d+(\\.\\d+)?";
         return price.matches(doubleRegex);
-    }
-
-    private boolean isPositive(String price){
-        if(isDouble(price)){
-            try{
-                return Double.parseDouble(price) > 0;
-            } catch (NumberFormatException e){
-                return false;
-            }
-        }
-        return false;
     }
 }

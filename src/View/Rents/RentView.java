@@ -234,5 +234,4 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
         cmObject.setModel(new DefaultComboBoxModel<>(objects));
     }
 
-
 }
