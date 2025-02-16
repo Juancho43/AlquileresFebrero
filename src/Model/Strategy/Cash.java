@@ -3,7 +3,7 @@ package Model.Strategy;
 import Model.Entities.Clients.ClientType;
 import Model.Entities.RentableObjects.IRentableObject;
 import Model.Entities.Rents.Rent;
-import Model.Enums.RentState;
+import Model.Entities.Rents.RentState;
 
 public class Cash implements IPayment {
 
@@ -11,7 +11,7 @@ public class Cash implements IPayment {
     public double calculate(ClientType type, Rent rent, IRentableObject object) {
         double finalPrice = object.getObject().getPricePerDay() * rent.calculateDuration();
 
-        if(rent.getState() == RentState.OUTOFDATE){
+        if(rent.getState() == RentState.OUTDATED){
             //En el caso de que haya un retraso en el alquiler, se le asigna una penalizacion de 10% por dia
             finalPrice += rent.calculateDelayDays() * object.getObject().getPricePerDay() * 0.1;
         }

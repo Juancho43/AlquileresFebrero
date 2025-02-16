@@ -56,7 +56,7 @@ public class MemoryClientDAO implements DAO<Client>{
         getById(id).setName(client.getName());
         getById(id).setEmail(client.getEmail());
         getById(id).setDni(client.getDni());
-        getById(id).setClientTypeId(client.getType());
+        getById(id).setClientType(client.getType());
         getById(id).setPaymentMethod(client.getPaymentMethod());
         return getById(id);
     }

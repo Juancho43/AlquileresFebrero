@@ -188,7 +188,7 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
     @Override
     public void editItem() {
         if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")) {
-            selectItem().setClientTypeId((ClientType) cmClientType.getSelectedItem());
+            selectItem().setClientType((ClientType) cmClientType.getSelectedItem());
             selectItem().setPaymentMethod((IPayment) cmPayment.getSelectedItem());
             selectItem().setName(txtName.getText());
             Notifications.showSuccess("Cliente actualizado");

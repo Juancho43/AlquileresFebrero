@@ -6,7 +6,7 @@ import Model.DAO.DAO;
 import Model.Entities.Clients.Client;
 import Model.Entities.RentableObjects.IRentableObject;
 import Model.Entities.Rents.IRentable;
-import Model.Enums.RentState;
+import Model.Entities.Rents.RentState;
 import Model.Factory.RentFactory;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class RentController implements IControllable {
         return  getDao().getAll().stream().filter(rent -> rent.getRent().getState() == RentState.CANCELED).collect(Collectors.toList());
     }
     public List<IRentable> getAllOutOfDateRents(){
-        return  getDao().getAll().stream().filter(rent -> rent.getRent().getState() == RentState.OUTOFDATE).collect(Collectors.toList());
+        return  getDao().getAll().stream().filter(rent -> rent.getRent().getState() == RentState.OUTDATED).collect(Collectors.toList());
     }
 
 
