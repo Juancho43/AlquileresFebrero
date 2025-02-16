@@ -14,7 +14,7 @@ import java.time.LocalDate;
  */
 public class VehicleRent extends ObjectRent implements IRentable<Vehicle> {
 
-    Vehicle vehicle; // The Vehicle object being rented.
+    private Vehicle vehicle; // The Vehicle object being rented.
 
     /**
      * Gets the price per day for renting the vehicle.
@@ -33,7 +33,7 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle> {
      */
     @Override
     public String getDescription() {
-        return vehicle + " " + rent + " " + client + " " + priceMethod;
+        return "Vehicle: " + vehicle + ", Rent: " + rent + ", Client: " + client + ", Payment Method: " + priceMethod; // Improved description
     }
 
     /**
@@ -53,19 +53,20 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle> {
      */
     @Override
     public void generateRent(int days) {
-        this.getRentableObject().getObject().setAvailable(false); // Mark vehicle as unavailable.
+        this.vehicle.getObject().setAvailable(false); // Mark vehicle as unavailable.
         openRent(days); // Create the Rent object.
     }
 
     /**
-     * Closes the rent for the vehicle. Sets the vehicle's availability to true.
+     * Closes the rent for the vehicle. Sets the vehicle's availability to true.  Calculates and sets the final earning.
      *
      * @param date The date the rent was closed.
      */
     @Override
     public void closeRent(LocalDate date) {
-        this.getRentableObject().getObject().setAvailable(true); // Mark vehicle as available.
-        this.getRent().closeRent(date); // Close the Rent object.
+        this.vehicle.getObject().setAvailable(true); // Mark vehicle as available.
+        this.rent.closeRent(date); // Close the Rent object.
+        this.rent.setEarning(this.getEarning()); // Calculate and set earnings *after* closing.
     }
 
     /**
@@ -113,6 +114,6 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle> {
      */
     @Override
     public String toString() {
-        return rent + " " + client.getName();
+        return "Rent: " + rent + ", Client: " + client.getName(); // Improved toString()
     }
 }

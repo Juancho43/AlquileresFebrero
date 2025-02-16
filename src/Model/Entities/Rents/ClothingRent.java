@@ -33,7 +33,7 @@ public class ClothingRent extends ObjectRent implements IRentable<Clothing> {
      */
     @Override
     public String getDescription() {
-        return clothing + " " + rent + " " + client + " " + priceMethod;
+        return "Clothing: " + clothing + ", Rent: " + rent + ", Client: " + client + ", Payment Method: " + priceMethod; // Improved description
     }
 
     /**
@@ -53,19 +53,20 @@ public class ClothingRent extends ObjectRent implements IRentable<Clothing> {
      */
     @Override
     public void generateRent(int days) {
-        this.getRentableObject().getObject().setAvailable(false); // Mark clothing as unavailable.
+        this.clothing.getObject().setAvailable(false); // Mark clothing as unavailable.
         openRent(days); // Create the Rent object.
     }
 
     /**
-     * Closes the rent for the clothing item. Sets the clothing item's availability to true.
+     * Closes the rent for the clothing item. Sets the clothing item's availability to true.  Calculates and sets the final earning.
      *
      * @param date The date the rent was closed.
      */
     @Override
     public void closeRent(LocalDate date) {
-        this.getRentableObject().getObject().setAvailable(true); // Mark clothing as available.
-        this.getRent().closeRent(date); // Close the Rent object.
+        this.clothing.getObject().setAvailable(true); // Mark clothing as available.
+        this.rent.closeRent(date); // Close the Rent object.
+        this.rent.setEarning(this.getEarning()); // Calculate and set earnings *after* closing.
     }
 
     /**
@@ -113,6 +114,6 @@ public class ClothingRent extends ObjectRent implements IRentable<Clothing> {
      */
     @Override
     public String toString() {
-        return rent + " " + client.getName();
+        return "Rent: " + rent + ", Client: " + client.getName(); // Improved toString()
     }
 }

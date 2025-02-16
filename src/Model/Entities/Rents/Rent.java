@@ -13,11 +13,12 @@ import java.time.temporal.ChronoUnit;
  */
 public class Rent {
 
-    private long id;
+    private long id; // Unique identifier for the rent.
     private LocalDate date; // The date the rent started.
     private LocalDate giveBackDate; // The date the item is expected to be returned.
     private LocalDate closeDate; // The date the rent was actually closed (returned or otherwise finalized).
     private RentState rentState; // The current state of the rent (e.g., STARTED, OUTOFDATE, CANCELED).
+    private double earning; // The total earnings from this rent.
 
     /**
      * Constructor for creating a new rent.
@@ -31,113 +32,64 @@ public class Rent {
         this.rentState = RentState.STARTED; // Set the initial state to STARTED.
     }
 
-    /**
-     * Gets the ID of the rent.
-     *
-     * @return The ID of the rent.
-     */
+    // Getters and Setters for all fields
+
     public long getId() {
         return id;
     }
 
-    /**
-     * Sets the ID of the rent.  Primarily used by persistence frameworks.
-     *
-     * @param id The ID of the rent.
-     */
     public void setId(long id) {
         this.id = id;
     }
 
-    /**
-     * Gets the close date of the rent.
-     *
-     * @return The close date of the rent.
-     */
     public LocalDate getCloseDate() {
         return closeDate;
     }
 
-    /**
-     * Sets the close date of the rent.
-     *
-     * @param closeDate The close date of the rent.
-     */
     public void setCloseDate(LocalDate closeDate) {
         this.closeDate = closeDate;
     }
 
-    /**
-     * Gets the current state of the rent.
-     *
-     * @return The current state of the rent.
-     */
     public RentState getRentState() {
         return rentState;
     }
 
-    /**
-     * Sets the current state of the rent.
-     *
-     * @param rentState The current state of the rent.
-     */
     public void setRentState(RentState rentState) {
         this.rentState = rentState;
     }
 
-    /**
-     * Gets the start date of the rent.
-     *
-     * @return The start date of the rent.
-     */
     public LocalDate getDate() {
         return date;
     }
 
-    /**
-     * Sets the start date of the rent.
-     *
-     * @param date The start date of the rent.
-     */
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    /**
-     * Gets the expected return date of the rent.
-     *
-     * @return The expected return date of the rent.
-     */
     public LocalDate getGiveBackDate() {
         return giveBackDate;
     }
 
-    /**
-     * Sets the expected return date of the rent.
-     *
-     * @param giveBackDate The expected return date of the rent.
-     */
     public void setGiveBackDate(LocalDate giveBackDate) {
         this.giveBackDate = giveBackDate;
     }
 
-    /**
-     * Gets the current state of the rent (alias for getRentState()).
-     *
-     * @return The current state of the rent.
-     */
-    public RentState getState() {
+    public RentState getState() { // Alias for getRentState()
         return rentState;
     }
 
-    /**
-     * Sets the current state of the rent (alias for setRentState()).
-     *
-     * @param rentState The current state of the rent.
-     */
-    public void setState(RentState rentState) {
+    public void setState(RentState rentState) { // Alias for setRentState()
         this.rentState = rentState;
     }
+
+    public double getEarning() {
+        return earning;
+    }
+
+    public void setEarning(double earning) {
+        this.earning = earning;
+    }
+
 
     /**
      * Calculates the initial duration of the rent (from start date to expected return date).
@@ -150,37 +102,40 @@ public class Rent {
 
     /**
      * Calculates the actual duration of the rent (from start date to close date).
+     * Returns 0 if the rent is not yet closed.
      *
-     * @return The actual duration of the rent in days.
+     * @return The actual duration of the rent in days, or 0 if not closed.
      */
     public long calculateDuration() {
-        if (closeDate == null) { // Handle the case where the rent hasn't been closed yet.
-            return 0; // Or throw an exception, depending on your needs.
+        if (closeDate == null) {
+            return 0;
         }
         return ChronoUnit.DAYS.between(this.date, this.closeDate);
     }
 
     /**
      * Checks the current status of the rent and updates it if necessary.
-     * If the expected return date is in the past, the rent state is set to OUTOFDATE.
+     * If the expected return date is in the past, the rent state is set to OUTDATED.
      *
      * @return The current state of the rent.
      */
     public RentState checkStatus() {
         if (giveBackDate.isBefore(LocalDate.now())) {
-            this.setState(RentState.OUTDATED);
+            this.rentState = RentState.OUTDATED;
         }
         return this.rentState;
     }
 
     /**
-     * Calculates the number of days the rent is overdue.
+     * Calculates the number of days the rent is overdue.  Returns 0 if not overdue.
      *
-     * @return The number of days the rent is overdue.
+     * @return The number of days the rent is overdue, or 0 if not overdue.
      */
     public long calculateDelayDays() {
         long delayDays = 0;
-        if (!LocalDate.now().isBefore(giveBackDate)) delayDays =ChronoUnit.DAYS.between(this.giveBackDate, LocalDate.now());
+        if (checkStatus() == RentState.OUTDATED) {
+            delayDays = ChronoUnit.DAYS.between(this.giveBackDate, LocalDate.now());
+        }
         return delayDays;
     }
 
@@ -188,12 +143,11 @@ public class Rent {
      * Closes the rent and sets the close date and state.
      *
      * @param date The date the rent was closed.
-     * @return The updated state of the rent (CANCELED).
      */
-    public RentState closeRent(LocalDate date) {
+    public void closeRent(LocalDate date) {
+
         this.closeDate = date;
-        this.rentState = RentState.CANCELED; // Or another appropriate state like RETURNED
-        return this.rentState;
+        this.rentState = RentState.CANCELED;
     }
 
     /**
@@ -203,6 +157,6 @@ public class Rent {
      */
     @Override
     public String toString() {
-        return date + " " + rentState + " " + giveBackDate;
+        return  date + " " + rentState +  " \n" + giveBackDate;
     }
 }

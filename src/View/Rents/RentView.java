@@ -19,11 +19,13 @@ import View.Utils.Notifications;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class RentView extends JFrame implements IBasicView, IManageView<IRentable> {
     private JLabel lblRent;
@@ -41,71 +43,70 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     private JPanel Panel;
     private JButton btnClosedRents;
     private JButton btnClients;
-
     private final RentController controller = new RentController();
     private final ClientController clientController = new ClientController();
     private boolean edit = false;
 
     public RentView() {
-        this.configView();
-        this.updateList();
-        this.setCmClient();
+        configView();
+        updateList();
+        setCmClient();
         setCmCategory();
-    rentList.addListSelectionListener(new ListSelectionListener() {
-        @Override
-        public void valueChanged(ListSelectionEvent e) {
-            setCurrentData();
-        }
-    });
-    btnSave.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if(edit){
-                editItem();
-            }else{
-                createItem();
+
+        rentList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                setCurrentData();
             }
-            cleanFields();
-            updateList();
-        }
-    });
-    btnClean.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            cleanFields();
-        }
-    });
-    btnEdit.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            edit = true;
-            lblRent.setText("Editar renta");
-        }
-    });
-    btnDelete.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            deleteItem(selectItem().getId());
-            updateList();
-            cleanFields();
-        }
-    });
-    btnCloseRents.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            selectItem().closeRent(LocalDate.now());
-            selectItem().getEarning();
-            Notifications.showSuccess("Rent Closed");
-            updateList();
-        }
-    });
-    btnMenu.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            dispose();
-            NavigationView.openMenuView();
-        }
-    });
+        });
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (edit) {
+                    editItem();
+                } else {
+                    createItem();
+                }
+                cleanFields();
+                updateList();
+            }
+        });
+        btnClean.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cleanFields();
+            }
+        });
+        btnEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                edit = true;
+                lblRent.setText("Editar renta");
+            }
+        });
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteItem(selectItem().getId());
+                updateList();
+                cleanFields();
+            }
+        });
+        btnCloseRents.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectItem().closeRent(LocalDate.now());
+                Notifications.showSuccess("Rent Closed");
+                updateList();
+            }
+        });
+        btnMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                NavigationView.openMenuView();
+            }
+        });
         cmCategory.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,6 +128,7 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
                 dispose();
                 NavigationView.openHistoricalRentView();
             }
+
         });
     }
 
@@ -144,10 +146,10 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     @Override
     public void setCurrentData() {
 
-        if (selectItem() != null){
+        if (selectItem() != null) {
             cmClient.setSelectedItem(selectItem().getClient());
-            if(selectItem().getRentableObject() instanceof Clothing) cmCategory.setSelectedIndex(0);
-            if(selectItem().getRentableObject() instanceof Vehicle) cmCategory.setSelectedIndex(1);
+            if (selectItem().getRentableObject() instanceof Clothing) cmCategory.setSelectedIndex(0);
+            if (selectItem().getRentableObject() instanceof Vehicle) cmCategory.setSelectedIndex(1);
             IFactory c = (IFactory) cmCategory.getSelectedItem();
             controller.setRentFactory(c.getFactory());
             cmObject.setSelectedItem(selectItem().getRentableObject());
@@ -183,7 +185,7 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
 
     @Override
     public void createItem() {
-        controller.newRent(Integer.parseInt(txtDays.getText()),(IRentableObject) cmObject.getSelectedItem(), (Client) cmClient.getSelectedItem() );
+        controller.newRent(Integer.parseInt(txtDays.getText()), (IRentableObject) cmObject.getSelectedItem(), (Client) cmClient.getSelectedItem());
         Notifications.showSuccess("Rent created");
     }
 
@@ -192,7 +194,7 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
         selectItem().setClient((Client) cmClient.getSelectedItem());
         selectItem().setRentableObject(cmObject.getSelectedItem());
 
-        controller.getDao().updateById(selectItem().getId(),selectItem());
+        controller.getDao().updateById(selectItem().getId(), selectItem());
         Notifications.showSuccess("Rent Edited");
     }
 
@@ -203,23 +205,29 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
         cleanFields();
     }
 
-    private void setCmClient(){
+    private void setCmClient() {
         Client[] clients = clientController.getDao().getAll().toArray(new Client[0]);
         cmClient.setModel(new DefaultComboBoxModel<>(clients));
     }
-    private void setCmCategory(){
+
+    private void setCmCategory() {
         List<IFactory> controllers = new ArrayList<>();
         controllers.add(new ClothingController());
         controllers.add(new VehicleController());
         IFactory[] controllables = controllers.toArray(new IFactory[0]);
         cmCategory.setModel(new DefaultComboBoxModel<>(controllables));
     }
-    private void setCmObject(){
-         IControllable controllable = (IControllable) cmCategory.getSelectedItem();
+
+    private void setCmObject() {
+        IControllable controllable = (IControllable) cmCategory.getSelectedItem();
         IRentableObject[] objects = new IRentableObject[0];
         System.out.println(cmCategory.getSelectedItem());
-        if (controllable instanceof ClothingController) objects = ((ClothingController) controllable).getAllAvaliableCloth().toArray(new IRentableObject[0]);
-        if (controllable instanceof VehicleController) objects = ((VehicleController) controllable).getAllAvaliableVehicles().toArray(new IRentableObject[0]);
+        if (controllable instanceof ClothingController)
+            objects = ((ClothingController) controllable).getAllAvaliableCloth().toArray(new IRentableObject[0]);
+        if (controllable instanceof VehicleController)
+            objects = ((VehicleController) controllable).getAllAvaliableVehicles().toArray(new IRentableObject[0]);
         cmObject.setModel(new DefaultComboBoxModel<>(objects));
     }
+
+
 }

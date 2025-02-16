@@ -81,7 +81,7 @@ public class RentController implements IControllable {
     public double getTotalEarnings() {
         totalEarnings = 0; // Reset earnings before recalculating.
         for (IRentable rent : getAllCloseRents()) {
-            totalEarnings += rent.getEarning();
+            totalEarnings += rent.getRent().getEarning();
         }
         return totalEarnings;
     }
