@@ -1,7 +1,7 @@
 package Model.DAO;
 
-import Model.Exceptions.Exceptions;
 import Model.Entities.RentableObjects.Clothing;
+import Model.Exceptions.ObjectNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,7 @@ public class MemoryClothingDAO implements DAO<Clothing> {
      *
      * @param id The ID of the `Clothing` entity to retrieve.
      * @return The `Clothing` entity with the specified ID, or `null` if not found.
-     * @throws Exceptions.ObjectNotFoundException If no `Clothing` is found with the given ID.
+     * @throws ObjectNotFoundException If no `Clothing` is found with the given ID.
      */
     @Override
     public Clothing getById(long id) {
@@ -56,7 +56,7 @@ public class MemoryClothingDAO implements DAO<Clothing> {
                 }
             }
         } catch (Exception e) {
-            throw new Exceptions.ObjectNotFoundException("ID de Ropa no encontrado " + id); // Throw the custom exception.
+            throw new ObjectNotFoundException("ID de Ropa no encontrado " + id); // Throw the custom exception.
         }
         return null; // Return null if not found after iterating through the whole list.
     }
@@ -79,13 +79,13 @@ public class MemoryClothingDAO implements DAO<Clothing> {
      * @param id       The ID of the `Clothing` entity to update.
      * @param clothing The updated `Clothing` entity data.
      * @return The updated `Clothing` entity.
-     * @throws Exceptions.ObjectNotFoundException If no `Clothing` is found with the given ID.
+     * @throws ObjectNotFoundException If no `Clothing` is found with the given ID.
      */
     @Override
     public Clothing updateById(long id, Clothing clothing) {
         Clothing existingClothing = getById(id);
         if (existingClothing == null) {
-            throw new Exceptions.ObjectNotFoundException("ID de Ropa no encontrado " + id);
+            throw new ObjectNotFoundException("ID de Ropa no encontrado " + id);
         }
         existingClothing.setColor(clothing.getColor());
         existingClothing.setSize(clothing.getSize());

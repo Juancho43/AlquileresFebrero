@@ -1,7 +1,7 @@
 package Model.DAO;
 
-import Model.Exceptions.Exceptions;
 import Model.Entities.RentableObjects.Vehicle;
+import Model.Exceptions.ObjectNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,7 @@ public class MemoryVehicleDAO implements DAO<Vehicle> {
      *
      * @param id The ID of the `Vehicle` entity to retrieve.
      * @return The `Vehicle` entity with the specified ID, or `null` if not found.
-     * @throws Exceptions.ObjectNotFoundException If no `Vehicle` is found with the given ID.
+     * @throws ObjectNotFoundException If no `Vehicle` is found with the given ID.
      */
     @Override
     public Vehicle getById(long id) {
@@ -56,7 +56,7 @@ public class MemoryVehicleDAO implements DAO<Vehicle> {
                 }
             }
         } catch (Exception e) {
-            throw new Exceptions.ObjectNotFoundException("ID de Vehiculo no encontrado " + id); // Throw the custom exception.
+            throw new ObjectNotFoundException("ID de Vehiculo no encontrado " + id); // Throw the custom exception.
         }
         return null; // Return null if not found after iterating through the whole list.
     }
@@ -79,13 +79,13 @@ public class MemoryVehicleDAO implements DAO<Vehicle> {
      * @param id     The ID of the `Vehicle` entity to update.
      * @param object The updated `Vehicle` entity data.
      * @return The updated `Vehicle` entity.
-     * @throws Exceptions.ObjectNotFoundException If no `Vehicle` is found with the given ID.
+     * @throws ObjectNotFoundException If no `Vehicle` is found with the given ID.
      */
     @Override
     public Vehicle updateById(long id, Vehicle object) {
         Vehicle existingVehicle = getById(id);
         if (existingVehicle == null) {
-            throw new Exceptions.ObjectNotFoundException("ID de Vehiculo no encontrado " + id);
+            throw new ObjectNotFoundException("ID de Vehiculo no encontrado " + id);
         }
         existingVehicle.setBrand(object.getBrand());
         existingVehicle.setModel(object.getModel());

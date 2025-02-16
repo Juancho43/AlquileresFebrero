@@ -1,9 +1,9 @@
 package View.RentableObject;
 
 import Controller.RentableObjects.VehicleController;
-import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.Vehicle;
-import Model.Exceptions.Exceptions;
+import Model.Exceptions.IllegalYearException;
+import Model.Exceptions.OutOfRangeNumberException;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
 import View.Utils.ConfirmationDialog;
@@ -15,9 +15,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 public class VehicleView extends JFrame implements IBasicView, IManageView {
     private JTextField txtName;
@@ -164,9 +161,9 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
             vehicleController.addVehicle(name, description, price, band, model, year);
             cleanFields();
             Notifications.showSuccess("Vehiculo creado");
-        } catch (Exceptions.IllegalYearException e) {
+        } catch (IllegalYearException e) {
             Notifications.showError("Error" + e.getMessage());
-        } catch (Exceptions.OutOfRangeNumberException e){
+        } catch (OutOfRangeNumberException e){
             Notifications.showError("Error" + e.getMessage());
         }
     }
@@ -183,9 +180,9 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
                 selectItem().setModel(txtModelo.getText());
                 vehicleController.getDao().updateById(selectItem().getId(),selectItem());
                 Notifications.showSuccess("Vehiculo actualizado");
-            }catch (Exceptions.IllegalYearException e) {
+            }catch (IllegalYearException e) {
                 Notifications.showError("Error" + e.getMessage());
-            } catch (Exceptions.OutOfRangeNumberException e){
+            } catch (OutOfRangeNumberException e){
                 Notifications.showError("Error" + e.getMessage());
             }
         }

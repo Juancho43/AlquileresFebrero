@@ -2,8 +2,8 @@ package View.RentableObject;
 
 import Controller.RentableObjects.ClothingController;
 import Model.Entities.RentableObjects.Clothing;
-import Model.Entities.RentableObjects.Vehicle;
-import Model.Exceptions.Exceptions;
+import Model.Exceptions.IllegalSizeException;
+import Model.Exceptions.OutOfRangeNumberException;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
 import View.Utils.ConfirmationDialog;
@@ -154,10 +154,10 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
             clothingController.newCloth(name, description, price, size, color);
             cleanFields();
             Notifications.showSuccess("Indumentaria creada");
-        } catch (Exceptions.IllegalSizeException e) {
+        } catch (IllegalSizeException e) {
             Notifications.showError("Error " + e.getMessage());
         }
-        catch (Exceptions.OutOfRangeNumberException e) {
+        catch (OutOfRangeNumberException e) {
             Notifications.showError("Error " + e.getMessage());
         }
 
@@ -175,10 +175,10 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
                 selectItem().setSize(txtTalle.getText());
                 clothingController.getDao().updateById(selectItem().getId(),selectItem());
                 Notifications.showSuccess("Indumentaria actualizada");
-            }catch (Exceptions.IllegalSizeException e) {
+            }catch (IllegalSizeException e) {
                 Notifications.showError("Error " + e.getMessage());
             }
-            catch (Exceptions.OutOfRangeNumberException e) {
+            catch (OutOfRangeNumberException e) {
                 Notifications.showError("Error " + e.getMessage());
             }
         }

@@ -1,6 +1,6 @@
 package Model.Entities.RentableObjects;
 
-import Model.Exceptions.Exceptions;
+import Model.Exceptions.OutOfRangeNumberException;
 
 /**
  * Represents a generic rentable object.
@@ -82,11 +82,11 @@ public class RentableObject {
      * an `OutOfRangeNumberException` is thrown with a message indicating that the price must be greater than 0.
      *
      * @param pricePerDay The price per day to be assigned. It must be a positive number greater than 0.
-     * @throws Exceptions.OutOfRangeNumberException If the provided price is not greater than 0.
+     * @throws OutOfRangeNumberException If the provided price is not greater than 0.
      */
     public void setPricePerDay(double pricePerDay) {
         if(!isValidPrice(pricePerDay)) {
-            throw new Exceptions.OutOfRangeNumberException("El precio debe ser mayor a 0");
+            throw new OutOfRangeNumberException("El precio debe ser mayor a 0");
         }
         this.pricePerDay = pricePerDay;
     }

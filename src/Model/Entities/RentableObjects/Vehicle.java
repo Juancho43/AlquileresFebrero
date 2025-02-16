@@ -1,6 +1,6 @@
 package Model.Entities.RentableObjects;
 
-import Model.Exceptions.Exceptions;
+import Model.Exceptions.IllegalYearException;
 import Model.Factory.IdFactory;
 
 import java.time.Year;
@@ -97,11 +97,11 @@ public class Vehicle implements IRentableObject {
      * an `IllegalYearException` is thrown with a message indicating the valid range of years.
      *
      * @param year The new year to be assigned. It must be within the range of 2000 to 2025 (inclusive).
-     * @throws Exceptions.IllegalYearException If the provided year is not within the valid range.
+     * @throws IllegalYearException If the provided year is not within the valid range.
      */
     public void setYear(int year) {
         if(!isValidYear(year)){
-            throw new Exceptions.IllegalYearException("El valor debe estar en el rango de 2000 a 2025"); // Return false if the year is not valid
+            throw new IllegalYearException("El valor debe estar en el rango de 2000 a 2025"); // Return false if the year is not valid
         }
         this.year = year;
     }

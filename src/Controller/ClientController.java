@@ -2,9 +2,11 @@ package Controller;
 
 import Model.DAO.DAO;
 import Model.DAO.MemoryClientDAO;
-import Model.Exceptions.Exceptions;
+import Model.Exceptions.DuplicateObjectException;
 import Model.Entities.Clients.Client;
 import Model.Entities.Clients.ClientType;
+import Model.Exceptions.IllegalDNIException;
+import Model.Exceptions.IllegalEmailException;
 import Model.Strategy.IPayment;
 
 /**
@@ -29,12 +31,12 @@ public class ClientController implements IControllable {
      * @param dni    The client's DNI (National Identity Document).
      * @param type   The client's `ClientType`.
      * @param method The client's preferred `IPayment` method.
-     * @throws Exceptions.DuplicateObjectException If a client with the given DNI already exists.
-     * @throws Exceptions.IllegalDNIException      If the provided DNI is invalid.
-     * @throws Exceptions.IllegalEmailException    If the provided email address is invalid.
+     * @throws DuplicateObjectException If a client with the given DNI already exists.
+     * @throws IllegalDNIException      If the provided DNI is invalid.
+     * @throws IllegalEmailException    If the provided email address is invalid.
      */
     public void newClient(String name, String email, String dni, ClientType type, IPayment method)
-            throws Exceptions.DuplicateObjectException, Exceptions.IllegalDNIException, Exceptions.IllegalEmailException {
+            throws DuplicateObjectException, IllegalDNIException, IllegalEmailException {
 
         this.dao.save(new Client(name, email, dni, type, method));
     }

@@ -5,7 +5,6 @@ import Controller.IFactory;
 import Model.DAO.DAO;
 import Model.DAO.MemoryClothingDAO;
 import Model.Entities.RentableObjects.Clothing;
-import Model.Exceptions.Exceptions;
 import Model.Factory.RentClothingFactory;
 import Model.Factory.RentFactory;
 

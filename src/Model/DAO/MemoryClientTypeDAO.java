@@ -1,8 +1,9 @@
 
 package Model.DAO;
 
-import Model.Exceptions.Exceptions;
 import Model.Entities.Clients.ClientType;
+import Model.Exceptions.ObjectNotFoundException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class MemoryClientTypeDAO implements DAO<ClientType> {
      *
      * @param id The ID of the `ClientType` entity to retrieve.
      * @return The `ClientType` entity with the specified ID, or `null` if not found.
-     * @throws Exceptions.ObjectNotFoundException If no `ClientType` is found with the given ID.
+     * @throws ObjectNotFoundException If no `ClientType` is found with the given ID.
      */
     @Override
     public ClientType getById(long id) {
@@ -56,7 +57,7 @@ public class MemoryClientTypeDAO implements DAO<ClientType> {
                 }
             }
         } catch (Exception e) {
-            throw new Exceptions.ObjectNotFoundException("ID de Tipo de Cliente no encontrado " + id); // Throw the custom exception.
+            throw new ObjectNotFoundException("ID de Tipo de Cliente no encontrado " + id); // Throw the custom exception.
         }
         return null; // Return null if not found after iterating through the whole list.
     }
@@ -79,13 +80,13 @@ public class MemoryClientTypeDAO implements DAO<ClientType> {
      * @param id   The ID of the `ClientType` entity to update.
      * @param type The updated `ClientType` entity data.
      * @return The updated `ClientType` entity.
-     * @throws Exceptions.ObjectNotFoundException If no `ClientType` is found with the given ID.
+     * @throws ObjectNotFoundException If no `ClientType` is found with the given ID.
      */
     @Override
     public ClientType updateById(long id, ClientType type) {
         ClientType existingType = getById(id);
         if(existingType == null){
-            throw new Exceptions.ObjectNotFoundException("ID de Tipo de Cliente no encontrado " + id);
+            throw new ObjectNotFoundException("ID de Tipo de Cliente no encontrado " + id);
         }
         existingType.setDiscount(type.getDiscount());
         existingType.setType(type.getType());

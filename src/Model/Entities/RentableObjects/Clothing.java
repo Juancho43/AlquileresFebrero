@@ -1,6 +1,6 @@
 package Model.Entities.RentableObjects;
 
-import Model.Exceptions.Exceptions;
+import Model.Exceptions.IllegalSizeException;
 import Model.Factory.IdFactory;
 
 /**
@@ -57,11 +57,11 @@ public class Clothing implements IRentableObject {
      *
      * @param size The new size of the clothing item. It must be one of the following values:
      *             "s", "m", "l", "xl", "xxl", "xxxl".
-     * @throws Exceptions.IllegalSizeException If the provided size is not valid.
+     * @throws IllegalSizeException If the provided size is not valid.
      */
     public void setSize(String size) {
         if(!isValidSize(size)){
-            throw new Exceptions.IllegalSizeException("Debe ingresar un talle (s, m, l, xl, xxl, xxxl)") ; // Returns false if the size is not valid
+            throw new IllegalSizeException("Debe ingresar un talle (s, m, l, xl, xxl, xxxl)") ; // Returns false if the size is not valid
         }
         this.size = size;
     }

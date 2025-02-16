@@ -1,6 +1,7 @@
 package Model.Entities.Clients;
 
-import Model.Exceptions.Exceptions;
+import Model.Exceptions.IllegalDNIException;
+import Model.Exceptions.IllegalEmailException;
 import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
 
@@ -93,11 +94,12 @@ public class Client {
      * Sets the client's email address.  Performs validation.
      *
      * @param email The client's email address.
-     * @throws Exceptions.IllegalEmailException If the email is invalid.
+     * @throws IllegalEmailException If the email is invalid.
      */
     public void setEmail(String email) {
         if (!isValidEmail(email)) {
-            throw new Exceptions.IllegalEmailException("El email no es válido.");
+            throw new IllegalEmailException("El email no es válido.");
+
         }
         this.email = email;
     }
@@ -115,11 +117,11 @@ public class Client {
      * Sets the client's DNI.  Performs validation.
      *
      * @param dni The client's DNI.
-     * @throws Exceptions.IllegalDNIException If the DNI is invalid.
+     * @throws IllegalDNIException If the DNI is invalid.
      */
     public void setDni(String dni) {
         if (!isValidDNI(dni)) {
-            throw new Exceptions.IllegalDNIException("El DNI debe tener 7 a 10 dígitos numéricos"); // Corrected error message
+            throw new IllegalDNIException("El DNI debe tener 7 a 10 dígitos numéricos"); // Corrected error message
         }
         this.dni = dni;
     }

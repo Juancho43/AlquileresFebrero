@@ -2,9 +2,11 @@ package View.Clients;
 
 import Controller.ClientController;
 import Controller.ClientTypeController;
-import Model.Exceptions.Exceptions;
+import Model.Exceptions.DuplicateObjectException;
 import Model.Entities.Clients.Client;
 import Model.Entities.Clients.ClientType;
+import Model.Exceptions.IllegalDNIException;
+import Model.Exceptions.IllegalEmailException;
 import Model.Strategy.Cash;
 import Model.Strategy.CreditCard;
 import Model.Strategy.IPayment;
@@ -180,11 +182,11 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
         try{
             clientController.newClient(txtName.getText(),txtEmail.getText(),txtDNI.getText(),(ClientType) cmClientType.getSelectedItem(), (IPayment) cmPayment.getSelectedItem());
             Notifications.showSuccess("Cliente creado");
-        } catch (Exceptions.DuplicateObjectException e) {
+        } catch (DuplicateObjectException e) {
             Notifications.showError("Error " + e.getMessage());
-        } catch (Exceptions.IllegalEmailException e) {
+        } catch (IllegalEmailException e) {
             Notifications.showError("Error " + e.getMessage());
-        } catch (Exceptions.IllegalDNIException e) {
+        } catch (IllegalDNIException e) {
             Notifications.showError("Error " + e.getMessage());
         }
     }
