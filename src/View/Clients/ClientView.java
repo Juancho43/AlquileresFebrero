@@ -182,6 +182,10 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
             Notifications.showSuccess("Cliente creado");
         } catch (Exceptions.DuplicateObjectException e) {
             Notifications.showError("Error " + e.getMessage());
+        } catch (Exceptions.IllegalEmailException e) {
+            Notifications.showError("Error " + e.getMessage());
+        } catch (Exceptions.IllegalDNIException e) {
+            Notifications.showError("Error " + e.getMessage());
         }
     }
 
