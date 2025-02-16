@@ -2,10 +2,9 @@ package Controller.RentableObjects;
 
 import Controller.IControllable;
 import Controller.IFactory;
-import DAO.DAO;
-import DAO.MemoryClothingDAO;
+import Model.DAO.DAO;
+import Model.DAO.MemoryClothingDAO;
 import Model.Entities.RentableObjects.Clothing;
-import Model.Enums.RentState;
 import Model.Factory.RentClothingFactory;
 import Model.Factory.RentFactory;
 

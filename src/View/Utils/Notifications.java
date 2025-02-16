@@ -9,11 +9,11 @@ public class Notifications {
     }
 
     public static void showError(String message){
-        showMessage(message, "error", JOptionPane.ERROR_MESSAGE);
+        showMessage(message, "Error!", JOptionPane.ERROR_MESSAGE);
     }
 
     public static void showWarning(String message){
-        showMessage(message, "warning", JOptionPane.WARNING_MESSAGE);
+        showMessage(message, "Warning", JOptionPane.WARNING_MESSAGE);
     }
 
     public static void showMessage(String message, String title, int messageType){

@@ -1,7 +1,6 @@
 package Controller;
 
-import DAO.DAO;
-import Model.Factory.RentFactory;
+import Model.DAO.DAO;
 
 public interface IControllable {
     public DAO getDao();

@@ -1,0 +1,315 @@
+Index: .idea/workspace.xml
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+deleted file mode 100644
+--- a/.idea/workspace.xml	(revision 9a8f64b10f82e9553ce2553f947400169c12c521)
++++ /dev/null	(revision 9a8f64b10f82e9553ce2553f947400169c12c521)
+@@ -1,307 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="AutoImportSettings">
+-    <option name="autoReloadType" value="SELECTIVE" />
+-  </component>
+-  <component name="ChangeListManager">
+-    <list default="true" id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="Added closerent method">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/ClothingController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RentableObjects/VehicleController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/View/Rents/RentView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Rents/RentView.java" afterDir="false" />
+-    </list>
+-    <option name="SHOW_DIALOG" value="false" />
+-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-    <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="Enum" />
+-        <option value="Class" />
+-        <option value="Interface" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="Git.Settings">
+-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="ProblemsViewState">
+-    <option name="selectedTabId" value="CurrentFile" />
+-  </component>
+-  <component name="ProjectColorInfo">{
+-  &quot;associatedIndex&quot;: 5
+-}</component>
+-  <component name="ProjectId" id="2qN5Etzwp3XSkx1dlLnv6YRw65d" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+-    <ConfirmationsSetting value="1" id="Add" />
+-  </component>
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+-  </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
+-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;246&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Usuario/Desktop/AlquileresFebrero/src/View/Clients&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+-  }
+-}</component>
+-  <component name="RecentsManager">
+-    <key name="CopyFile.RECENT_KEYS">
+-      <recent name="C:\Users\Usuario\Desktop\AlquileresFebrero\src\View\Clients" />
+-      <recent name="$PROJECT_DIR$/src/View/RentableObject" />
+-      <recent name="C:\Users\Usuario\Desktop\AlquileresFebrero\src\Controller" />
+-      <recent name="C:\Users\Usuario\Desktop\AlquileresFebrero\src" />
+-    </key>
+-    <key name="MoveFile.RECENT_KEYS">
+-      <recent name="C:\Users\Usuario\Desktop\AlquileresFebrero\src\View\RentableObject" />
+-      <recent name="C:\Users\Usuario\Desktop\AlquileresFebrero\src\View\Rents" />
+-      <recent name="C:\Users\Usuario\Desktop\AlquileresFebrero\src\View\Clients" />
+-    </key>
+-    <key name="ExtractSuperBase.RECENT_KEYS">
+-      <recent name="Controller.RentableObjects" />
+-    </key>
+-    <key name="CopyClassDialog.RECENTS_KEY">
+-      <recent name="DAO" />
+-      <recent name="Controller" />
+-      <recent name="Model.Factory" />
+-    </key>
+-  </component>
+-  <component name="RunManager">
+-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="Main" />
+-      <module name="AlquileresFebrero" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <recent_temporary>
+-      <list>
+-        <item itemvalue="Application.Main" />
+-      </list>
+-    </recent_temporary>
+-  </component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+-  <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="d5c18060-a8ad-402b-81f4-cacc5efcd029" name="Changes" comment="" />
+-      <created>1734490085154</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1734490085154</updated>
+-    </task>
+-    <task id="LOCAL-00001" summary="Primera implementacion del factory">
+-      <option name="closed" value="true" />
+-      <created>1734594293838</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1734594293838</updated>
+-    </task>
+-    <task id="LOCAL-00002" summary="Primera implementacion del strategy">
+-      <option name="closed" value="true" />
+-      <created>1734678246610</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1734678246610</updated>
+-    </task>
+-    <task id="LOCAL-00003" summary="Added clientType crud">
+-      <option name="closed" value="true" />
+-      <created>1738948232523</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1738948232523</updated>
+-    </task>
+-    <task id="LOCAL-00004" summary="Vista de vehiculos con funcionalidad completa.">
+-      <option name="closed" value="true" />
+-      <created>1739329981596</created>
+-      <option name="number" value="00004" />
+-      <option name="presentableId" value="LOCAL-00004" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739329981596</updated>
+-    </task>
+-    <task id="LOCAL-00005" summary="Vista de ropa con funcionalidad completa.">
+-      <option name="closed" value="true" />
+-      <created>1739332700421</created>
+-      <option name="number" value="00005" />
+-      <option name="presentableId" value="LOCAL-00005" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739332700421</updated>
+-    </task>
+-    <task id="LOCAL-00006" summary="Avances en la vista de clientes.">
+-      <option name="closed" value="true" />
+-      <created>1739336933552</created>
+-      <option name="number" value="00006" />
+-      <option name="presentableId" value="LOCAL-00006" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739336933552</updated>
+-    </task>
+-    <task id="LOCAL-00007" summary="Estandarización de vistas">
+-      <option name="closed" value="true" />
+-      <created>1739337866512</created>
+-      <option name="number" value="00007" />
+-      <option name="presentableId" value="LOCAL-00007" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739337866512</updated>
+-    </task>
+-    <task id="LOCAL-00008" summary="Agregada estructura basica ClientTypeView">
+-      <option name="closed" value="true" />
+-      <created>1739338199632</created>
+-      <option name="number" value="00008" />
+-      <option name="presentableId" value="LOCAL-00008" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739338199632</updated>
+-    </task>
+-    <task id="LOCAL-00009" summary="Agregado metodo to hasCode y equals">
+-      <option name="closed" value="true" />
+-      <created>1739365953346</created>
+-      <option name="number" value="00009" />
+-      <option name="presentableId" value="LOCAL-00009" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739365953346</updated>
+-    </task>
+-    <task id="LOCAL-00010" summary="Crud de clientes">
+-      <option name="closed" value="true" />
+-      <created>1739367628217</created>
+-      <option name="number" value="00010" />
+-      <option name="presentableId" value="LOCAL-00010" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739367628217</updated>
+-    </task>
+-    <task id="LOCAL-00011" summary="Add Rents and Historical Rent view">
+-      <option name="closed" value="true" />
+-      <created>1739417534728</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739417534728</updated>
+-    </task>
+-    <task id="LOCAL-00012" summary="Show active rents">
+-      <option name="closed" value="true" />
+-      <created>1739418920380</created>
+-      <option name="number" value="00012" />
+-      <option name="presentableId" value="LOCAL-00012" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739418920380</updated>
+-    </task>
+-    <task id="LOCAL-00013" summary="Vista de tipos de cliente">
+-      <option name="closed" value="true" />
+-      <created>1739491637601</created>
+-      <option name="number" value="00013" />
+-      <option name="presentableId" value="LOCAL-00013" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739491637601</updated>
+-    </task>
+-    <task id="LOCAL-00014" summary="Agregada interfaz de interfaces">
+-      <option name="closed" value="true" />
+-      <created>1739500898540</created>
+-      <option name="number" value="00014" />
+-      <option name="presentableId" value="LOCAL-00014" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739500898540</updated>
+-    </task>
+-    <task id="LOCAL-00015" summary="Rents crud">
+-      <option name="closed" value="true" />
+-      <created>1739512931387</created>
+-      <option name="number" value="00015" />
+-      <option name="presentableId" value="LOCAL-00015" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739512931387</updated>
+-    </task>
+-    <task id="LOCAL-00016" summary="HistoricalRentView works">
+-      <option name="closed" value="true" />
+-      <created>1739559779279</created>
+-      <option name="number" value="00016" />
+-      <option name="presentableId" value="LOCAL-00016" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739559779279</updated>
+-    </task>
+-    <task id="LOCAL-00017" summary="Client package created">
+-      <option name="closed" value="true" />
+-      <created>1739559845251</created>
+-      <option name="number" value="00017" />
+-      <option name="presentableId" value="LOCAL-00017" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739559845251</updated>
+-    </task>
+-    <task id="LOCAL-00018" summary="added buttons">
+-      <option name="closed" value="true" />
+-      <created>1739575064183</created>
+-      <option name="number" value="00018" />
+-      <option name="presentableId" value="LOCAL-00018" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739575064183</updated>
+-    </task>
+-    <task id="LOCAL-00019" summary="Added closerent method">
+-      <option name="closed" value="true" />
+-      <created>1739585574288</created>
+-      <option name="number" value="00019" />
+-      <option name="presentableId" value="LOCAL-00019" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1739585574288</updated>
+-    </task>
+-    <option name="localTasksCounter" value="20" />
+-    <servers />
+-  </component>
+-  <component name="Vcs.Log.Tabs.Properties">
+-    <option name="TAB_STATES">
+-      <map>
+-        <entry key="MAIN">
+-          <value>
+-            <State />
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+-  </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="Primera implementacion del factory" />
+-    <MESSAGE value="Primera implementacion del strategy" />
+-    <MESSAGE value="Added clientType crud" />
+-    <MESSAGE value="Vista de vehiculos con funcionalidad completa." />
+-    <MESSAGE value="Vista de ropa con funcionalidad completa." />
+-    <MESSAGE value="Avances en la vista de clientes." />
+-    <MESSAGE value="Estandarización de vistas" />
+-    <MESSAGE value="Agregada estructura basica ClientTypeView" />
+-    <MESSAGE value="Agregado metodo to hasCode y equals" />
+-    <MESSAGE value="Crud de clientes" />
+-    <MESSAGE value="Add Rents and Historical Rent view" />
+-    <MESSAGE value="Show active rents" />
+-    <MESSAGE value="Vista de tipos de cliente" />
+-    <MESSAGE value="Agregada interfaz de interfaces" />
+-    <MESSAGE value="Rents crud" />
+-    <MESSAGE value="HistoricalRentView works" />
+-    <MESSAGE value="Client package created" />
+-    <MESSAGE value="added buttons" />
+-    <MESSAGE value="Added closerent method" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Added closerent method" />
+-  </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <breakpoint enabled="true" type="java-exception">
+-          <properties class="java.lang.ClassCastException" package="java.lang" />
+-          <option name="timeStamp" value="1" />
+-        </breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
+-    <pin-to-top-manager>
+-      <pinned-members>
+-        <PinnedItemInfo parentTag="DAO.MemoryClientTypeDAO" memberName="typeList" />
+-        <PinnedItemInfo parentTag="Controller.ClientTypeController" memberName="dao" />
+-      </pinned-members>
+-    </pin-to-top-manager>
+-  </component>
+-</project>
+\ No newline at end of file

@@ -2,7 +2,7 @@ package View.Clients;
 
 import Controller.ClientController;
 import Controller.ClientTypeController;
-import Exceptions.Exceptions;
+import Model.Exceptions.Exceptions;
 import Model.Entities.Clients.Client;
 import Model.Entities.Clients.ClientType;
 import Model.Strategy.Cash;
@@ -188,7 +188,7 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
     @Override
     public void editItem() {
         if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")) {
-            selectItem().setClientTypeId((ClientType) cmClientType.getSelectedItem());
+            selectItem().setClientType((ClientType) cmClientType.getSelectedItem());
             selectItem().setPaymentMethod((IPayment) cmPayment.getSelectedItem());
             selectItem().setName(txtName.getText());
             Notifications.showSuccess("Cliente actualizado");

@@ -1,12 +1,12 @@
 package Controller.Rents;
 
 import Controller.IControllable;
-import DAO.MemoryRentDAO;
-import DAO.DAO;
+import Model.DAO.MemoryRentDAO;
+import Model.DAO.DAO;
 import Model.Entities.Clients.Client;
 import Model.Entities.RentableObjects.IRentableObject;
 import Model.Entities.Rents.IRentable;
-import Model.Enums.RentState;
+import Model.Entities.Rents.RentState;
 import Model.Factory.RentFactory;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class RentController implements IControllable {
 
     private DAO<IRentable> dao = MemoryRentDAO.getInstance();
-    private double totalEarnings;
+    private double totalEarnings = 0;
     private RentFactory rentFactory;
 
     public void newRent(int days, IRentableObject object, Client client) {
@@ -30,11 +30,14 @@ public class RentController implements IControllable {
         return  getDao().getAll().stream().filter(rent -> rent.getRent().getState() == RentState.CANCELED).collect(Collectors.toList());
     }
     public List<IRentable> getAllOutOfDateRents(){
-        return  getDao().getAll().stream().filter(rent -> rent.getRent().getState() == RentState.OUTOFDATE).collect(Collectors.toList());
+        return  getDao().getAll().stream().filter(rent -> rent.getRent().getState() == RentState.OUTDATED).collect(Collectors.toList());
     }
 
 
     public double getTotalEarnings() {
+        for (IRentable rent:getAllCloseRents()) {
+            totalEarnings+= rent.getEarning();
+        }
         return totalEarnings;
     }
 

@@ -1,7 +1,7 @@
 package Controller;
 
-import DAO.DAO;
-import DAO.MemoryClientTypeDAO;
+import Model.DAO.DAO;
+import Model.DAO.MemoryClientTypeDAO;
 import Model.Entities.Clients.ClientType;
 
 import java.util.List;
