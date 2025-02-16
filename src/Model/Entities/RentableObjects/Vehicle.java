@@ -89,7 +89,16 @@ public class Vehicle implements IRentableObject {
         return year;
     }
 
-
+    /**
+     * Sets the year for the object.
+     *
+     * This method allows assigning a new year to the object. Before assigning the value,
+     * it checks if the year is valid using the `isValidYear` method. If the year is not valid,
+     * an `IllegalYearException` is thrown with a message indicating the valid range of years.
+     *
+     * @param year The new year to be assigned. It must be within the range of 2000 to 2025 (inclusive).
+     * @throws Exceptions.IllegalYearException If the provided year is not within the valid range.
+     */
     public void setYear(int year) {
         if(!isValidYear(year)){
             throw new Exceptions.IllegalYearException("El valor debe estar en el rango de 2000 a 2025"); // Return false if the year is not valid

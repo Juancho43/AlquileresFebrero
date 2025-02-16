@@ -77,7 +77,12 @@ public class RentableObject {
     /**
      * Sets the price per day for renting the object.
      *
-     * @param pricePerDay The price per day.
+     * This method allows assigning a new price per day for renting the object. Before assigning the value,
+     * it checks if the price is valid using the `isValidPrice` method. If the price is not valid,
+     * an `OutOfRangeNumberException` is thrown with a message indicating that the price must be greater than 0.
+     *
+     * @param pricePerDay The price per day to be assigned. It must be a positive number greater than 0.
+     * @throws Exceptions.OutOfRangeNumberException If the provided price is not greater than 0.
      */
     public void setPricePerDay(double pricePerDay) {
         if(!isValidPrice(pricePerDay)) {

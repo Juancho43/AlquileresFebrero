@@ -174,21 +174,26 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
     @Override
     public void editItem() {
         if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")){
-            selectItem().getObject().setPricePerDay(Double.parseDouble(txtPrecio.getText()));
-            selectItem().getObject().setName(txtName.getText());
-            selectItem().getObject().setDescription(txtDescripcion.getText());
-            selectItem().setYear(Integer.parseInt(txtAnio.getText()));
-            selectItem().setBrand(txtMarca.getText());
-            selectItem().setModel(txtModelo.getText());
-            vehicleController.getDao().updateById(selectItem().getId(),selectItem());
-            Notifications.showSuccess("Vehiculo actualizado");
+            try{
+                selectItem().getObject().setPricePerDay(Double.parseDouble(txtPrecio.getText()));
+                selectItem().getObject().setName(txtName.getText());
+                selectItem().getObject().setDescription(txtDescripcion.getText());
+                selectItem().setYear(Integer.parseInt(txtAnio.getText()));
+                selectItem().setBrand(txtMarca.getText());
+                selectItem().setModel(txtModelo.getText());
+                vehicleController.getDao().updateById(selectItem().getId(),selectItem());
+                Notifications.showSuccess("Vehiculo actualizado");
+            }catch (Exceptions.IllegalYearException e) {
+                Notifications.showError("Error" + e.getMessage());
+            } catch (Exceptions.OutOfRangeNumberException e){
+                Notifications.showError("Error" + e.getMessage());
+            }
         }
     }
 
     @Override
     public void deleteItem(long id) {
-        if(ConfirmationDialog.confirmYESNO("Estás seguro que deseas eliminar el registro?"))
-        vehicleController.getDao().deleteById(id);
+        if(ConfirmationDialog.confirmYESNO("Estás seguro que deseas eliminar el registro?")) vehicleController.getDao().deleteById(id);
         Notifications.showSuccess("Vehiculo eliminado");
     }
 

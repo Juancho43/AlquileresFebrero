@@ -48,10 +48,20 @@ public class Clothing implements IRentableObject {
         return size;
     }
 
-
+    /**
+     * Sets the size of the clothing item.
+     *
+     * This method allows assigning a new size to the clothing item. Before assigning the value,
+     * it checks if the size is valid using the `isValidSize` method. If the size is not valid,
+     * an `IllegalSizeException` is thrown with a message indicating the allowed sizes.
+     *
+     * @param size The new size of the clothing item. It must be one of the following values:
+     *             "s", "m", "l", "xl", "xxl", "xxxl".
+     * @throws Exceptions.IllegalSizeException If the provided size is not valid.
+     */
     public void setSize(String size) {
         if(!isValidSize(size)){
-            throw new Exceptions.IllegalSizeException("Debe ingresar un talle (s, m, l, xl, xxl, xxxl") ; // Returns false if the size is not valid
+            throw new Exceptions.IllegalSizeException("Debe ingresar un talle (s, m, l, xl, xxl, xxxl)") ; // Returns false if the size is not valid
         }
         this.size = size;
     }

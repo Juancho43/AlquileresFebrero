@@ -35,8 +35,7 @@ public class ClothingController implements IControllable, IFactory {
      * @param color       The color of the clothing item.
      */
     public void newCloth(String name, String description, Double price, String size, String color)
-        //throws Exceptions.IllegalSizeException, Exceptions.OutOfRangeNumberException
-        {
+    {
         getDao().save(new Clothing(name, description, price, size, color));
     }
 

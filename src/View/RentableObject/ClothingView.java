@@ -165,14 +165,22 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
 
     @Override
     public void editItem() {
+
         if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")){
-            selectItem().getObject().setPricePerDay(Double.parseDouble(txtPrecio.getText()));
-            selectItem().getObject().setName(txtName.getText());
-            selectItem().getObject().setDescription(txtDescripcion.getText());
-            selectItem().setColor(txtColor.getText());
-            selectItem().setSize(txtTalle.getText());
-            clothingController.getDao().updateById(selectItem().getId(),selectItem());
-            Notifications.showSuccess("Indumentaria actualizada");
+            try{
+                selectItem().getObject().setPricePerDay(Double.parseDouble(txtPrecio.getText()));
+                selectItem().getObject().setName(txtName.getText());
+                selectItem().getObject().setDescription(txtDescripcion.getText());
+                selectItem().setColor(txtColor.getText());
+                selectItem().setSize(txtTalle.getText());
+                clothingController.getDao().updateById(selectItem().getId(),selectItem());
+                Notifications.showSuccess("Indumentaria actualizada");
+            }catch (Exceptions.IllegalSizeException e) {
+                Notifications.showError("Error " + e.getMessage());
+            }
+            catch (Exceptions.OutOfRangeNumberException e) {
+                Notifications.showError("Error " + e.getMessage());
+            }
         }
     }
 
