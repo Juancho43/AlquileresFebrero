@@ -160,6 +160,9 @@ public class ClothingView extends JFrame implements IBasicView, IManageView {
         catch (OutOfRangeNumberException e) {
             Notifications.showError("Error " + e.getMessage());
         }
+        catch (NumberFormatException e){
+            Notifications.showError("Error " + e.getMessage());
+        }
 
     }
 
