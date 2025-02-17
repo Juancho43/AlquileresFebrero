@@ -1,6 +1,7 @@
 package Model.Entities.Clients;
 
 import Model.Entities.ICloneable;
+import Model.Exceptions.IllegalDiscountException;
 import Model.Factory.IdFactory;
 
 import java.util.Objects;
@@ -26,7 +27,7 @@ public class ClientType implements ICloneable<ClientType> {
     public ClientType(String type, double discount) {
         this.id = IdFactory.generateUniqueId(); // Generate a unique ID using a factory.
         this.type = type;
-        this.discount = discount;
+        setDiscount(discount);
     }
 
     /**
@@ -85,8 +86,12 @@ public class ClientType implements ICloneable<ClientType> {
      * Sets the discount associated with this client type.
      *
      * @param discount The discount associated with this client type.
+     * @throws IllegalDiscountException If the discount is not within the valid range (0.0 to 1.0).
      */
     public void setDiscount(double discount) {
+        if (discount < 0.0 || discount > 1.0) {
+            throw new IllegalDiscountException("Discount must be between 0.0 and 1.0 (inclusive).");
+        }
         this.discount = discount;
     }
 
