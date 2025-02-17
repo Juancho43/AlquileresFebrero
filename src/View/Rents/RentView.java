@@ -11,6 +11,7 @@ import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.IRentableObject;
 import Model.Entities.RentableObjects.Vehicle;
 import Model.Entities.Rents.IRentable;
+import Model.Exceptions.OutOfRangeNumberException;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
 import View.Utils.ConfirmationDialog;
@@ -182,8 +183,12 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
 
     @Override
     public void createItem() {
-        controller.newRent(Integer.parseInt(txtDays.getText()), (IRentableObject) cmObject.getSelectedItem(), (Client) cmClient.getSelectedItem());
-        Notifications.showSuccess("Renta creada");
+        try {
+            controller.newRent(Integer.parseInt(txtDays.getText()), (IRentableObject) cmObject.getSelectedItem(), (Client) cmClient.getSelectedItem());
+            Notifications.showSuccess("Renta creada");
+        } catch (OutOfRangeNumberException e){
+            Notifications.showError("Error" + e.getMessage());
+        }
     }
 
     @Override

@@ -2,6 +2,7 @@ package Model.Entities.Rents;
 
 import Model.Entities.ICloneable;
 import Model.Factory.IdFactory;
+import Model.Validators.IntegerValidator;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -30,6 +31,7 @@ public class Rent implements ICloneable<Rent> {
     public Rent(int days) {
         this.id = IdFactory.generateUniqueId(); // Generate a unique ID using a factory.
         this.date = LocalDate.now(); // Set the start date to the current date.
+        IntegerValidator.validateInteger(days);
         this.giveBackDate = date.plusDays(days); // Calculate the expected return date.
         this.rentState = RentState.STARTED; // Set the initial state to STARTED.
     }
