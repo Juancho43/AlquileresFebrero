@@ -1,5 +1,6 @@
 package Model.Entities.Clients;
 
+import Model.Entities.Prototype;
 import Model.Factory.IdFactory;
 
 import java.util.Objects;
@@ -8,8 +9,9 @@ import java.util.Objects;
  * Represents the type of client, defining characteristics like discounts.
  * This class stores information about the client type, including its ID, name,
  * and associated discount.
+ * It also implements the {@code Prototype} interface for cloning.
  */
-public class ClientType {
+public class ClientType implements Prototype<ClientType> {
 
     private long id;
     private String type;
@@ -122,5 +124,29 @@ public class ClientType {
     @Override
     public int hashCode() {
         return Objects.hash(id, type, discount);
+    }
+
+    /**
+     * Creates and returns a shallow copy of this {@code ClientType} object.
+     * <p>
+     * Because {@code ClientType} is assumed to only contain primitive types or
+     * immutable objects (like Strings), a shallow copy is sufficient.  If, in the
+     * future, {@code ClientType} contains references to mutable objects, this
+     * method *must* be updated to perform a deep copy to prevent unintended side
+     * effects.  Modifications to the cloned object would then not affect the
+     * original object, and vice versa.
+     *
+     * @return A shallow clone of this {@code ClientType} object.
+     * @throws RuntimeException If an error occurs during the cloning process. This
+     *                          exception wraps any underlying {@code CloneNotSupportedException}
+     *                          and provides a more informative error message.
+     */
+    @Override
+    public ClientType clone() {
+        try {
+            return (ClientType) super.clone(); // Shallow clone is sufficient (for now).
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Error cloning ClientType object: " + e.getMessage(), e); // More informative message
+        }
     }
 }

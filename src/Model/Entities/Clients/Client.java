@@ -1,5 +1,6 @@
 package Model.Entities.Clients;
 
+import Model.Entities.Prototype;
 import Model.Exceptions.IllegalDNIException;
 import Model.Exceptions.IllegalEmailException;
 import Model.Factory.IdFactory;
@@ -10,8 +11,9 @@ import Model.Strategy.IPayment;
  * This class stores information about a client, including their name, email, DNI,
  * client type, and preferred payment method.  It also includes validation logic
  * for email and DNI.
+ * It also implements the {@code Prototype} interface for cloning.
  */
-public class Client {
+public class Client implements Prototype<Client> {
 
     private long id;
     private String name;
@@ -198,5 +200,31 @@ public class Client {
     @Override
     public String toString() {
         return name + ' ' + type + " " + favoriteMethod;
+    }
+
+    /**
+     * Creates and returns a deep copy of this {@code Client} object.
+     * This method creates a new, independent copy of this {@code Client} instance,
+     * including a deep copy of its composite object (the `type` field, which
+     * represents the client's type). This ensures that modifications to the
+     * cloned {@code Client} do not affect the original, and vice-versa.  It is
+     * crucial for maintaining data integrity and preventing unintended side effects.
+     *
+     * @return A deep clone of this {@code Client} object.
+     * @throws RuntimeException If an error occurs during the cloning process. This
+     *                          exception wraps any underlying {@code CloneNotSupportedException}
+     *                          and provides a more informative error message, including
+     *                          the original exception's message.
+     */
+    @Override
+    public Client clone() {
+        try {
+            Client clonedClient = (Client) super.clone(); // Shallow clone first
+            // Deep clone the mutable objects:
+            clonedClient.type = this.type.clone(); // Clone the ClientType object
+            return clonedClient;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Error cloning Client object: " + e.getMessage(), e); // More informative message
+        }
     }
 }

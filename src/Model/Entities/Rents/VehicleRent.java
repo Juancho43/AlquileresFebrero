@@ -1,5 +1,6 @@
 package Model.Entities.Rents;
 
+import Model.Entities.Prototype;
 import Model.Entities.RentableObjects.Vehicle;
 import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
@@ -11,8 +12,9 @@ import java.time.LocalDate;
  * This class extends `ObjectRent` and implements the `IRentable` interface for `Vehicle` objects.
  * It manages the rental of a specific vehicle, including price calculation, rent generation,
  * rent closing, and associating the vehicle with the rent.
+ * It also implements the {@code Prototype} interface for cloning.
  */
-public class VehicleRent extends ObjectRent implements IRentable<Vehicle> {
+public class VehicleRent extends ObjectRent implements IRentable<Vehicle>, Prototype<IRentable> {
 
     private Vehicle vehicle; // The Vehicle object being rented.
 
@@ -61,12 +63,14 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle> {
      * Closes the rent for the vehicle. Sets the vehicle's availability to true.  Calculates and sets the final earning.
      *
      * @param date The date the rent was closed.
+     * @return
      */
     @Override
-    public void closeRent(LocalDate date) {
+    public IRentable closeRent(LocalDate date) {
         this.vehicle.getObject().setAvailable(true); // Mark vehicle as available.
         this.rent.closeRent(date); // Close the Rent object.
         this.rent.setEarning(this.getEarning()); // Calculate and set earnings *after* closing.
+        return this.clone();
     }
 
     /**
@@ -105,6 +109,35 @@ public class VehicleRent extends ObjectRent implements IRentable<Vehicle> {
     @Override
     public void generateId() {
         setId(IdFactory.generateUniqueId());
+    }
+
+    /**
+     * Creates and returns a deep copy of this {@code VehicleRent} object.
+     * This method ensures that all nested objects (rent, client, vehicle) are also
+     * cloned, creating a completely independent copy.  It is crucial for maintaining
+     * data integrity and preventing unintended side effects when modifying the cloned
+     * object.
+     *
+     * @return A deep clone of this {@code VehicleRent} object.
+     * @throws RuntimeException If an error occurs during the cloning process.  This
+     *                          exception wraps any underlying {@code CloneNotSupportedException}
+     *                          and provides a more informative error message.
+     */
+    @Override
+    public IRentable clone() {
+        try {
+            VehicleRent clonedRent = (VehicleRent) super.clone(); // Shallow clone first
+
+            // Deep clone the mutable objects:
+            clonedRent.priceMethod = this.priceMethod; // Assuming IPayment implementations are immutable. If not, clone them too.
+            clonedRent.rent = this.rent.clone();         // Clone the Rent object.
+            clonedRent.client = this.client.clone();     // Clone the Client object.
+            clonedRent.vehicle = this.vehicle.clone();   // Clone the Vehicle object.
+
+            return clonedRent;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Error cloning VehicleRent object: " + e.getMessage(), e); // More informative message
+        }
     }
 
     /**

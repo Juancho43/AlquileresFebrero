@@ -74,4 +74,5 @@ public class Cash implements IPayment {
         if (obj == null || getClass() != obj.getClass()) return false;
         return true; // All Cash objects are considered equal in this implementation.
     }
+
 }

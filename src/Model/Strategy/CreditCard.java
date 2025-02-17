@@ -13,7 +13,7 @@ import Model.Entities.Rents.RentState;
  * It calculates the base price with a 10% surcharge, adds any overdue penalties,
  * and then applies any discounts based on the client type.
  */
-public class CreditCard implements IPayment {
+public class CreditCard implements IPayment{
 
     /**
      * Calculates the final price of a rental when paying with a credit card.
@@ -75,4 +75,6 @@ public class CreditCard implements IPayment {
     public int hashCode() {
         return 2;
     }
+
+
 }

@@ -49,8 +49,9 @@ public interface IRentable<E extends Object> {
      * Closes the rent for the object.
      *
      * @param date The date the rent was closed.
+     * @return The closed IRentable Object
      */
-    void closeRent(LocalDate date);
+    IRentable closeRent(LocalDate date);
 
     /**
      * Sets the rentable object.

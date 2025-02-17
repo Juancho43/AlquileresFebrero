@@ -1,5 +1,6 @@
 package Model.Entities.RentableObjects;
 
+import Model.Entities.Prototype;
 import Model.Exceptions.IllegalYearException;
 import Model.Factory.IdFactory;
 
@@ -12,7 +13,7 @@ import java.time.Year;
  * and year. It implements the `IRentableObject` interface to provide access
  * to the underlying `RentableObject`.
  */
-public class Vehicle implements IRentableObject {
+public class Vehicle implements IRentableObject, Prototype<Vehicle> {
 
     private long id; // The unique ID of the vehicle.
     private RentableObject object; // The RentableObject associated with this vehicle.
@@ -168,5 +169,29 @@ public class Vehicle implements IRentableObject {
         // Check if the year is within the valid range
         return year >= oldestAcceptableYear && year <= currentYear;
     }
+    /**
+     * Creates and returns a deep copy of this {@code Vehicle} object.
+     * This method creates a new, independent copy of this {@code Vehicle} instance,
+     * including a deep copy of its composite object. This ensures that modifications
+     * to the cloned {@code Vehicle} do not affect the original, and vice-versa.  It is
+     * crucial for maintaining data integrity and preventing unintended side effects.
+     *
+     * @return A deep clone of this {@code Vehicle} object.
+     * @throws RuntimeException If an error occurs during the cloning process. This
+     *                          exception wraps any underlying {@code CloneNotSupportedException}
+     *                          and provides a more informative error message, including
+     *                          the original exception's message.
+     */
+    @Override
+    public Vehicle clone() {
+        try {
+            Vehicle clonedVehicle = (Vehicle) super.clone(); // Shallow clone first
+            // Deep clone the mutable objects:
+            clonedVehicle.object = this.object.clone(); // Clone the 'object' (VehicleDetails or similar)
+            return clonedVehicle;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Error cloning Vehicle object: " + e.getMessage(), e); // More informative message
+        }
 
+    }
 }

@@ -1,5 +1,6 @@
 package Model.Entities.RentableObjects;
 
+import Model.Entities.Prototype;
 import Model.Exceptions.IllegalSizeException;
 import Model.Factory.IdFactory;
 
@@ -9,8 +10,9 @@ import Model.Factory.IdFactory;
  * associated `RentableObject` details (name, description, price), size, and color.
  * It implements the `IRentableObject` interface to provide access to the underlying
  * `RentableObject`.
+ * It also implements the {@code Prototype} interface for cloning.
  */
-public class Clothing implements IRentableObject {
+public class Clothing implements IRentableObject, Prototype<Clothing> {
 
     private long id; // The unique ID of the clothing item.
     private RentableObject object; // The RentableObject associated with this clothing item.
@@ -144,5 +146,28 @@ public class Clothing implements IRentableObject {
         // Converts the size to lowercase and checks if it matches the regular expression
         return size.toLowerCase().matches(sizeRegex);
     }
-
+    /**
+     * Creates and returns a deep copy of this {@code Clothing} object.
+     * This method creates a new, independent copy of this {@code Clothing} instance,
+     * including a deep copy of its composite object. This ensures that modifications
+     * to the cloned {@code Clothing} do not affect the original, and vice-versa.  It is
+     * crucial for maintaining data integrity and preventing unintended side effects.
+     *
+     * @return A deep clone of this {@code Clothing} object.
+     * @throws RuntimeException If an error occurs during the cloning process. This
+     *                          exception wraps any underlying {@code CloneNotSupportedException}
+     *                          and provides a more informative error message, including
+     *                          the original exception's message.
+     */
+    @Override
+    public Clothing clone() {
+        try {
+            Clothing clonedClothing = (Clothing) super.clone(); // Shallow clone first
+            // Deep clone the mutable objects:
+            clonedClothing.object = this.object.clone(); // Clone the 'object' (ClothingDetails or similar)
+            return clonedClothing;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Error cloning Clothing object: " + e.getMessage(), e); // More informative message
+        }
+    }
 }

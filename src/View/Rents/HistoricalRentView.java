@@ -72,7 +72,7 @@ public class HistoricalRentView extends JFrame implements IBasicView {
         dataTotal.setText(String.format("%.2f",controller.getTotalEarnings()));
     }
     private void loadRents(){
-        IRentable[] arreglo = controller.getAllCloseRents().toArray(new IRentable[0]);
+        IRentable[] arreglo = controller.getClosedRentDao().getAll().toArray(new IRentable[0]);
         closedRentsList.setListData(arreglo);
     }
     @Override

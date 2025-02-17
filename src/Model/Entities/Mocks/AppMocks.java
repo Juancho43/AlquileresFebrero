@@ -7,6 +7,7 @@ import Controller.Rents.RentController;
 import Model.Entities.Clients.Client;
 import Model.Entities.RentableObjects.Clothing;
 import Model.Entities.RentableObjects.Vehicle;
+import Model.Entities.Rents.IRentable;
 import Model.Factory.RentClothingFactory;
 import Model.Factory.RentVehicleFactory;
 
@@ -66,9 +67,9 @@ public class AppMocks {
         rentController.newRent(3, clothingList.get(2), clients.get(2)); // Create another clothing rent.
 
         // Close some of the rents.
-        rentController.getDao().getAll().get(0).closeRent(LocalDate.now().plusDays(2));
-        rentController.getDao().getAll().get(1).closeRent(LocalDate.now().plusDays(6));
-        rentController.getDao().getAll().get(2).closeRent(LocalDate.now().plusDays(10));
+        rentController.getClosedRentDao().save(rentController.getDao().getAll().get(0).closeRent(LocalDate.now().plusDays(2)));
+        rentController.getClosedRentDao().save(rentController.getDao().getAll().get(1).closeRent(LocalDate.now().plusDays(6)));
+        rentController.getClosedRentDao().save(rentController.getDao().getAll().get(2).closeRent(LocalDate.now().plusDays(10)));
 
         // The commented-out code below demonstrates how to access rental information
         // such as description, duration, delay days, status, and earnings.  It's left

@@ -1,5 +1,6 @@
 package Model.Entities.Rents;
 
+import Model.Entities.Prototype;
 import Model.Factory.IdFactory;
 
 import java.time.LocalDate;
@@ -10,8 +11,9 @@ import java.time.temporal.ChronoUnit;
  * This class manages information about a rent, including the start date, return date,
  * close date, and the current state of the rent.  It also provides methods for
  * calculating durations, checking status, and closing a rent.
+ *  It also implements the {@code Prototype} interface for object cloning.
  */
-public class Rent {
+public class Rent implements Prototype<Rent> {
 
     private long id; // Unique identifier for the rent.
     private LocalDate date; // The date the rent started.
@@ -158,5 +160,25 @@ public class Rent {
     @Override
     public String toString() {
         return  date + " " + rentState +  " \n" + giveBackDate;
+    }
+
+
+    /**
+     * Creates and returns a deep copy of this {@code Rent} object.
+     *
+     * @return A clone of this {@code Rent} object.
+     */
+    @Override
+    public Rent clone() {
+        try {
+            Rent clonedRent = (Rent) super.clone();
+            // Deep copy if needed.  Since Rent only contains immutable
+            // objects (LocalDate, long, double, enum), a shallow copy
+            // is sufficient in this case.  If Rent had mutable object
+            // references, those would need to be cloned here as well.
+            return clonedRent;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Error cloning Rent object: " + e.getMessage(), e); // More informative message.
+        }
     }
 }

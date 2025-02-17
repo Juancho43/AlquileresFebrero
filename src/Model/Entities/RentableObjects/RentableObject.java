@@ -1,5 +1,6 @@
 package Model.Entities.RentableObjects;
 
+import Model.Entities.Prototype;
 import Model.Exceptions.OutOfRangeNumberException;
 
 /**
@@ -7,8 +8,9 @@ import Model.Exceptions.OutOfRangeNumberException;
  * This class stores information common to all rentable items, such as their name,
  * description, price per day, and availability.  It serves as a base class or
  * a common type for more specific rentable objects (e.g., Vehicle, Clothing).
+ * It also implements the {@code Prototype} interface for cloning.
  */
-public class RentableObject {
+public class RentableObject implements Prototype<RentableObject> {
 
     private String name; // The name of the rentable object.
     private String description; // A description of the rentable object.
@@ -141,4 +143,27 @@ public class RentableObject {
         return isWithRange(pricePerDay) && isPositive(pricePerDay);
     }
 
+    /**
+     * Creates and returns a shallow copy of this {@code RentableObject}.
+     * <p>
+     * Because {@code RentableObject} appears to only contain primitive types or
+     * immutable objects (like Strings), a shallow copy is sufficient.  If, in the
+     * future, {@code RentableObject} contains references to mutable objects, this
+     * method *must* be updated to perform a deep copy to prevent unintended side
+     * effects.  Modifications to the cloned object would then not affect the
+     * original object, and vice versa.
+     *
+     * @return A shallow clone of this {@code RentableObject}.
+     * @throws RuntimeException If an error occurs during the cloning process. This
+     *                          exception wraps any underlying {@code CloneNotSupportedException}
+     *                          and provides a more informative error message.
+     */
+    @Override
+    public RentableObject clone() {
+        try {
+            return (RentableObject) super.clone(); // Shallow clone is sufficient (for now).
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Error cloning RentableObject: " + e.getMessage(), e); // More informative message
+        }
+    }
 }

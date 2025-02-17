@@ -13,7 +13,7 @@ import Model.Entities.Rents.Rent;
  * methods, which are essential for proper use of these strategy objects in
  * collections or comparisons.
  */
-public interface IPayment {
+public interface IPayment{
 
     /**
      * Calculates the final price of a rental.

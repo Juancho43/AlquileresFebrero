@@ -1,6 +1,7 @@
 package Controller.Rents;
 
 import Controller.IControllable;
+import Model.DAO.MemoryClosedRentsDAO;
 import Model.DAO.MemoryRentDAO;
 import Model.DAO.DAO;
 import Model.Entities.Clients.Client;
@@ -23,6 +24,10 @@ import java.util.stream.Collectors;
 public class RentController implements IControllable {
 
     private DAO<IRentable> dao = MemoryRentDAO.getInstance(); // Data access object for IRentable.
+
+
+
+    private DAO<IRentable> closedRentDao = MemoryClosedRentsDAO.getInstance();
     private double totalEarnings = 0; // Stores the total earnings from closed rents.
     private RentFactory rentFactory; // Factory for creating different types of rents.
 
@@ -95,6 +100,10 @@ public class RentController implements IControllable {
         return dao;
     }
 
+
+    public DAO<IRentable> getClosedRentDao() {
+        return closedRentDao;
+    }
     /**
      * Gets the `RentFactory`.
      *
