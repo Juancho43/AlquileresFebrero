@@ -1,7 +1,8 @@
 package Model.Entities.Clients;
 
 import Model.Entities.ICloneable;
-import Model.Exceptions.IllegalDiscountException;
+import Model.Entities.Validators.StringValidator;
+import Model.Exceptions.OutOfRangeNumberException;
 import Model.Factory.IdFactory;
 
 import java.util.Objects;
@@ -26,7 +27,7 @@ public class ClientType implements ICloneable<ClientType> {
      */
     public ClientType(String type, double discount) {
         this.id = IdFactory.generateUniqueId(); // Generate a unique ID using a factory.
-        this.type = type;
+        setType(type);
         setDiscount(discount);
     }
 
@@ -65,13 +66,20 @@ public class ClientType implements ICloneable<ClientType> {
     }
 
     /**
-     * Sets the name of the client type.
+     * Sets the name of the client type.  The name must contain only letters,
+     * numbers, and spaces.  Special characters are not allowed.
      *
      * @param type The name of the client type.
+     * @throws IllegalArgumentException If the provided name contains special
+     *                                  characters.
      */
     public void setType(String type) {
+        if (!StringValidator.isValidString(type)) {
+            throw new IllegalArgumentException("The client type name cannot contain special characters.");
+        }
         this.type = type;
     }
+
 
     /**
      * Gets the discount associated with this client type.
@@ -86,11 +94,11 @@ public class ClientType implements ICloneable<ClientType> {
      * Sets the discount associated with this client type.
      *
      * @param discount The discount associated with this client type.
-     * @throws IllegalDiscountException If the discount is not within the valid range (0.0 to 1.0).
+     * @throws OutOfRangeNumberException If the discount is not within the valid range (0.0 to 1.0).
      */
     public void setDiscount(double discount) {
         if (discount < 0.0 || discount > 1.0) {
-            throw new IllegalDiscountException("Discount must be between 0.0 and 1.0 (inclusive).");
+            throw new OutOfRangeNumberException("El descuento debe ser entre 1 y 0");
         }
         this.discount = discount;
     }

@@ -2,7 +2,7 @@ package View.Clients;
 
 import Controller.ClientTypeController;
 import Model.Entities.Clients.ClientType;
-import Model.Exceptions.IllegalDiscountException;
+import Model.Exceptions.OutOfRangeNumberException;
 import View.Interfaces.IBasicView;
 import View.Interfaces.IManageView;
 import View.Utils.ConfirmationDialog;
@@ -139,7 +139,9 @@ public class ClientTypeView extends JFrame implements IBasicView, IManageView<Cl
         try {
             clientTypeController.newType(txtName.getText(), Double.parseDouble(txtDiscount.getText()));
             Notifications.showSuccess("Tipo de cliente creado");
-        }catch (IllegalDiscountException e){
+        }catch (OutOfRangeNumberException e){
+            Notifications.showError("Error " + e.getMessage());
+        }catch (IllegalArgumentException e){
             Notifications.showError("Error " + e.getMessage());
         }
     }
@@ -152,7 +154,9 @@ public class ClientTypeView extends JFrame implements IBasicView, IManageView<Cl
                 selectItem().setDiscount(Double.parseDouble(txtDiscount.getText()));
                 clientTypeController.getDao().updateById(selectItem().getId(),selectItem());
                 Notifications.showSuccess("Tipo de cliente actualizado");
-            }catch (IllegalDiscountException e){
+            }catch (OutOfRangeNumberException e){
+                Notifications.showError("Error " + e.getMessage());
+            } catch (IllegalArgumentException e){
                 Notifications.showError("Error " + e.getMessage());
             }
         }
