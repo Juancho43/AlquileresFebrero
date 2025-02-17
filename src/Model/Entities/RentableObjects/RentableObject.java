@@ -2,6 +2,8 @@ package Model.Entities.RentableObjects;
 
 import Model.Entities.ICloneable;
 import Model.Exceptions.OutOfRangeNumberException;
+import Model.Validators.PriceValidator;
+import Model.Validators.StringValidator;
 
 /**
  * Represents a generic rentable object.
@@ -25,8 +27,8 @@ public class RentableObject implements ICloneable<RentableObject> {
      * @param pricePerDay The price per day for renting the object.
      */
     public RentableObject(String name, String description, double pricePerDay) {
-        this.name = name;
-        this.description = description;
+        this.setName(name);
+        this.setDescription(description);
         this.setPricePerDay(pricePerDay);
         this.available = true; // Initially, all objects are assumed to be available.
     }
@@ -46,6 +48,7 @@ public class RentableObject implements ICloneable<RentableObject> {
      * @param name The name of the rentable object.
      */
     public void setName(String name) {
+        StringValidator.validateString(name);
         this.name = name;
     }
 
@@ -64,6 +67,7 @@ public class RentableObject implements ICloneable<RentableObject> {
      * @param description The description of the rentable object.
      */
     public void setDescription(String description) {
+        StringValidator.validateString(description);
         this.description = description;
     }
 
@@ -84,12 +88,9 @@ public class RentableObject implements ICloneable<RentableObject> {
      * an `OutOfRangeNumberException` is thrown with a message indicating that the price must be greater than 0.
      *
      * @param pricePerDay The price per day to be assigned. It must be a positive number greater than 0.
-     * @throws OutOfRangeNumberException If the provided price is not greater than 0.
      */
     public void setPricePerDay(double pricePerDay) {
-        if(!isValidPrice(pricePerDay)) {
-            throw new OutOfRangeNumberException("El precio debe ser mayor a 0");
-        }
+        PriceValidator.validatePrice(pricePerDay);
         this.pricePerDay = pricePerDay;
     }
 
@@ -111,37 +112,8 @@ public class RentableObject implements ICloneable<RentableObject> {
         this.available = available;
     }
 
-    /**
-     * Checks if the given price per day falls within the valid range.
-     *
-     * @param pricePerDay The price per day to validate.
-     * @return true if the price is within the allowed range, false otherwise.
-     */
-    private boolean isWithRange(double pricePerDay){
-        final double MIN_PRICE = 0.01;
-        final double MAX_PRICE = 1000000.00;
-        return pricePerDay >= MIN_PRICE && pricePerDay <= MAX_PRICE;
-    }
 
-    /**
-     * Checks if the given price per day is a positive value.
-     *
-     * @param pricePerDay The price per day to validate.
-     * @return true if the price is greater than zero, false otherwise.
-     */
-    private boolean isPositive(double pricePerDay){
-        return pricePerDay > 0;
-    }
 
-    /**
-     * Validates if the given price per day is both positive and within the allowed range.
-     *
-     * @param pricePerDay The price per day to validate.
-     * @return true if the price meets both conditions, false otherwise.
-     */
-    private boolean isValidPrice(double pricePerDay){
-        return isWithRange(pricePerDay) && isPositive(pricePerDay);
-    }
 
     /**
      * Creates and returns a shallow copy of this {@code RentableObject}.

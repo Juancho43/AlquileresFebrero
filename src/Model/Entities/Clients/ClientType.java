@@ -1,7 +1,8 @@
 package Model.Entities.Clients;
 
 import Model.Entities.ICloneable;
-import Model.Entities.Validators.StringValidator;
+import Model.Validators.DiscountValidator;
+import Model.Validators.StringValidator;
 import Model.Exceptions.OutOfRangeNumberException;
 import Model.Factory.IdFactory;
 
@@ -70,13 +71,9 @@ public class ClientType implements ICloneable<ClientType> {
      * numbers, and spaces.  Special characters are not allowed.
      *
      * @param type The name of the client type.
-     * @throws IllegalArgumentException If the provided name contains special
-     *                                  characters.
      */
     public void setType(String type) {
-        if (!StringValidator.isValidString(type)) {
-            throw new IllegalArgumentException("The client type name cannot contain special characters.");
-        }
+        StringValidator.validateString(type);
         this.type = type;
     }
 
@@ -94,12 +91,9 @@ public class ClientType implements ICloneable<ClientType> {
      * Sets the discount associated with this client type.
      *
      * @param discount The discount associated with this client type.
-     * @throws OutOfRangeNumberException If the discount is not within the valid range (0.0 to 1.0).
      */
     public void setDiscount(double discount) {
-        if (discount < 0.0 || discount > 1.0) {
-            throw new OutOfRangeNumberException("El descuento debe ser entre 1 y 0");
-        }
+        DiscountValidator.validateDiscount(discount);
         this.discount = discount;
     }
 

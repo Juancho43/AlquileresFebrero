@@ -194,10 +194,22 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
     @Override
     public void editItem() {
         if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")) {
-            selectItem().setClientType((ClientType) cmClientType.getSelectedItem());
-            selectItem().setPaymentMethod((IPayment) cmPayment.getSelectedItem());
-            selectItem().setName(txtName.getText());
-            Notifications.showSuccess("Cliente actualizado");
+            try{
+                selectItem().setClientType((ClientType) cmClientType.getSelectedItem());
+                selectItem().setPaymentMethod((IPayment) cmPayment.getSelectedItem());
+                selectItem().setName(txtName.getText());
+                selectItem().setEmail(txtEmail.getText());
+                selectItem().setDni(txtDNI.getText());
+                clientController.getDao().updateById(selectItem().getId(),selectItem());
+                Notifications.showSuccess("Cliente actualizado");
+            } catch (DuplicateObjectException e) {
+                Notifications.showError("Error " + e.getMessage());
+            } catch (IllegalEmailException e) {
+                Notifications.showError("Error " + e.getMessage());
+            } catch (IllegalDNIException e) {
+                Notifications.showError("Error " + e.getMessage());
+            }
+
         }
     }
 

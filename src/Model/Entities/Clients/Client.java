@@ -1,8 +1,10 @@
 package Model.Entities.Clients;
 
 import Model.Entities.ICloneable;
-import Model.Exceptions.IllegalDNIException;
-import Model.Exceptions.IllegalEmailException;
+import Model.Validators.DNIValidator;
+import Model.Validators.EmailValidator;
+import Model.Validators.StringValidator;
+
 import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
 
@@ -40,7 +42,7 @@ public class Client implements ICloneable<Client> {
      */
     public Client(String name, String email, String dni, ClientType type, IPayment paymentMethod) {
         this.id = IdFactory.generateUniqueId(); // Assign a unique ID using a factory.
-        this.name = name;
+        this.setName(name);
         this.setEmail(email); // Validate and set the email.
         this.setDni(dni);     // Validate and set the DNI.
         this.type = type;
@@ -80,6 +82,7 @@ public class Client implements ICloneable<Client> {
      * @param name The client's name.
      */
     public void setName(String name) {
+        StringValidator.validateString(name);
         this.name = name;
     }
 
@@ -96,13 +99,9 @@ public class Client implements ICloneable<Client> {
      * Sets the client's email address.  Performs validation.
      *
      * @param email The client's email address.
-     * @throws IllegalEmailException If the email is invalid.
      */
     public void setEmail(String email) {
-        if (!isValidEmail(email)) {
-            throw new IllegalEmailException("El email no es válido.");
-
-        }
+        EmailValidator.validateEmail(email);
         this.email = email;
     }
 
@@ -119,12 +118,9 @@ public class Client implements ICloneable<Client> {
      * Sets the client's DNI.  Performs validation.
      *
      * @param dni The client's DNI.
-     * @throws IllegalDNIException If the DNI is invalid.
      */
     public void setDni(String dni) {
-        if (!isValidDNI(dni)) {
-            throw new IllegalDNIException("El DNI debe tener 7 a 10 dígitos numéricos"); // Corrected error message
-        }
+        DNIValidator.validateDNI(dni);
         this.dni = dni;
     }
 
@@ -164,32 +160,6 @@ public class Client implements ICloneable<Client> {
         this.favoriteMethod = paymentMethod;
     }
 
-
-
-    // Specific validations
-
-    /**
-     * Validates the DNI format.
-     *
-     * @param dni The DNI to validate.
-     * @return True if the DNI is valid, false otherwise.
-     */
-    private boolean isValidDNI(String dni) {
-        // Regular expression to validate the DNI (7 to 10 digits).
-        String dniRegex = "^[0-9]{7,10}$"; // Corrected regex to allow 7 to 10 digits.
-        return dni != null && dni.matches(dniRegex);
-    }
-
-    /**
-     * Validates the email format.
-     *
-     * @param email The email to validate.
-     * @return True if the email is valid, false otherwise.
-     */
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
-        return email != null && email.matches(emailRegex); // Added null check
-    }
 
 
     /**
