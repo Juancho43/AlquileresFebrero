@@ -188,6 +188,8 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
             Notifications.showError("Error " + e.getMessage());
         } catch (IllegalDNIException e) {
             Notifications.showError("Error " + e.getMessage());
+        }catch (IllegalArgumentException e){
+            Notifications.showError("Error" + e.getMessage());
         }
     }
 
@@ -208,6 +210,8 @@ public class ClientView extends JFrame implements IBasicView, IManageView<Client
                 Notifications.showError("Error " + e.getMessage());
             } catch (IllegalDNIException e) {
                 Notifications.showError("Error " + e.getMessage());
+            }catch (IllegalArgumentException e){
+                Notifications.showError("Error" + e.getMessage());
             }
 
         }

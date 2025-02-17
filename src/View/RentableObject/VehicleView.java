@@ -157,13 +157,14 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
             String band = txtMarca.getText();
             String model = txtModelo.getText();
             int year = Integer.parseInt(txtAnio.getText());
-
             vehicleController.addVehicle(name, description, price, band, model, year);
             cleanFields();
             Notifications.showSuccess("Vehiculo creado");
         } catch (IllegalYearException e) {
             Notifications.showError("Error" + e.getMessage());
         } catch (OutOfRangeNumberException e){
+            Notifications.showError("Error" + e.getMessage());
+        }catch (IllegalArgumentException e){
             Notifications.showError("Error" + e.getMessage());
         }
     }
@@ -183,6 +184,8 @@ public class VehicleView extends JFrame implements IBasicView, IManageView {
             }catch (IllegalYearException e) {
                 Notifications.showError("Error" + e.getMessage());
             } catch (OutOfRangeNumberException e){
+                Notifications.showError("Error" + e.getMessage());
+            }catch (IllegalArgumentException e){
                 Notifications.showError("Error" + e.getMessage());
             }
         }
