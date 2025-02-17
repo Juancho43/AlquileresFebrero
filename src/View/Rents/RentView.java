@@ -16,17 +16,17 @@ import View.Interfaces.IManageView;
 import View.Utils.ConfirmationDialog;
 import View.Utils.NavigationView;
 import View.Utils.Notifications;
+import jdk.jshell.spi.ExecutionControl;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class RentView extends JFrame implements IBasicView, IManageView<IRentable> {
     private JLabel lblRent;
@@ -35,7 +35,6 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     private JButton btnMenu;
     private JButton btnCloseRents;
     private JButton btnSave;
-    private JButton btnEdit;
     private JButton btnDelete;
     private JButton btnClean;
     private JList rentList;
@@ -44,9 +43,9 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     private JPanel Panel;
     private JButton btnClosedRents;
     private JButton btnClients;
+    private JButton btnObjects;
     private final RentController controller = new RentController();
     private final ClientController clientController = new ClientController();
-    private boolean edit = false;
 
     public RentView() {
         configView();
@@ -63,11 +62,8 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (edit) {
-                    editItem();
-                } else {
-                    createItem();
-                }
+
+                createItem();
                 cleanFields();
                 updateList();
             }
@@ -78,13 +74,7 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
                 cleanFields();
             }
         });
-        btnEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                edit = true;
-                lblRent.setText("Editar renta");
-            }
-        });
+
         btnDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -99,6 +89,7 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
                 controller.getClosedRentDao().save(selectItem().closeRent(LocalDate.now()));
                 Notifications.showSuccess("Renta cerrada");
                 updateList();
+                cleanFields();
             }
         });
         btnMenu.addActionListener(new ActionListener() {
@@ -130,6 +121,13 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
                 NavigationView.openHistoricalRentView();
             }
 
+        });
+        btnObjects.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                NavigationView.openRentableObjectView();
+            }
         });
     }
 
@@ -168,8 +166,6 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
 
     @Override
     public void cleanFields() {
-        edit = false;
-        lblRent.setText("Formulario rentas");
         cmCategory.setSelectedIndex(0);
         cmClient.setSelectedIndex(0);
         cmObject.setSelectedIndex(0);
@@ -192,12 +188,10 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
 
     @Override
     public void editItem() {
-        if(ConfirmationDialog.confirmYESNO("Estás por editar el registro, deseas continuar?")){
-            selectItem().setClient((Client) cmClient.getSelectedItem());
-            selectItem().setRentableObject(cmObject.getSelectedItem());
-
-            controller.getDao().updateById(selectItem().getId(), selectItem());
-            Notifications.showSuccess("Renta actualizada");
+        try {
+            throw new ExecutionControl.NotImplementedException("No implementado");
+        } catch (ExecutionControl.NotImplementedException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -226,7 +220,6 @@ public class RentView extends JFrame implements IBasicView, IManageView<IRentabl
     private void setCmObject() {
         IControllable controllable = (IControllable) cmCategory.getSelectedItem();
         IRentableObject[] objects = new IRentableObject[0];
-        System.out.println(cmCategory.getSelectedItem());
         if (controllable instanceof ClothingController)
             objects = ((ClothingController) controllable).getAllAvaliableCloth().toArray(new IRentableObject[0]);
         if (controllable instanceof VehicleController)
