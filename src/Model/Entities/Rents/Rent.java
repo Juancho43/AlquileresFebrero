@@ -1,6 +1,6 @@
 package Model.Entities.Rents;
 
-import Model.Entities.Prototype;
+import Model.Entities.ICloneable;
 import Model.Factory.IdFactory;
 
 import java.time.LocalDate;
@@ -11,9 +11,9 @@ import java.time.temporal.ChronoUnit;
  * This class manages information about a rent, including the start date, return date,
  * close date, and the current state of the rent.  It also provides methods for
  * calculating durations, checking status, and closing a rent.
- *  It also implements the {@code Prototype} interface for object cloning.
+ *  It also implements the {@code ICloneable} interface for cloning.
  */
-public class Rent implements Prototype<Rent> {
+public class Rent implements ICloneable<Rent> {
 
     private long id; // Unique identifier for the rent.
     private LocalDate date; // The date the rent started.

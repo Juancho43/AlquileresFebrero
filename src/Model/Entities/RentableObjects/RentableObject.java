@@ -1,6 +1,6 @@
 package Model.Entities.RentableObjects;
 
-import Model.Entities.Prototype;
+import Model.Entities.ICloneable;
 import Model.Exceptions.OutOfRangeNumberException;
 
 /**
@@ -8,9 +8,9 @@ import Model.Exceptions.OutOfRangeNumberException;
  * This class stores information common to all rentable items, such as their name,
  * description, price per day, and availability.  It serves as a base class or
  * a common type for more specific rentable objects (e.g., Vehicle, Clothing).
- * It also implements the {@code Prototype} interface for cloning.
+ * It also implements the {@code ICloneable} interface for cloning.
  */
-public class RentableObject implements Prototype<RentableObject> {
+public class RentableObject implements ICloneable<RentableObject> {
 
     private String name; // The name of the rentable object.
     private String description; // A description of the rentable object.

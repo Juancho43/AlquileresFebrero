@@ -1,6 +1,6 @@
 package Model.Entities.Clients;
 
-import Model.Entities.Prototype;
+import Model.Entities.ICloneable;
 import Model.Exceptions.IllegalDNIException;
 import Model.Exceptions.IllegalEmailException;
 import Model.Factory.IdFactory;
@@ -11,9 +11,9 @@ import Model.Strategy.IPayment;
  * This class stores information about a client, including their name, email, DNI,
  * client type, and preferred payment method.  It also includes validation logic
  * for email and DNI.
- * It also implements the {@code Prototype} interface for cloning.
+ * It also implements the {@code ICloneable} interface for cloning.
  */
-public class Client implements Prototype<Client> {
+public class Client implements ICloneable<Client> {
 
     private long id;
     private String name;

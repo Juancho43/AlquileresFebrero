@@ -1,6 +1,6 @@
 package Model.Entities.RentableObjects;
 
-import Model.Entities.Prototype;
+import Model.Entities.ICloneable;
 import Model.Exceptions.IllegalYearException;
 import Model.Factory.IdFactory;
 
@@ -12,8 +12,9 @@ import java.time.Year;
  * associated `RentableObject` details (name, description, price), brand, model,
  * and year. It implements the `IRentableObject` interface to provide access
  * to the underlying `RentableObject`.
+ * It also implements the {@code ICloneable} interface for cloning.
  */
-public class Vehicle implements IRentableObject, Prototype<Vehicle> {
+public class Vehicle implements IRentableObject, ICloneable<Vehicle> {
 
     private long id; // The unique ID of the vehicle.
     private RentableObject object; // The RentableObject associated with this vehicle.

@@ -1,6 +1,6 @@
 package Model.Entities.RentableObjects;
 
-import Model.Entities.Prototype;
+import Model.Entities.ICloneable;
 import Model.Exceptions.IllegalSizeException;
 import Model.Factory.IdFactory;
 
@@ -10,9 +10,9 @@ import Model.Factory.IdFactory;
  * associated `RentableObject` details (name, description, price), size, and color.
  * It implements the `IRentableObject` interface to provide access to the underlying
  * `RentableObject`.
- * It also implements the {@code Prototype} interface for cloning.
+ * It also implements the {@code ICloneable} interface for cloning.
  */
-public class Clothing implements IRentableObject, Prototype<Clothing> {
+public class Clothing implements IRentableObject, ICloneable<Clothing> {
 
     private long id; // The unique ID of the clothing item.
     private RentableObject object; // The RentableObject associated with this clothing item.

@@ -1,6 +1,6 @@
 package Model.Entities.Rents;
 
-import Model.Entities.Prototype;
+import Model.Entities.ICloneable;
 import Model.Entities.RentableObjects.Vehicle;
 import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
@@ -12,9 +12,9 @@ import java.time.LocalDate;
  * This class extends `ObjectRent` and implements the `IRentable` interface for `Vehicle` objects.
  * It manages the rental of a specific vehicle, including price calculation, rent generation,
  * rent closing, and associating the vehicle with the rent.
- * It also implements the {@code Prototype} interface for cloning.
+ * It also implements the {@code ICloneable} interface for cloning.
  */
-public class VehicleRent extends ObjectRent implements IRentable<Vehicle>, Prototype<IRentable> {
+public class VehicleRent extends ObjectRent implements IRentable<Vehicle>, ICloneable<IRentable> {
 
     private Vehicle vehicle; // The Vehicle object being rented.
 

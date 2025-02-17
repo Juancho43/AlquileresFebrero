@@ -1,6 +1,6 @@
 package Model.Entities.Clients;
 
-import Model.Entities.Prototype;
+import Model.Entities.ICloneable;
 import Model.Factory.IdFactory;
 
 import java.util.Objects;
@@ -9,9 +9,9 @@ import java.util.Objects;
  * Represents the type of client, defining characteristics like discounts.
  * This class stores information about the client type, including its ID, name,
  * and associated discount.
- * It also implements the {@code Prototype} interface for cloning.
+ * It also implements the {@code ICloneable} interface for cloning.
  */
-public class ClientType implements Prototype<ClientType> {
+public class ClientType implements ICloneable<ClientType> {
 
     private long id;
     private String type;

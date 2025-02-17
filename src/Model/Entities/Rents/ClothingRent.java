@@ -1,6 +1,6 @@
 package Model.Entities.Rents;
 
-import Model.Entities.Prototype;
+import Model.Entities.ICloneable;
 import Model.Entities.RentableObjects.Clothing;
 import Model.Factory.IdFactory;
 import Model.Strategy.IPayment;
@@ -12,9 +12,9 @@ import java.time.LocalDate;
  * This class extends `ObjectRent` and implements the `IRentable` interface for `Clothing` objects.
  * It manages the rental of a specific clothing item, including price calculation, rent generation,
  * rent closing, and associating the clothing item with the rent.
- * It also implements the {@code Prototype} interface for cloning.
+ * It also implements the {@code ICloneable} interface for cloning.
  */
-public class ClothingRent extends ObjectRent implements IRentable<Clothing>, Prototype<IRentable> {
+public class ClothingRent extends ObjectRent implements IRentable<Clothing>, ICloneable<IRentable> {
 
     private Clothing clothing; // The Clothing object being rented.
 
