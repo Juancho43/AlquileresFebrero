@@ -3,6 +3,8 @@ package Model.Entities.RentableObjects;
 import Model.Entities.ICloneable;
 import Model.Exceptions.IllegalYearException;
 import Model.Factory.IdFactory;
+import Model.Validators.StringValidator;
+import Model.Validators.YearValidator;
 
 import java.time.Year;
 
@@ -41,9 +43,9 @@ public class Vehicle implements IRentableObject, ICloneable<Vehicle> {
     public Vehicle(String name, String description, double pricePerDay, String brand, String model, int year) {
         this.id = IdFactory.generateUniqueId(); // Generate a unique ID using a factory.
         this.object = new RentableObject(name, description, pricePerDay); // Create and associate a RentableObject.
-        this.brand = brand;
-        this.model = model;
-        this.setYear(year);
+        setBrand(brand);
+        setModel(model);
+        setYear(year);
     }
 
     /**
@@ -61,6 +63,7 @@ public class Vehicle implements IRentableObject, ICloneable<Vehicle> {
      * @param brand The brand of the vehicle.
      */
     public void setBrand(String brand) {
+        StringValidator.validateString(brand);
         this.brand = brand;
     }
 
@@ -79,6 +82,7 @@ public class Vehicle implements IRentableObject, ICloneable<Vehicle> {
      * @param model The model of the vehicle.
      */
     public void setModel(String model) {
+        StringValidator.validateString(model);
         this.model = model;
     }
 
@@ -99,12 +103,9 @@ public class Vehicle implements IRentableObject, ICloneable<Vehicle> {
      * an `IllegalYearException` is thrown with a message indicating the valid range of years.
      *
      * @param year The new year to be assigned. It must be within the range of 2000 to 2025 (inclusive).
-     * @throws IllegalYearException If the provided year is not within the valid range.
      */
     public void setYear(int year) {
-        if(!isValidYear(year)){
-            throw new IllegalYearException("El valor debe estar en el rango de 2000 a 2025"); // Return false if the year is not valid
-        }
+        YearValidator.validateYear(year);
         this.year = year;
     }
 
@@ -156,20 +157,7 @@ public class Vehicle implements IRentableObject, ICloneable<Vehicle> {
         return object.getName() + " " + object.getDescription() + " " + brand + " " + model + " " + year + " $" + object.getPricePerDay() + "/day";
     }
 
-    /**
-     * Validates if the provided year is within an acceptable range.
-     *
-     * @param year The year to validate.
-     * @return true if the year is valid (between 2000 and the current year), false otherwise.
-     */
-    public boolean isValidYear(int year){
-        // Get the current year
-        int currentYear = Year.now().getValue();
-        // Define the oldest acceptable year
-        int oldestAcceptableYear = 2000;
-        // Check if the year is within the valid range
-        return year >= oldestAcceptableYear && year <= currentYear;
-    }
+
     /**
      * Creates and returns a deep copy of this {@code Vehicle} object.
      * This method creates a new, independent copy of this {@code Vehicle} instance,

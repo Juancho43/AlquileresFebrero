@@ -3,6 +3,8 @@ package Model.Entities.RentableObjects;
 import Model.Entities.ICloneable;
 import Model.Exceptions.IllegalSizeException;
 import Model.Factory.IdFactory;
+import Model.Validators.SizeValidator;
+import Model.Validators.StringValidator;
 
 /**
  * Represents a rentable clothing item.
@@ -38,7 +40,7 @@ public class Clothing implements IRentableObject, ICloneable<Clothing> {
         this.id = IdFactory.generateUniqueId(); // Generate a unique ID using a factory.
         this.object = new RentableObject(name, description, pricePerDay); // Create and associate a RentableObject.
         this.setSize(size);
-        this.color = color;
+        this.setColor(color);
     }
 
     /**
@@ -62,9 +64,7 @@ public class Clothing implements IRentableObject, ICloneable<Clothing> {
      * @throws IllegalSizeException If the provided size is not valid.
      */
     public void setSize(String size) {
-        if(!isValidSize(size)){
-            throw new IllegalSizeException("Debe ingresar un talle (s, m, l, xl, xxl, xxxl)") ; // Returns false if the size is not valid
-        }
+        SizeValidator.validateSize(size);
         this.size = size;
     }
 
@@ -83,6 +83,7 @@ public class Clothing implements IRentableObject, ICloneable<Clothing> {
      * @param color The color of the clothing item.
      */
     public void setColor(String color) {
+        StringValidator.validateString(color);
         this.color = color;
     }
 
@@ -134,18 +135,7 @@ public class Clothing implements IRentableObject, ICloneable<Clothing> {
         return object.getName() + " " + object.getDescription() + " " + color + " (" + size + ") $" + object.getPricePerDay() + "/day";
     }
 
-    /**
-     * Validates if the provided size is valid.
-     *
-     * @param size The size to validate as a String.
-     * @return true if the size is valid, false otherwise.
-     */
-    private boolean isValidSize(String size) {
-        // Regular expression to validate clothing sizes
-        String sizeRegex = "^(s|m|l|x{1,3}l)$"; // s, m, l, xl, xxl, xxxl
-        // Converts the size to lowercase and checks if it matches the regular expression
-        return size.toLowerCase().matches(sizeRegex);
-    }
+
     /**
      * Creates and returns a deep copy of this {@code Clothing} object.
      * This method creates a new, independent copy of this {@code Clothing} instance,
